@@ -48,3 +48,22 @@ body[data-mantine-color-scheme="dark"] .mantine-Modal-header,
 body[data-mantine-color-scheme="dark"] .mantine-Modal-content {
   background-color: #1A1B1E !important;
 }
+
+/* Eliminate white space in modal dialogs */
+.spell-details-modal .mantine-Modal-body {
+  padding: 0 !important;
+}
+
+.spell-details-modal .mantine-Paper-root {
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix for any remaining white spaces */
+.mantine-Modal-inner {
+  padding: 0 !important;
+}
+
+body[data-mantine-color-scheme="dark"] .mantine-Modal-body {
+  background-color: #1A1B1E !important;
+}
