@@ -7,32 +7,61 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          version: 8
-      - uses: actions/setup-node@v3
+          node-version: '20'
+          
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
         with:
-          node-version: 20
-          cache: 'pnpm'
+          version: 10
+          
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+          
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-      - name: Build
-        run: pnpm build
         
-      - name: Create release artifact
+      - name: Build
+        run: pnpm build:prod
+        
+      - name: Create version.json
+        run: |
+          echo "{\"version\": \"${{ github.event.release.tag_name }}\", \"releaseDate\": \"$(date -u +"%Y-%m-%dT%H:%M:%SZ")\"}" > dist/version.json
+        
+      - name: Zip artifacts
         run: |
           cd dist
           zip -r ../saga-spells-${{ github.event.release.tag_name }}.zip .
           cd ..
+          echo "::notice::Created release archive: saga-spells-${{ github.event.release.tag_name }}.zip"
       
-      - name: Upload release artifact
-        uses: actions/upload-release-asset@v1
+      - name: Generate checksum
+        run: |
+          sha256sum saga-spells-${{ github.event.release.tag_name }}.zip > saga-spells-${{ github.event.release.tag_name }}.zip.sha256
+      
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            saga-spells-${{ github.event.release.tag_name }}.zip
+            saga-spells-${{ github.event.release.tag_name }}.zip.sha256
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./saga-spells-${{ github.event.release.tag_name }}.zip
-          asset_name: saga-spells-${{ github.event.release.tag_name }}.zip
-          asset_content_type: application/zip

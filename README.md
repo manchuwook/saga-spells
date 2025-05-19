@@ -54,24 +54,36 @@ pnpm build:prod
 
 This project uses GitHub Actions for continuous integration and deployment:
 
-### Main Workflow (`ci.yml`)
+### Main CI Workflow
 
-- Triggers on pushes to `main` branch and pull requests
-- Installs dependencies with pnpm
-- Runs tests with Vitest
-- Builds the application
+- Runs type checking, testing, and building in parallel jobs
+- Uses dependency caching for faster workflow execution
+- Uploads test coverage and build artifacts
+- Optimized for PNPM and modern Node.js
 
-### Release Workflow (`release.yml`)
+### Performance Testing
 
-- Triggers when a new release is published
-- Builds the application
-- Creates a ZIP artifact of the build
-- Attaches the artifact to the GitHub release
+- Runs Lighthouse performance tests automatically
+- Generates detailed reports with performance metrics
+- Adds report summaries as PR comments
+- Enforces performance, accessibility, and PWA standards
 
-### Lighthouse CI (`lighthouse.yml`)
+### Security Scanning
 
-- Runs Lighthouse performance tests
-- Generates reports for Performance, Accessibility, Best Practices, SEO, and PWA
+- Automatically scans dependencies for vulnerabilities
+- Creates GitHub issues for critical security problems
+- Runs on schedule and when dependencies change
+
+### Deployment Options
+
+We've set up automated deployment to two platforms:
+
+- **GitHub Pages**: Zero-configuration deployment with GitHub's hosting
+- **Cloudflare Pages**: High-performance global CDN deployment
+
+See [CI_CD.md](./CI_CD.md) for detailed information about our CI/CD setup.
+
+## Development
 
 To run these workflows locally before pushing:
 
