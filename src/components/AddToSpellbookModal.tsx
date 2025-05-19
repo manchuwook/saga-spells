@@ -1,6 +1,6 @@
 import { Modal, Button, Select, Text, useMantineColorScheme } from '@mantine/core';
 import { useSpellbooks } from '../hooks/useSpellbooks';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
 

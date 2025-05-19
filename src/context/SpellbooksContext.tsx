@@ -1,6 +1,6 @@
 import { createContext, ReactNode } from 'react';
 import { useLocalStorage } from '@mantine/hooks';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 
 export interface Spellbook {
   id: string;

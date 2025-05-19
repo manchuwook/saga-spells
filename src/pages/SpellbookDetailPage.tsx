@@ -21,7 +21,7 @@ import { SpellCard } from '../components/SpellCard';
 import { SpellDetailsModal } from '../components/SpellDetailsModal';
 import { EditSpellbookModal } from '../components/EditSpellbookModal';
 import { SpellbookExportButton } from '../components/SpellbookExportButton';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 import { useSpells } from '../hooks/useSpells';
 import { SpellsFilter } from '../components/SpellsFilter';
 import { modals } from '@mantine/modals';

@@ -18,7 +18,7 @@ import { SpellDetailsModal } from '../components/SpellDetailsModal';
 import { AddToSpellbookModal } from '../components/AddToSpellbookModal';
 import { SpellsFilter } from '../components/SpellsFilter';
 import { ExportButton } from '../components/ExportButton';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 
 export default function SpellsPage() {
   const { data: spells, isLoading, error } = useSpells();

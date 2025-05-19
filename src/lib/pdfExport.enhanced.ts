@@ -1,6 +1,6 @@
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 import { Spellbook } from '../context/SpellbooksContext';
 
 // Helper function to create a formatted spell table for PDF

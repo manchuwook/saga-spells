@@ -1,5 +1,5 @@
 import { Modal, Text, Title, Grid, Badge, Group, Stack, Paper, useMantineColorScheme } from '@mantine/core';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 import { useTheme } from '../context/ThemeContext';
 import '../styles/modal.css';
 

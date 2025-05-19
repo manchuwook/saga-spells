@@ -1022,7 +1022,7 @@
     "skill": "Focus Magic",
     "focus": "Banish",
     "spellType": "Spell",
-    "description": "You compel a target that is currently actively Oppressed or Posessed by a Daemon. The target is treated as an Autonomous Support ally for 20T per DoS Scored.",
+    "description": "You compel a target that is currently actively Oppressed or Possessed by a Daemon. The target is treated as an Autonomous Support ally for 20T per DoS Scored.",
     "altDescription": null
   },
   {
@@ -1274,7 +1274,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "The target immediately has a very vivid hallucination. The TN is modified by the feasability of the hallucination. +0 for something simple and highly likely (the door is actually locked), to +10 (the ground turns into a gaping mouth and is trying to eath them). The target will behave as if the hallucination is real, and its actions will be informed by the Delusion the caster specified. Despite acting out against the delusion, none of their actions will aid them against the delusion. Target is Hallucinating while the spell persists. A target may not be under the effects of this spell more than once per scene.",
+    "description": "The target immediately has a very vivid hallucination. The TN is modified by the feasibility of the hallucination. +0 for something simple and highly likely (the door is actually locked), to +10 (the ground turns into a gaping mouth and is trying to eath them). The target will behave as if the hallucination is real, and its actions will be informed by the Delusion the caster specified. Despite acting out against the delusion, none of their actions will aid them against the delusion. Target is Hallucinating while the spell persists. A target may not be under the effects of this spell more than once per scene.",
     "altDescription": null
   },
   {
@@ -1742,7 +1742,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "Misfotrune plague all before you. Each target, on their next immediate Action Check, suffers Accurate (-3) per DoS. If no action checks are made, this spell ends at the close of the scene. A target may not be under the effects of more than one instance of this spell at a time.",
+    "description": "Misfortune plague all before you. Each target, on their next immediate Action Check, suffers Accurate (-3) per DoS. If no action checks are made, this spell ends at the close of the scene. A target may not be under the effects of more than one instance of this spell at a time.",
     "altDescription": "-"
   },
   {
@@ -1796,7 +1796,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "Must be cast in a natural environment on earth or in a cave. A ring of mushrooms erupt from the ground in a circle, demarking the affected area. All Fae in the area must compare their SPI against Effect. On success, the Fae lose, and cannot gain, the INVISBLE and DISTRACTED conditions while inside the Faerie Ring. This affects all Fae on entering the circle.",
+    "description": "Must be cast in a natural environment on earth or in a cave. A ring of mushrooms erupt from the ground in a circle, demarking the affected area. All Fae in the area must compare their SPI against Effect. On success, the Fae lose, and cannot gain, the INVISIBLE and DISTRACTED conditions while inside the Faerie Ring. This affects all Fae on entering the circle.",
     "altDescription": "-"
   },
   {
@@ -1879,7 +1879,7 @@
     "target": "Burst (5)",
     "action": "Cmplx (50T)",
     "duration": "Scene",
-    "keywords": "Aerosal, Corpus Effect",
+    "keywords": "Aerosol, Corpus Effect",
     "check": "Bonds Magic (Spirit): BOD+[c]",
     "spellClass": "Animism",
     "school": "Phytomancy",
@@ -2102,7 +2102,7 @@
     "skill": "Axiomatic Magic",
     "focus": "Formulae",
     "spellType": "Spell",
-    "description": "You cut into reality, leaving a vaccuous rip, momentarily releasing terrible energy. You constrict the Veil around the target, delivering DMP+10d(9+): D-0, Pervasive (6), Psychic, Lingering Damage.",
+    "description": "You cut into reality, leaving a vacuous rip, momentarily releasing terrible energy. You constrict the Veil around the target, delivering DMP+10d(9+): D-0, Pervasive (6), Psychic, Lingering Damage.",
     "altDescription": null
   },
   {
@@ -2156,7 +2156,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "Mechanics and machinery become stubborn and stiff. This can target a single object that has working parts. The more complex the working parts, the easier it is to freeze the mechanism, making it unresponsive and unmoving. A device with a clockwork level of complexity is +0 to the TN, while moderately complex gear and pully machines, locks, or constructs, are TN +2, and simple operations, like a hinge, or a door latch, are TN +4. The targeted mechanism becomes inoperable for its intended purpose. If this is a lock, then your DoS is added to the TN to pick the lock. If this is used on a Construct, the construct is considered Restrained.",
+    "description": "Mechanics and machinery become stubborn and stiff. This can target a single object that has working parts. The more complex the working parts, the easier it is to freeze the mechanism, making it unresponsive and unmoving. A device with a clockwork level of complexity is +0 to the TN, while moderately complex gear and pulley machines, locks, or constructs, are TN +2, and simple operations, like a hinge, or a door latch, are TN +4. The targeted mechanism becomes inoperable for its intended purpose. If this is a lock, then your DoS is added to the TN to pick the lock. If this is used on a Construct, the construct is considered Restrained.",
     "altDescription": null
   },
   {
@@ -2264,7 +2264,7 @@
     "skill": "Focus Magic",
     "focus": "Manipulate",
     "spellType": "Spell",
-    "description": "You reach out and wrestle with the target with an invisble grip.  This allows you to make the Initiate Grapple and Prosecute Grapple actions on the target.  You may perform any Grapple Maneuver as normal.",
+    "description": "You reach out and wrestle with the target with an invisible grip.  This allows you to make the Initiate Grapple and Prosecute Grapple actions on the target.  You may perform any Grapple Maneuver as normal.",
     "altDescription": "-"
   },
   {

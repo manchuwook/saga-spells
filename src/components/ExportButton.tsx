@@ -1,6 +1,6 @@
 import { Button, Popover, Stack, Text, useMantineColorScheme } from '@mantine/core';
 import { IconPrinter, IconDownload } from '@tabler/icons-react';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 import { exportSpellsToPDF } from '../lib/pdfExport.enhanced';
 
 interface ExportButtonProps {

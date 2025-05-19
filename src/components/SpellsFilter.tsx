@@ -10,7 +10,7 @@ import {
   useMantineColorScheme
 } from '@mantine/core';
 import { IconSearch, IconFilter, IconX, IconTags } from '@tabler/icons-react';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 import { useTheme } from '../context/ThemeContext';
 import { useSpellTags } from '../hooks/useSpellTags';
 

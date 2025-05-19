@@ -1,6 +1,6 @@
 import { Card, Text, Badge, Group, ActionIcon, Tooltip, Stack, Box, useMantineColorScheme } from '@mantine/core';
 import { IconEye, IconBooks, IconX } from '@tabler/icons-react';
-import { Spell } from '../../spells.zod';
+import { Spell } from '../models/spells.zod';
 import { useTheme } from '../context/ThemeContext';
 
 interface SpellCardProps {

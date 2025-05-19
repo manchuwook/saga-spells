@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { validateSpells, type Spell } from '../../spells.zod';
+import { validateSpells, type Spell } from '../models/spells.zod';
 
 async function fetchSpells(): Promise<Spell[]> {
   const response = await fetch('/spells.json');
