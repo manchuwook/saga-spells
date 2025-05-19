@@ -1,9 +1,8 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -40,19 +39,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     minify: 'terser',
-    emptyOutDir: true,
-    reportCompressedSize: true,
-    sourcemap: false,
-    cssCodeSplit: true,
-    manifest: true,
     rollupOptions: {
-      external: [
-        /\.test\.(ts|tsx)$/,
-        /\.spec\.(ts|tsx)$/,
-        'vitest',
-        '@testing-library/react',
-        '@testing-library/jest-dom',
-      ],
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
@@ -68,12 +55,17 @@ export default defineConfig({
           'icons': ['@tabler/icons-react'],
         }
       },
-    }
+    },
+    emptyOutDir: true,
+    reportCompressedSize: true,
+    sourcemap: false,
+    cssCodeSplit: true,
+    manifest: true,
   },
   optimizeDeps: {
     include: [
-      'react',
-      'react-dom',
+      'react', 
+      'react-dom', 
       'react-router-dom',
       '@mantine/core',
       '@mantine/hooks',
@@ -91,17 +83,13 @@ export default defineConfig({
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   },
-});
-
-// Vitest configuration
-// You may need to create a separate vitest.config.ts file instead
-export const testConfig = {
-  globals: true,
-  environment: 'happy-dom',
-  setupFiles: './src/test/setup.ts',
-  exclude: ['**/node_modules/**', '**/dist/**'],
-  coverage: {
-    reporter: ['text', 'html'],
-    exclude: ['node_modules/']
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    setupFiles: './src/test/setup.ts',
+    coverage: {
+      reporter: ['text', 'html'],
+      exclude: ['node_modules/']
+    }
   }
-};
+});

@@ -50,6 +50,45 @@ To create an optimized production build:
 pnpm build:prod
 ```
 
+## CI/CD Workflows
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+### Main Workflow (`ci.yml`)
+
+- Triggers on pushes to `main` branch and pull requests
+- Runs on Node.js 18.x and 20.x
+- Installs dependencies with pnpm
+- Runs tests with Vitest
+- Builds the application
+- Deploys automatically when changes are pushed to the main branch
+
+### Release Workflow (`release.yml`)
+
+- Triggers when a new release is published
+- Builds the application
+- Creates a ZIP artifact of the build
+- Attaches the artifact to the GitHub release
+
+### Lighthouse CI (`lighthouse.yml`)
+
+- Runs Lighthouse performance tests
+- Generates reports for Performance, Accessibility, Best Practices, SEO, and PWA
+- Comments on pull requests with the Lighthouse scores and reports
+
+To run these workflows locally before pushing:
+
+```bash
+# Run tests
+pnpm test
+
+# Build the app
+pnpm build
+
+# Run Lighthouse tests
+pnpm lighthouse
+```
+
 This will:
 - Clean the previous build
 - Type check all TypeScript code

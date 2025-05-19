@@ -1,1 +1,0 @@
-import{r as o}from"./react-vendor-Dbzhzy_A.js";import{S as r}from"./index-DSYVc5nJ.js";function e(){const e=o.useContext(r);if(void 0===e)throw new Error("useSpellbooks must be used within a SpellbooksProvider");return e}export{e as u};
