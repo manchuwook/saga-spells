@@ -1,0 +1,1312 @@
+{
+  "tags": [    {
+      "name": "Offensive Spells",
+      "tag": "offensive",
+      "description": "Spells primarily designed to deal damage to enemies",
+      "matches": [
+        "Acid Cloud",
+        "Arcing Lance",
+        "Bolt of Fire",
+        "Column of Fire",
+        "Fan of Flames",
+        "Fire Serpent",
+        "Fire Strike",
+        "Fiery Blast",
+        "Force Bolt",
+        "Immolate",
+        "Jolting Lash",
+        "Ray of Annihilation",
+        "Soul Bolt",
+        "Spark",
+        "Storm Bolt"
+      ]
+    },{
+      "name": "Defensive Spells",
+      "tag": "defensive",
+      "description": "Spells that provide protection, shielding, or damage reduction",
+      "matches": [
+        "Barrier of Force",
+        "Deflection",
+        "Field of Force",
+        "Ice Armor",
+        "Lightning Shield",
+        "Crimson Aura",
+        "Armor of Life",
+        "Cloak of Flame",
+        "Deep Breath",
+        "Slow Fall"
+      ]
+    },{
+      "name": "Healing",
+      "tag": "healing",
+      "description": "Spells that restore health or remove negative conditions",
+      "matches": [
+        "Rejuvenate",
+        "Panacea"
+      ]
+    },    {
+      "name": "Control",
+      "tag": "control",
+      "description": "Spells that manipulate, restrict, or control targets",
+      "matches": [
+        "Command Animal",
+        "Command Beast",
+        "Command Ethereal",
+        "Crush",
+        "Choke",
+        "Push",
+        "Vermin Lord",
+        "Vineswarm",
+        "Eye of Fate",
+        "Eye of Fumbling"
+      ]
+    },    {
+      "name": "Utility",
+      "tag": "utility",
+      "description": "Spells with practical applications outside of combat",
+      "matches": [
+        "Alchemist's Fire",
+        "Alight",
+        "Aura Sight",
+        "Black Sight",
+        "Condense",
+        "Etheric Eye",
+        "Extinguish",
+        "Lifeless Eye",
+        "Mind Speak",
+        "Prestidigitation",
+        "Psychometry",
+        "Mend",
+        "Sheen",
+        "Shoulder Burden",
+        "Sixth Sense",
+        "Slow Fall",
+        "Soothing Mist"
+      ]
+    },    {
+      "name": "Area Effect",
+      "tag": "aoe",
+      "description": "Spells that affect multiple targets in an area",
+      "matches": [
+        "Acid Cloud",
+        "Aura of Cooling",
+        "Aura of Misfortune",
+        "Ball Lightning",
+        "Column of Fire",
+        "Fan of Flames",
+        "Faerie Ring",
+        "Heavy Fog",
+        "Howling Wind",
+        "Invigorate",
+        "Retching Billows",
+        "Soothing Mist",
+        "Thunder Crack",
+        "Wave of Force",
+        "Water Breathing"
+      ]
+    },
+    {
+      "name": "Buff",
+      "tag": "buff",
+      "description": "Spells that enhance abilities or provide positive effects",
+      "matches": [
+        "Alacrity",
+        "Sureflight Missile",
+        "Deep Breath",
+        "Eyes of the Hawk",
+        "Invigorate",
+        "Sixth Sense",
+        "Crimson Aura"
+      ]
+    },
+    {
+      "name": "Debuff",
+      "tag": "debuff",
+      "description": "Spells that weaken targets or apply negative effects",
+      "matches": [
+        "Befuddle",
+        "Stricken Dumb",
+        "Disfigure",
+        "Fumbling Efforts",
+        "Eye of Fumbling",
+        "Aggravate Wound",
+        "Soul Mark",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Summoning",
+      "tag": "summoning",
+      "description": "Spells that call forth creatures or entities",
+      "matches": [
+        "Awaken Old Oak",
+        "Spectral Eye",
+        "Shadowy Tendrils",
+        "Vermin Lord",
+        "Vineswarm"
+      ]
+    },
+    {
+      "name": "Transformation",
+      "tag": "transformation",
+      "description": "Spells that change the form or properties of targets",
+      "matches": [
+        "Petrify",
+        "Disfigure",
+        "Warp Wood",
+        "Warp Metal",
+        "Invisibility"
+      ]
+    },
+    {
+      "name": "Movement",
+      "tag": "movement",
+      "description": "Spells related to mobility, teleportation, or speed",
+      "matches": [
+        "Fae Step",
+        "Fey Step",
+        "Slow Fall",
+        "Alacrity",
+        "Phase",
+        "Push",
+        "Extend"
+      ]
+    },    {
+      "name": "Divination",
+      "tag": "divination",
+      "description": "Spells that reveal information or provide insight",
+      "matches": [
+        "Sixth Sense",
+        "Psychometry",
+        "Mind Read",
+        "Sense Death",
+        "Sense Daemon",
+        "Spectral Eye"
+      ]
+    },    {
+      "name": "Illusion",
+      "tag": "illusion",
+      "description": "Spells that create false sensory experiences",
+      "matches": [
+        "Mirror-Self",
+        "Invisibility",
+        "Delusion",
+        "Illuminate"
+      ]
+    },
+    {
+      "name": "Enchantment",
+      "tag": "enchantment",
+      "description": "Spells that imbue objects or beings with magical properties"
+    },
+    {
+      "name": "Mental",
+      "tag": "mental",
+      "description": "Spells affecting the mind, thoughts, or emotions"
+    },
+    {
+      "name": "Physical",
+      "tag": "physical",
+      "description": "Spells with tangible physical effects"
+    },
+    {
+      "name": "Elemental",
+      "tag": "elemental",
+      "description": "Spells harnessing elemental forces"
+    },    {
+      "name": "Fire",
+      "tag": "fire",
+      "description": "Fire-based spells",
+      "matches": [
+        "Alight",
+        "Bolt of Fire",
+        "Cloak of Flame",
+        "Column of Fire",
+        "Fan of Flames",
+        "Fire Serpent",
+        "Fire Strike", 
+        "Fiery Blast",
+        "Ignite",
+        "Immolate",
+        "Resist Fire",
+        "Sunbeam",
+        "Wall of Flames"
+      ]
+    },    {
+      "name": "Water",
+      "tag": "water",
+      "description": "Water-based spells",
+      "matches": [
+        "Acid Cloud",
+        "Condense",
+        "Heavy Fog",
+        "Ice Armor",
+        "Soothing Mist",
+        "Water Breathing"
+      ]
+    },    {
+      "name": "Air",
+      "tag": "air",
+      "description": "Air-based spells",
+      "matches": [
+        "Alacrity",
+        "Arcing Lance",
+        "Ball Lightning",
+        "Breath Stealer",
+        "Choke",
+        "Deep Breath",
+        "Howling Wind",
+        "Lightning Shield",
+        "Spark",
+        "Storm Bolt",
+        "Storm Calling",
+        "Thunder Crack",
+        "Wind Rider"
+      ]
+    },    {
+      "name": "Earth",
+      "tag": "earth",
+      "description": "Earth-based spells",
+      "matches": [
+        "Berm",
+        "Brittle",
+        "Petrify",
+        "Shape Stone",
+        "Stone Stoicism",
+        "Warp Metal"
+      ]
+    },    {
+      "name": "Animism",
+      "tag": "animism",
+      "description": "Spells from the Animism class",
+      "matches": [
+        "Aggravate Wound",
+        "Armor of Life",
+        "Awaken Old Oak",
+        "Beast Lord",
+        "Brittle",
+        "Command Animal",
+        "Command Beast",
+        "Command Ethereal",
+        "Destroy Undead",
+        "Lifeless Eye",
+        "Remember",
+        "Snatch Vine",
+        "Soul Bolt",
+        "Soul Harvest",
+        "Vineswarm"
+      ]
+    },    {
+      "name": "Elementalism",
+      "tag": "elementalism",
+      "description": "Spells from the Elementalism class",
+      "matches": [
+        "Acid Cloud",
+        "Alacrity",
+        "Alight",
+        "Aura of Cooling",
+        "Ball Lightning",
+        "Bolt of Fire",
+        "Breath Stealer",
+        "Choke",
+        "Cloak of Flame",
+        "Column of Fire",
+        "Condense",
+        "Deep Breath",
+        "Extinguish",
+        "Fan of Flames",
+        "Fire Serpent",
+        "Fire Strike", 
+        "Fiery Blast",
+        "Heavy Fog",
+        "Howling Wind",
+        "Ice Armor",
+        "Ignite",
+        "Immolate",
+        "Lightning Shield",
+        "Petrify",
+        "Resist Fire",
+        "Shape Stone",
+        "Soothing Mist",
+        "Spark",
+        "Stone Stoicism",
+        "Storm Bolt",
+        "Storm Calling",
+        "Thunder Crack",
+        "Tranquility",
+        "Wall of Flames",
+        "Water Breathing",
+        "Wind Rider"
+      ]
+    },    {
+      "name": "Eldritch",
+      "tag": "eldritch",
+      "description": "Spells from the Eldritch class",
+      "matches": [
+        "Abject Terror",
+        "Aura Sight",
+        "Befuddle",
+        "Delusion",
+        "Edit Memory",
+        "Enrobed in Glory",
+        "Etheric Eye",
+        "Eye of Fate",
+        "Eyes of the Hawk",
+        "Fae Step",
+        "Fey Step",
+        "Fumbling Efforts",
+        "Invisibility",
+        "Mask",
+        "Mind Read",
+        "Mind Speak",
+        "Mirror-Self",
+        "New Memory",
+        "Perturb Aura",
+        "Relive Trauma",
+        "Rend the Veil",
+        "Sheen",
+        "Sign of the Foe",
+        "Sixth Sense",
+        "Soul Mark",
+        "Thunderous Strikes",
+        "Vanish",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Sorcery",
+      "tag": "sorcery",
+      "description": "Spells from the Sorcery class",
+      "matches": [
+        "Alchemist's Fire",
+        "Arcing Lance",
+        "Black Sight",
+        "Build Energy",
+        "Crush",
+        "Deflection",
+        "Field of Force",
+        "Force Bolt",
+        "Leap",
+        "Magnetic Parry",
+        "Phase",
+        "Prestidigitation",
+        "Push",
+        "Ray of Annihilation",
+        "Shadowy Tendrils",
+        "Shoulder Burden",
+        "Slow Fall",
+        "Upheaval",
+        "Warp Metal",
+        "Warp Wood"
+      ]
+    },
+    {
+      "name": "Necromancy",
+      "tag": "necromancy",
+      "description": "Spells from the Necromancy school"
+    },
+    {
+      "name": "Alchemy",
+      "tag": "alchemy",
+      "description": "Spells from the Alchemy school"
+    },
+    {
+      "name": "Telekinesis",
+      "tag": "telekinesis",
+      "description": "Spells from the Telekinesis school"
+    },
+    {
+      "name": "Hydromancy",
+      "tag": "hydromancy",
+      "description": "Spells from the Hydromancy school"
+    },
+    {
+      "name": "Aeromancy",
+      "tag": "aeromancy",
+      "description": "Spells from the Aeromancy school"
+    },
+    {
+      "name": "Pyromancy",
+      "tag": "pyromancy",
+      "description": "Spells from the Pyromancy school"
+    },
+    {
+      "name": "Geomancy",
+      "tag": "geomancy",
+      "description": "Spells from the Geomancy school"
+    },
+    {
+      "name": "Phytomancy",
+      "tag": "phytomancy",
+      "description": "Spells from the Phytomancy school"
+    },
+    {
+      "name": "Zoomancy",
+      "tag": "zoomancy",
+      "description": "Spells from the Zoomancy school"
+    },
+    {
+      "name": "Dreaming",
+      "tag": "dreaming",
+      "description": "Spells from the Dreaming school"
+    },    {
+      "name": "Corpus Effect",
+      "tag": "corpus-effect",
+      "description": "Spells with the Corpus Effect keyword",
+      "matches": [
+        "Aroma",
+        "Aggravate Wound",
+        "Healing Sleep",
+        "Upheaval"
+      ]
+    },{
+      "name": "Psychic Effect",
+      "tag": "psychic-effect",
+      "description": "Spells with the Psychic Effect keyword",
+      "matches": [
+        "Abject Terror",
+        "Befuddle",
+        "Relive Trauma",
+        "Mind Speak",
+        "Mind Read",
+        "Stricken Dumb",
+        "Edit Memory",
+        "Rend the Veil",
+        "Perturb Aura",
+        "Beast Lord",
+        "Command Beast",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Morale Effect",
+      "tag": "morale-effect",
+      "description": "Spells with the Morale Effect keyword",
+      "matches": [
+        "Abject Terror",
+        "Enrobed in Glory",
+        "Tranquility"
+      ]
+    },    {
+      "name": "Pervasive",
+      "tag": "pervasive",
+      "description": "Spells with the Pervasive keyword",
+      "matches": [
+        "Acid Cloud",
+        "Ball Lightning",
+        "Fan of Flames",
+        "Immolate",
+        "Lightning Shield"
+      ]
+    },    {
+      "name": "Self Target",
+      "tag": "self-target",
+      "description": "Spells that target the caster",
+      "matches": [
+        "Alacrity",
+        "Aura of Cooling",
+        "Aura Sight",
+        "Black Sight",
+        "Crimson Aura",
+        "Deep Breath",
+        "Etheric Eye",
+        "Enrobed in Glory",
+        "Fae Step",
+        "Fey Step",
+        "Field of Force",
+        "Gait of the Deer",
+        "Ice Armor",
+        "Invisibility",
+        "Leap",
+        "Magnetic Parry",
+        "Mirror-Self",
+        "Phase",
+        "Precipitous Path",
+        "Resist Fire",
+        "Shoulder Burden",
+        "Sixth Sense",
+        "Slow Fall",
+        "Stone Stoicism",
+        "Vanish",
+        "Wind Rider"
+      ]
+    },    {
+      "name": "Single Target",
+      "tag": "single-target",
+      "description": "Spells that affect one target",
+      "matches": [
+        "Abject Terror",
+        "Aggravate Wound",
+        "Arcing Lance",
+        "Befuddle",
+        "Bolt of Fire",
+        "Choke",
+        "Command Animal",
+        "Command Beast",
+        "Command Ethereal",
+        "Crush",
+        "Deflection",
+        "Destroy Undead",
+        "Edit Memory",
+        "Force Bolt",
+        "Lightning Shield",
+        "Long Path",
+        "Mind Read",
+        "Mind Speak",
+        "Petrify",
+        "Push",
+        "Ray of Annihilation",
+        "Relive Trauma",
+        "Soul Bolt",
+        "Soul Mark",
+        "Spark",
+        "Storm Bolt",
+        "Stricken Dumb",
+        "Sureflight Missile",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Burst",
+      "tag": "burst",
+      "description": "Spells with a burst area of effect",
+      "matches": [
+        "Acid Cloud",
+        "Alight",
+        "Ball Lightning",
+        "Heavy Fog",
+        "Invigorate",
+        "Retching Billows",
+        "Soul Harvest",
+        "Thunder Crack"
+      ]
+    },    {
+      "name": "Aura",
+      "tag": "aura",
+      "description": "Spells that create an aura effect",
+      "matches": [
+        "Aura of Cooling",
+        "Aura of Misfortune",
+        "Crimson Aura",
+        "Faerie Ring",
+        "Precipitous Path",
+        "Soothing Mist",
+        "Water Breathing"
+      ]
+    },    {
+      "name": "Instant",
+      "tag": "instant",
+      "description": "Spells with instant duration",
+      "matches": [
+        "Alight",
+        "Arcing Lance",
+        "Ball Lightning",
+        "Bolt of Fire",
+        "Build Energy",
+        "Deflection",
+        "Extinguish",
+        "Eye of Fate",
+        "Fan of Flames",
+        "Fae Step",
+        "Fey Step",
+        "Invigorate",
+        "Leap",
+        "Lightning Shield",
+        "Phase",
+        "Push",
+        "Spark",
+        "Stone Stoicism",
+        "Soul Bolt",
+        "Storm Bolt",
+        "Thunder Crack"
+      ]
+    },    {
+      "name": "Sustain",
+      "tag": "sustain",
+      "description": "Spells that can be sustained",
+      "matches": [
+        "Alchemist's Fire",
+        "Aura of Cooling",
+        "Aura of Misfortune",
+        "Aura Sight",
+        "Black Sight",
+        "Choke",
+        "Cloak of Flame",
+        "Crimson Aura",
+        "Enrobed in Glory",
+        "Etheric Eye",
+        "Eyes of the Hawk",
+        "Field of Force",
+        "Gait of the Deer",
+        "Heavy Fog",
+        "Ice Armor",
+        "Invisibility",
+        "Lifeless Eye",
+        "Magnetic Parry",
+        "Mirror-Self",
+        "Precipitous Path",
+        "Resist Fire",
+        "Sixth Sense",
+        "Slow Fall",
+        "Soothing Mist",
+        "Wall of Flames",
+        "Water Breathing"
+      ]
+    },    {
+      "name": "Cycles",
+      "tag": "cycles",
+      "description": "Spells with a duration measured in cycles",
+      "matches": [
+        "Abject Terror",
+        "Acid Cloud",
+        "Alacrity",
+        "Befuddle",
+        "Command Animal",
+        "Deep Breath",
+        "Fumbling Efforts",
+        "Long Path",
+        "Sign of the Foe",
+        "Soul Mark",
+        "Stricken Dumb",
+        "Tranquility",
+        "Upheaval",
+        "Vanish",
+        "Wind Rider"
+      ]
+    },    {
+      "name": "Permanent",
+      "tag": "permanent",
+      "description": "Spells with permanent effects",
+      "matches": [
+        "Aggravate Wound",
+        "Berm",
+        "Destroy Undead",
+        "Disfigure",
+        "Edit Memory",
+        "Mend",
+        "New Memory",
+        "Petrify",
+        "Shape Stone",
+        "Sheen",
+        "Warp Metal",
+        "Warp Wood"
+      ]
+    },    {
+      "name": "Low Complexity",
+      "tag": "low-complexity",
+      "description": "Spells with complexity 1-2",
+      "matches": [
+        "Aggravate Wound",
+        "Alchemist's Fire",
+        "Alight",
+        "Aura of Cooling",
+        "Aura of Misfortune",
+        "Aura Sight",
+        "Berm",
+        "Bolt of Fire",
+        "Build Energy",
+        "Condense",
+        "Deep Breath",
+        "Deflection",
+        "Etheric Eye",
+        "Extinguish",
+        "Eye of Fate",
+        "Fae Step",
+        "Fey Step",
+        "Field of Force",
+        "Gait of the Deer",
+        "Leap",
+        "Magnetic Parry",
+        "Mask",
+        "Precipitous Path",
+        "Push",
+        "Resist Fire",
+        "Sixth Sense",
+        "Slow Fall",
+        "Spark",
+        "Stone Stoicism",
+        "Sureflight Missile",
+        "Thunderous Strikes",
+        "Vanish",
+        "Wind Rider"
+      ]
+    },    {
+      "name": "Medium Complexity",
+      "tag": "medium-complexity",
+      "description": "Spells with complexity 3-4",
+      "matches": [
+        "Abject Terror",
+        "Alacrity",
+        "Arcing Lance",
+        "Ball Lightning",
+        "Befuddle",
+        "Bright Blade",
+        "Choke",
+        "Cloak of Flame",
+        "Column of Fire",
+        "Command Animal",
+        "Command Beast",
+        "Command Ethereal",
+        "Crimson Aura",
+        "Crush",
+        "Destroy Undead",
+        "Enrobed in Glory",
+        "Fan of Flames",
+        "Fire Serpent",
+        "Fire Strike",
+        "Fiery Blast",
+        "Force Bolt",
+        "Heavy Fog",
+        "Ice Armor",
+        "Immolate",
+        "Invigorate",
+        "Lightning Shield",
+        "Long Path",
+        "Mend",
+        "Mind Read",
+        "Mirror-Self",
+        "Phase",
+        "Relive Trauma",
+        "Soul Bolt",
+        "Soul Mark",
+        "Storm Bolt",
+        "Stricken Dumb",
+        "Thunder Crack",
+        "Wall of Flames",
+        "Water Breathing"
+      ]
+    },    {
+      "name": "High Complexity",
+      "tag": "high-complexity",
+      "description": "Spells with complexity 5+",
+      "matches": [
+        "Acid Cloud",
+        "Awaken Old Oak",
+        "Disfigure",
+        "Edit Memory",
+        "Invisibility",
+        "New Memory",
+        "Petrify",
+        "Ray of Annihilation",
+        "Shadowy Tendrils",
+        "Soul Harvest",
+        "Vineswarm",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Low Flare",
+      "tag": "low-flare",
+      "description": "Spells with flare 1-2",
+      "matches": [
+        "Alight",
+        "Aura of Cooling",
+        "Aura Sight",
+        "Berm",
+        "Bolt of Fire",
+        "Build Energy",
+        "Condense",
+        "Deflection",
+        "Etheric Eye",
+        "Extinguish",
+        "Field of Force",
+        "Leap",
+        "Mask",
+        "Precipitous Path",
+        "Push",
+        "Resist Fire",
+        "Sixth Sense",
+        "Slow Fall",
+        "Spark",
+        "Sureflight Missile"
+      ]
+    },    {
+      "name": "Medium Flare",
+      "tag": "medium-flare",
+      "description": "Spells with flare 3-4",
+      "matches": [
+        "Aggravate Wound",
+        "Alacrity",
+        "Alchemist's Fire",
+        "Arcing Lance",
+        "Aura of Misfortune",
+        "Befuddle",
+        "Bright Blade",
+        "Choke",
+        "Cloak of Flame",
+        "Column of Fire",
+        "Command Animal",
+        "Command Beast",
+        "Command Ethereal",
+        "Crimson Aura",
+        "Crush",
+        "Destroy Undead",
+        "Enrobed in Glory",
+        "Eye of Fate",
+        "Fae Step",
+        "Fey Step",
+        "Fan of Flames",
+        "Fire Serpent",
+        "Fire Strike",
+        "Fiery Blast",
+        "Force Bolt",
+        "Gait of the Deer",
+        "Heavy Fog",
+        "Ice Armor",
+        "Invigorate",
+        "Lightning Shield",
+        "Long Path",
+        "Magnetic Parry",
+        "Mend",
+        "Mind Read",
+        "Mind Speak",
+        "Mirror-Self",
+        "Phase",
+        "Relive Trauma",
+        "Soul Bolt",
+        "Soul Mark",
+        "Stone Stoicism",
+        "Storm Bolt",
+        "Stricken Dumb",
+        "Thunder Crack",
+        "Thunderous Strikes",
+        "Tranquility", 
+        "Vanish",
+        "Wall of Flames",
+        "Water Breathing",
+        "Wind Rider"
+      ]
+    },    {
+      "name": "High Flare",
+      "tag": "high-flare",
+      "description": "Spells with flare 5+",
+      "matches": [
+        "Abject Terror",
+        "Acid Cloud",
+        "Awaken Old Oak",
+        "Ball Lightning",
+        "Disfigure",
+        "Edit Memory",
+        "Immolate",
+        "Invisibility",
+        "New Memory",
+        "Petrify",
+        "Ray of Annihilation",
+        "Shadowy Tendrils",
+        "Soul Harvest",
+        "Vineswarm",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Spirit Focus",
+      "tag": "spirit-focus",
+      "description": "Spells using Spirit focus",
+      "matches": [
+        "Abject Terror",
+        "Befuddle",
+        "Beast Lord",
+        "Command Animal",
+        "Command Beast",
+        "Command Ethereal",
+        "Destroy Undead",
+        "Edit Memory",
+        "Enrobed in Glory",
+        "Eye of Fate",
+        "Fumbling Efforts",
+        "Invigorate",
+        "Mind Read",
+        "Mind Speak",
+        "Perturb Aura",
+        "Rend the Veil",
+        "Relive Trauma",
+        "Sign of the Foe",
+        "Soul Harvest",
+        "Soul Mark",
+        "Thunderous Strikes",
+        "Tranquility",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Manipulate Focus",
+      "tag": "manipulate-focus",
+      "description": "Spells using Manipulate focus",
+      "matches": [
+        "Acid Cloud",
+        "Alight",
+        "Aura of Cooling",
+        "Ball Lightning",
+        "Bolt of Fire",
+        "Column of Fire",
+        "Extinguish",
+        "Fan of Flames",
+        "Fire Serpent",
+        "Fire Strike",
+        "Fiery Blast",
+        "Force Bolt",
+        "Heavy Fog",
+        "Immolate",
+        "Invisibility",
+        "Mask",
+        "Mirror-Self",
+        "Sheen",
+        "Spark",
+        "Vanish",
+        "Wall of Flames"
+      ]
+    },    {
+      "name": "Morphic Focus",
+      "tag": "morphic-focus",
+      "description": "Spells using Morphic focus",
+      "matches": [
+        "Aggravate Wound",
+        "Armor of Life",
+        "Black Sight",
+        "Brittle",
+        "Choke",
+        "Disfigure",
+        "Petrify",
+        "Shape Stone",
+        "Snatch Vine",
+        "Stricken Blind",
+        "Upheaval",
+        "Warp Metal",
+        "Warp Wood"
+      ]
+    },    {
+      "name": "Ego Focus",
+      "tag": "ego-focus",
+      "description": "Spells using Ego focus",
+      "matches": [
+        "Alacrity",
+        "Aura Sight",
+        "Deep Breath",
+        "Enrobed in Glory",
+        "Etheric Eye",
+        "Eyes of the Hawk",
+        "Gait of the Deer",
+        "Mind Speak",
+        "Sixth Sense",
+        "Stone Stoicism"
+      ]
+    },    {
+      "name": "Formulae Focus",
+      "tag": "formulae-focus",
+      "description": "Spells using Formulae focus",
+      "matches": [
+        "Alchemist's Fire",
+        "Fae Step",
+        "Fey Step",
+        "Mighty Blow",
+        "Prestidigitation",
+        "Remember", 
+        "Sureflight Missile"
+      ]
+    },    {
+      "name": "Banish Focus",
+      "tag": "banish-focus",
+      "description": "Spells using Banish focus",
+      "matches": [
+        "Arcing Lance",
+        "Deflection",
+        "Field of Force",
+        "Lightning Shield",
+        "Resist Fire",
+        "Soul Bolt",
+        "Storm Bolt",
+        "Wind Rider"
+      ]
+    },{
+      "name": "Damage Type: Fire",
+      "tag": "fire-damage",
+      "description": "Spells that deal fire damage",
+      "matches": [
+        "Bolt of Fire",
+        "Column of Fire",
+        "Fan of Flames",
+        "Fire Serpent",
+        "Fire Strike",
+        "Fiery Blast",
+        "Hands of Flame",
+        "Ignite",
+        "Immolate",
+        "Alight",
+        "Cloak of Flame",
+        "Wall of Flames",
+        "Sunbeam"
+      ]
+    },    {
+      "name": "Damage Type: Electrical",
+      "tag": "electrical-damage",
+      "description": "Spells that deal electrical damage",
+      "matches": [
+        "Ball Lightning",
+        "Arcing Lance",
+        "Spark",
+        "Storm Bolt"
+      ]
+    },    {
+      "name": "Damage Type: Acid",
+      "tag": "acid-damage",
+      "description": "Spells that deal acid damage",
+      "matches": [
+        "Acid Cloud"
+      ]
+    },    {
+      "name": "Damage Type: Etheric",
+      "tag": "etheric-damage",
+      "description": "Spells that deal etheric damage",
+      "matches": [
+        "Soul Bolt",
+        "Soul Harvest",
+        "Ray of Annihilation"
+      ]
+    },    {
+      "name": "Damage Type: Psychic",
+      "tag": "psychic-damage",
+      "description": "Spells that deal psychic damage",
+      "matches": [
+        "Shadowy Tendrils",
+        "Relive Trauma",
+        "Chill of the Grave",
+        "Soul Mark",
+        "Abject Terror"
+      ]
+    },    {
+      "name": "Damage Type: Disintegration",
+      "tag": "disintegration-damage",
+      "description": "Spells that deal disintegration damage",
+      "matches": [
+        "Ray of Annihilation"
+      ]
+    },
+    {
+      "name": "Condition: Suffocation",
+      "tag": "suffocation",
+      "description": "Spells that cause suffocation",
+      "matches": [
+        "Choke",
+        "Breath Stealer"
+      ]
+    },    {
+      "name": "Condition: Cowed",
+      "tag": "cowed",
+      "description": "Spells that inflict the Cowed condition",
+      "matches": [
+        "Abject Terror",
+        "Chill of the Grave",
+        "Visage of the Abyss"
+      ]
+    },    {
+      "name": "Condition: Hallucinating",
+      "tag": "hallucinating",
+      "description": "Spells that cause hallucinations",
+      "matches": [
+        "Abject Terror",
+        "Delusion"
+      ]
+    },{
+      "name": "Condition: Distracted",
+      "tag": "distracted",
+      "description": "Spells that cause distraction",
+      "matches": [
+        "Abject Terror",
+        "Befuddle"
+      ]
+    },{
+      "name": "Condition: Dazed",
+      "tag": "dazed",
+      "description": "Spells that cause the Dazed condition",
+      "matches": [
+        "Spark",
+        "Thunder Crack",
+        "Jolting Lash"
+      ]
+    },
+    {
+      "name": "Condition: Sprawled",
+      "tag": "sprawled",
+      "description": "Spells that knock targets sprawled",
+      "matches": [
+        "Push",
+        "Jolting Lash",
+        "Thunder Crack"
+      ]
+    },
+    {
+      "name": "Condition: Immobilized",
+      "tag": "immobilized",
+      "description": "Spells that immobilize targets",
+      "matches": [
+        "Crush",
+        "Choke",
+        "Petrify",
+        "Ice Armor",
+        "Barrier of Force"
+      ]
+    },    {
+      "name": "Teleportation",
+      "tag": "teleport",
+      "description": "Spells involving teleportation or spatial displacement",
+      "matches": [
+        "Fae Step",
+        "Fey Step",
+        "Extend",
+        "Phase",
+        "Long Path"
+      ]
+    },
+    {
+      "name": "Grapple",
+      "tag": "grapple",
+      "description": "Spells that assist with or create grappling effects",
+      "matches": [
+        "Shadowy Tendrils",
+        "Crush",
+        "Snatch Vine",
+        "Vineswarm"
+      ]
+    },
+    {
+      "name": "Environmental",
+      "tag": "environmental",
+      "description": "Spells that control or modify the environment",
+      "matches": [
+        "Berm",
+        "Shape Stone",
+        "Howling Wind",
+        "Illuminate",
+        "Putrefy",
+        "Extinguish",
+        "Acid Cloud"
+      ]
+    },    {
+      "name": "Weather",
+      "tag": "weather",
+      "description": "Spells that affect or control weather",
+      "matches": [
+        "Storm Calling",
+        "Howling Wind",
+        "Thunder Crack"
+      ]
+    },{
+      "name": "Sensory",
+      "tag": "sensory",
+      "description": "Spells that enhance or modify senses",
+      "matches": [
+        "Etheric Eye",
+        "Spectral Eye",
+        "Lifeless Eye",
+        "Sixth Sense",
+        "Black Sight",
+        "Eyes of the Hawk",
+        "Mind Speak",
+        "Mind Read",
+        "Psychometry"
+      ]
+    },{
+      "name": "Wall",
+      "tag": "wall",
+      "description": "Spells that create walls or barriers",
+      "matches": [
+        "Wall of Flames",
+        "Barrier of Force",
+        "Berm",
+        "Field of Force",
+        "Ice Armor"
+      ]
+    },    {
+      "name": "Memory",
+      "tag": "memory",
+      "description": "Spells that affect memory or cognition",
+      "matches": [
+        "Edit Memory",
+        "Delusion",
+        "Relive Trauma",
+        "Mind Read"
+      ]
+    },
+    {
+      "name": "Combat Boost",
+      "tag": "combat-boost",
+      "description": "Spells that boost combat abilities or attacks",
+      "matches": [
+        "Sureflight Missile",
+        "Mighty Blow",
+        "Thunderous Strikes"
+      ]
+    },    {
+      "name": "Reaction",
+      "tag": "reaction",
+      "description": "Spells that can be cast as reactions",
+      "matches": [
+        "Deflection",
+        "Eye of Fate",
+        "Extend",
+        "Lightning Shield"
+      ]
+    },    {
+      "name": "Lingering",
+      "tag": "lingering",
+      "description": "Spells with lingering or damage-over-time effects",
+      "matches": [
+        "Acid Cloud",
+        "Immolate",
+        "Sear",
+        "Putrefy"
+      ]
+    },    {
+      "name": "Animal",
+      "tag": "animal",
+      "description": "Spells that affect or control animals",
+      "matches": [
+        "Command Animal",
+        "Command Beast",
+        "Beast Lord",
+        "Vermin Lord",
+        "Eyes of the Hawk"
+      ]
+    },{
+      "name": "Plant",
+      "tag": "plant",
+      "description": "Spells that affect or control plants and vegetation",
+      "matches": [
+        "Armor of Life",
+        "Awaken Old Oak",
+        "Vineswarm",
+        "Verdant Awakening",
+        "Warp Wood",
+        "Snatch Vine"
+      ]
+    },    {
+      "name": "Spirit",
+      "tag": "spirit",
+      "description": "Spells that interact with spirits or the spirit world",
+      "matches": [
+        "Command Ethereal",
+        "Soul Bolt",
+        "Soul Harvest",
+        "Soul Mark",
+        "Destroy Undead",
+        "Black Sight",
+        "Rend the Veil"
+      ]
+    },{
+      "name": "Missile",
+      "tag": "missile",
+      "description": "Spells that create magical projectiles",
+      "matches": [
+        "Bolt of Fire",
+        "Force Bolt",
+        "Soul Bolt",
+        "Storm Bolt",
+        "Spark",
+        "Sureflight Missile"
+      ]
+    },    {
+      "name": "Sundering",
+      "tag": "sundering",
+      "description": "Spells with sundering effects against structures or objects",
+      "matches": [
+        "Brittle",
+        "Crush",
+        "Warp Metal",
+        "Warp Wood"
+      ]
+    }
+  ]
+}

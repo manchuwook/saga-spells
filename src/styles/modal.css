@@ -1,0 +1,50 @@
+.dark-mode-modal .mantine-Modal-header {
+  background-color: #1A1B1E !important;
+  border-bottom: 1px solid #2C2E33 !important;
+}
+
+.dark-mode-modal .mantine-Modal-content {
+  background-color: #1A1B1E !important;
+}
+
+.dark-mode-modal .mantine-Modal-title {
+  color: white !important;
+}
+
+.dark-mode-modal .mantine-Modal-close {
+  color: white !important;
+}
+
+.dark-mode-modal .mantine-Modal-close:hover {
+  background-color: #2C2E33 !important;
+}
+
+/* Ensure the Paper inside the modal also has the right background */
+.dark-mode-modal .mantine-Paper-root {
+  background-color: #1A1B1E !important;
+}
+
+/* Target the specific modal directly */
+.mantine-Modal-root[data-dark="true"] .mantine-Modal-header,
+.mantine-Modal-root[data-dark="true"] .mantine-Modal-content {
+  background-color: #1A1B1E !important;
+}
+
+.mantine-Modal-root[data-dark="true"] .mantine-Modal-title {
+  color: white !important;
+}
+
+.mantine-Modal-root[data-dark="true"] .mantine-Modal-close {
+  color: white !important;
+}
+
+/* Target the Paper component directly */
+.dark-modal-paper {
+  background-color: #1A1B1E !important;
+}
+
+/* Force dark styles for the modal dialog in dark mode */
+body[data-mantine-color-scheme="dark"] .mantine-Modal-header,
+body[data-mantine-color-scheme="dark"] .mantine-Modal-content {
+  background-color: #1A1B1E !important;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A spell manager for SAGA TTRPG with advanced filtering and spellbook organization capabilities." />
+    <meta name="theme-color" content="#4c6ef5" />
+    
+    <!-- PWA meta tags -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="mask-icon" href="/mask-icon.svg" color="#4c6ef5">    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Prefetch critical resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Preload critical assets -->
+    <link rel="modulepreload" href="/assets/main-CPxGXLuG.tsx">
+    <link rel="modulepreload" href="data:application/octet-stream;base64,aW1wb3J0IHsgQXBwU2hlbGwsIEdyb3VwLCBUaXRsZSwgVW5zdHlsZWRCdXR0b24sIHJlbSwgdXNlTWFudGluZUNvbG9yU2NoZW1lIH0gZnJvbSAnQG1hbnRpbmUvY29yZSc7DQppbXBvcnQgeyBPdXRsZXQsIExpbmssIHVzZUxvY2F0aW9uIH0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7DQppbXBvcnQgeyBUaGVtZUN1c3RvbWl6ZXIgfSBmcm9tICcuL2NvbXBvbmVudHMvVGhlbWVDdXN0b21pemVyJzsNCmltcG9ydCB7IENvbG9yU2NoZW1lVG9nZ2xlIH0gZnJvbSAnLi9jb21wb25lbnRzL0NvbG9yU2NoZW1lVG9nZ2xlJzsNCmltcG9ydCB7IHVzZVRoZW1lIH0gZnJvbSAnLi9jb250ZXh0L1RoZW1lQ29udGV4dCc7DQppbXBvcnQgeyBQcmVmZXRjaGVyIH0gZnJvbSAnLi9jb21wb25lbnRzL1ByZWZldGNoZXInOw0KDQpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBBcHAoKSB7DQogIGNvbnN0IGxvY2F0aW9uID0gdXNlTG9jYXRpb24oKTsNCiAgY29uc3QgeyBjb2xvcnMgfSA9IHVzZVRoZW1lKCk7DQogIGNvbnN0IHsgY29sb3JTY2hlbWUgfSA9IHVzZU1hbnRpbmVDb2xvclNjaGVtZSgpOw0KICBjb25zdCBpc0RhcmsgPSBjb2xvclNjaGVtZSA9PT0gJ2RhcmsnOw0KICANCiAgLy8gR2VuZXJhdGUgaW5saW5lIHN0eWxlcyBiYXNlZCBvbiB0aGVtZSBzZXR0aW5ncw0KICBjb25zdCBnZXRDb21wb25lbnRTdHlsZXMgPSAoKSA9PiAoew0KICAgIG1haW46IHsNCiAgICAgIGJhY2tncm91bmRJbWFnZTogY29sb3JzLmltYWdlRW5hYmxlZCA/ICd1cmwoIi9hc3NldHMvaW1nL3BhcmNobWVudDEucG5nIiknIDogJ25vbmUnLA0KICAgICAgYmFja2dyb3VuZFNpemU6ICdjb3ZlcicsDQogICAgICBiYWNrZ3JvdW5kUG9zaXRpb246ICdjZW50ZXInLA0KICAgICAgYmFja2dyb3VuZEF0dGFjaG1lbnQ6ICdmaXhlZCcsDQogICAgICBiYWNrZ3JvdW5kQ29sb3I6IGlzRGFyayA/ICd2YXIoLS1tYW50aW5lLWNvbG9yLWRhcmstNyknIDogJ3ZhcigtLW1hbnRpbmUtY29sb3ItZ3JheS0wKScsDQogICAgfSwNCiAgICBuYXZiYXI6IHsNCiAgICAgIGJvcmRlclJhZGl1czogYDAgJHtjb2xvcnMuYm9yZGVyUmFkaXVzfXB4ICR7Y29sb3JzLmJvcmRlclJhZGl1c31weCAwYCwNCiAgICAgIGJhY2tncm91bmRDb2xvcjogaXNEYXJrID8gJ3ZhcigtLW1hbnRpbmUtY29sb3ItZGFyay02KScgOiAndmFyKC0tbWFudGluZS1jb2xvci1ncmF5LTEpJywNCiAgICAgIGJvcmRlclJpZ2h0OiBgMXB4IHNvbGlkICR7aXNEYXJrID8gJ3ZhcigtLW1hbnRpbmUtY29sb3ItZGFyay00KScgOiAndmFyKC0tbWFudGluZS1jb2xvci1ncmF5LTMpJ31gLA0KICAgIH0sDQogICAgbmF2QnV0dG9uOiB7DQogICAgICBib3JkZXJSYWRpdXM6IGNvbG9ycy5ib3JkZXJSYWRpdXMsDQogICAgICBwYWRkaW5nOiAnNnB4IDEwcHgnLA0KICAgICAgZm9udFNpemU6IGAke2NvbG9ycy5mb250U2NhbGV9cmVtYCwNCiAgICAgIHRyYW5zaXRpb246ICdhbGwgMC4ycyBlYXNlJywNCiAgICB9LA0KICAgIGhlYWRlcjogew0KICAgICAgYmFja2dyb3VuZENvbG9yOiBpc0RhcmsgPyAndmFyKC0tbWFudGluZS1jb2xvci1kYXJrLTcpJyA6ICd2YXIoLS1tYW50aW5lLWNvbG9yLScgKyBjb2xvcnMucHJpbWFyeUNvbG9yICsgJyknLA0KICAgICAgYm9yZGVyQm90dG9tOiBgMXB4IHNvbGlkICR7aXNEYXJrID8gJ3ZhcigtLW1hbnRpbmUtY29sb3ItZGFyay00KScgOiAndmFyKC0tbWFudGluZS1jb2xvci1ncmF5LTMpJ31gLA0KICAgIH0NCiAgfSk7DQogIA0KICBjb25zdCBzdHlsZXMgPSBnZXRDb21wb25lbnRTdHlsZXMoKTsNCiAgDQogIC8vIERldGVybWluZSB0ZXh0IGNvbG9ycyBiYXNlZCBvbiB0aGVtZQ0KICBjb25zdCBnZXROYXZMaW5rQ29sb3IgPSAoaXNBY3RpdmU6IGJvb2xlYW4pID0+IHsNCiAgICBpZiAoaXNBY3RpdmUpIHsNCiAgICAgIHJldHVybiBjb2xvcnMuYWNjZW50Q29sb3I7DQogICAgfQ0KICAgIHJldHVybiBpc0RhcmsgPyAnZ3JheS4zJyA6ICdkYXJrLjYnOw0KICB9Ow0KDQogIHJldHVybiAoDQogICAgPEFwcFNoZWxsDQogICAgICBoZWFkZXI9e3sgaGVpZ2h0OiA2MCB9fQ0KICAgICAgbmF2YmFyPXt7IHdpZHRoOiAzMDAsIGJyZWFrcG9pbnQ6ICdzbScgfX0NCiAgICAgIHBhZGRpbmc9Im1kIg0KICAgID4NCiAgICAgIDxBcHBTaGVsbC5IZWFkZXIgcD0ibWQiIHN0eWxlPXtzdHlsZXMuaGVhZGVyfT4NCiAgICAgICAgPEdyb3VwIGg9IjEwMCUiIHB4PSJtZCIganVzdGlmeT0ic3BhY2UtYmV0d2VlbiI+DQogICAgICAgICAgPFRpdGxlIG9yZGVyPXsxfSBzaXplPSJoMyIgYz0id2hpdGUiPlNBR0EgU3BlbGxzIE1hbmFnZXI8L1RpdGxlPg0KICAgICAgICAgIDxDb2xvclNjaGVtZVRvZ2dsZSAvPg0KICAgICAgICA8L0dyb3VwPg0KICAgICAgPC9BcHBTaGVsbC5IZWFkZXI+DQogICAgICANCiAgICAgIDxBcHBTaGVsbC5OYXZiYXIgcD0ibWQiIHN0eWxlPXtzdHlsZXMubmF2YmFyfT4NCiAgICAgICAgPEFwcFNoZWxsLlNlY3Rpb24+DQogICAgICAgICAgPFRpdGxlIG9yZGVyPXszfSBtYj0ibWQiIGM9e2lzRGFyayA/ICdncmF5LjMnIDogJ2RhcmsuOCd9Pk5hdmlnYXRpb248L1RpdGxlPg0KICAgICAgICA8L0FwcFNoZWxsLlNlY3Rpb24+DQogICAgICAgIDxBcHBTaGVsbC5TZWN0aW9uIGdyb3c+DQogICAgICAgICAgPFVuc3R5bGVkQnV0dG9uIA0KICAgICAgICAgICAgY29tcG9uZW50PXtMaW5rfSANCiAgICAgICAgICAgIHRvPSIvIg0KICAgICAgICAgICAgZnc9e2xvY2F0aW9uLnBhdGhuYW1lID09PSAnLycgPyAnYm9sZCcgOiAnbm9ybWFsJ30NCiAgICAgICAgICAgIGM9e2dldE5hdkxpbmtDb2xvcihsb2NhdGlvbi5wYXRobmFtZSA9PT0gJy8nKX0NCiAgICAgICAgICAgIG1iPXtyZW0oMTApfQ0KICAgICAgICAgICAgZGlzcGxheT0iYmxvY2siDQogICAgICAgICAgICBzdHlsZT17c3R5bGVzLm5hdkJ1dHRvbn0NCiAgICAgICAgICA+DQogICAgICAgICAgICBTcGVsbHMgTGlicmFyeQ0KICAgICAgICAgIDwvVW5zdHlsZWRCdXR0b24+DQogICAgICAgICAgDQogICAgICAgICAgPFVuc3R5bGVkQnV0dG9uIA0KICAgICAgICAgICAgY29tcG9uZW50PXtMaW5rfSANCiAgICAgICAgICAgIHRvPSIvc3BlbGxib29rcyINCiAgICAgICAgICAgIGZ3PXtsb2NhdGlvbi5wYXRobmFtZS5pbmNsdWRlcygnL3NwZWxsYm9va3MnKSA/ICdib2xkJyA6ICdub3JtYWwnfQ0KICAgICAgICAgICAgYz17Z2V0TmF2TGlua0NvbG9yKGxvY2F0aW9uLnBhdGhuYW1lLmluY2x1ZGVzKCcvc3BlbGxib29rcycpKX0NCiAgICAgICAgICAgIGRpc3BsYXk9ImJsb2NrIg0KICAgICAgICAgICAgc3R5bGU9e3N0eWxlcy5uYXZCdXR0b259DQogICAgICAgICAgPg0KICAgICAgICAgICAgTXkgU3BlbGxib29rcw0KICAgICAgICAgIDwvVW5zdHlsZWRCdXR0b24+DQogICAgICAgIDwvQXBwU2hlbGwuU2VjdGlvbj4NCiAgICAgIDwvQXBwU2hlbGwuTmF2YmFyPg0KICAgICAgICA8QXBwU2hlbGwuTWFpbiBzdHlsZT17c3R5bGVzLm1haW59Pg0KICAgICAgICB7LyogSW52aXNpYmxlIGNvbXBvbmVudCB0aGF0IHByZWZldGNoZXMgY3JpdGljYWwgcmVzb3VyY2VzICovfQ0KICAgICAgICA8UHJlZmV0Y2hlciAvPg0KICAgICAgICA8T3V0bGV0IC8+DQogICAgICAgIDxUaGVtZUN1c3RvbWl6ZXIgLz4NCiAgICAgIDwvQXBwU2hlbGwuTWFpbj4NCiAgICA8L0FwcFNoZWxsPg0KICApOw0KfQ0K">
+    
+    <!-- Cache control headers for browsers that support it -->
+    <meta http-equiv="Cache-Control" content="max-age=86400" />
+    
+    <!-- SEO optimization -->
+    <meta name="keywords" content="SAGA, spell manager, tabletop, RPG, spellbook, wizard, sorcerer, DnD alternative" />
+    <meta property="og:title" content="SAGA Spells Manager" />
+    <meta property="og:description" content="A spell manager for SAGA TTRPG with advanced filtering and spellbook organization capabilities." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saga-spells.birdseedstudios.com" />
+    <meta property="og:image" content="/pwa-512x512.png" />
+    
+    <title>SAGA Spells Manager</title>
+    <script type="module" crossorigin src="/assets/index-DSYVc5nJ.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/react-vendor-Dbzhzy_A.js">
+    <link rel="modulepreload" crossorigin href="/assets/mantine-core-BHR5fWID.js">
+    <link rel="modulepreload" crossorigin href="/assets/data-vendor-DKnsUd_z.js">
+    <link rel="modulepreload" crossorigin href="/assets/pdf-vendor-Dox1XW1S.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-B2NvWKa5.js">
+    <link rel="modulepreload" crossorigin href="/assets/mantine-extras-ebvNXs23.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BqpdPBoP.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Add fallback for browsers without JavaScript -->
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>This application requires JavaScript to be enabled in your browser.</p>
+      </div>
+    </noscript>
+  </body>
+</html>
