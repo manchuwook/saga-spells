@@ -57,11 +57,9 @@ This project uses GitHub Actions for continuous integration and deployment:
 ### Main Workflow (`ci.yml`)
 
 - Triggers on pushes to `main` branch and pull requests
-- Runs on Node.js 18.x and 20.x
 - Installs dependencies with pnpm
 - Runs tests with Vitest
 - Builds the application
-- Deploys automatically when changes are pushed to the main branch
 
 ### Release Workflow (`release.yml`)
 
@@ -74,7 +72,6 @@ This project uses GitHub Actions for continuous integration and deployment:
 
 - Runs Lighthouse performance tests
 - Generates reports for Performance, Accessibility, Best Practices, SEO, and PWA
-- Comments on pull requests with the Lighthouse scores and reports
 
 To run these workflows locally before pushing:
 
@@ -88,6 +85,9 @@ pnpm build
 # Run Lighthouse tests
 pnpm lighthouse
 ```
+
+For more details on the CI/CD setup, see [CI_CD.md](CI_CD.md).
+For deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 This will:
 - Clean the previous build

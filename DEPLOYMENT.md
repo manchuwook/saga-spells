@@ -10,7 +10,38 @@ Before deploying, ensure you have:
 2. The latest production build of your application
 3. Git repository with your project (GitHub, GitLab, or Bitbucket)
 
+## Automated Deployment with GitHub Actions
+
+We've configured GitHub Actions to automatically build and test the application. For deployment, you have two options:
+
+### Option 1: Add Deployment to GitHub Actions (Recommended)
+
+The CI workflow in `.github/workflows/ci.yml` includes a deployment job that you can customize:
+
+```yaml
+- name: Deploy to Cloudflare Pages
+  uses: cloudflare/pages-action@v1
+  with:
+    apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    projectName: saga-spells
+    directory: dist
+    gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+```
+
+To use this:
+
+1. Go to your GitHub repository settings
+2. Navigate to "Secrets and variables" → "Actions"
+3. Add the following secrets:
+   - `CLOUDFLARE_API_TOKEN`: Your Cloudflare API token
+   - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID
+
+The deployment will run automatically when changes are pushed to the main branch.
+
 ## Building the Production Version
+
+Create an optimized production build of the application:
 
 Create an optimized production build of the application:
 

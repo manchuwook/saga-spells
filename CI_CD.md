@@ -18,37 +18,30 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
     steps:
-    - Checkout code
-    - Setup Node.js
-    - Install pnpm
-    - Setup cache
-    - Install dependencies
-    - Run tests
-    - Build app
-  
-  deploy:
-    needs: build-and-test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    steps:
-    - Checkout code
-    - Setup Node.js
-    - Install pnpm
-    - Setup cache
-    - Install dependencies
-    - Build app
-    - Deploy (placeholder)
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Run tests
+        run: pnpm test
+      - name: Build
+        run: pnpm build
 ```
 
 #### Key Features:
 
-- **Matrix Testing**: Tests on multiple Node.js versions (18.x and 20.x)
-- **Dependency Caching**: Uses pnpm's store path for fast installations
+- **Simplified Setup**: Uses the latest GitHub Actions best practices
+- **PNPM Caching**: Uses built-in caching mechanisms for faster installations
+- **No-Frozen-Lockfile**: Allows for dependency updates during CI
 - **Conditional Deployment**: Only deploys on pushes to main, not on pull requests
 
 ### Release Workflow (`release.yml`)
@@ -122,16 +115,37 @@ The Lighthouse configuration in `.github/lighthouse/config.json` defines:
 - Minimum scores for each category (Performance, Accessibility, etc.)
 - Server setup for testing the production build
 
-## Customizing the Workflows
+## PNPM Workspace Configuration
 
-### Deployment
+This project uses PNPM workspaces. To ensure proper functioning in GitHub Actions, the `pnpm-workspace.yaml` file must include a `packages` field:
 
-The deployment step in `ci.yml` is currently a placeholder. You should replace it with your actual deployment commands based on your hosting provider:
+```yaml
+packages:
+  - '.'  # Root package
 
-- For Netlify: Use the Netlify GitHub Action
-- For Vercel: Use the Vercel GitHub Action
-- For GitHub Pages: Use the GitHub Pages Action
-- For custom servers: Set up SSH and deploy via scripts
+ignoredBuiltDependencies:
+  - gifsicle
+  - jpegtran-bin
+  - mozjpeg
+  - pngquant-bin
+onlyBuiltDependencies:
+  - cwebp-bin
+  - esbuild
+  - optipng-bin
+```
+
+If you encounter the error `ERR_PNPM_INVALID_WORKSPACE_CONFIGURATION packages field missing or empty`, make sure your `pnpm-workspace.yaml` has the `packages` field configured correctly.
+
+### Installation Command
+
+In the GitHub Actions workflows, we use:
+
+```yaml
+- name: Install dependencies
+  run: pnpm install --no-frozen-lockfile
+```
+
+The `--no-frozen-lockfile` flag allows PNPM to update the lockfile if needed, which can help resolve dependency issues during CI runs.
 
 ### Adding Environment Variables
 

@@ -9,72 +9,51 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-      
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Build
+        run: pnpm build:prod
         
-    - name: Install pnpm
-      uses: pnpm/action-setup@v2
-      with:
-        version: 8
-        run_install: false
-        
-    - name: Get pnpm store directory
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-    
-    - name: Setup pnpm cache
-      uses: actions/cache@v3
-      with:
-        path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 3
+          configPath: './.github/lighthouse/config.json'
           
-    - name: Install dependencies
-      run: pnpm install
-      
-    - name: Build
-      run: pnpm build:prod
-      
-    - name: Run Lighthouse CI
-      uses: treosh/lighthouse-ci-action@v10
-      with:
-        uploadArtifacts: true
-        temporaryPublicStorage: true
-        runs: 3
-        configPath: './.github/lighthouse/config.json'
-        
-    # Optional: Add a step to comment on PR with Lighthouse results
-    - name: Format Lighthouse score
-      if: github.event_name == 'pull_request'
-      id: format_lighthouse_score
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const results = require('./lighthouse/manifest.json');
-          const links = results.map(result => {
-            return {
-              url: result.url,
-              report: result.html_report
-            };
-          });
-          const score = links.map(link => `[Report for ${link.url}](${link.report})`).join('\n');
-          core.setOutput('results', score);
-          
-    - name: Add Lighthouse stats as comment
-      if: github.event_name == 'pull_request'
-      uses: marocchino/sticky-pull-request-comment@v2
-      with:
-        header: lighthouse
-        message: |
-          # Lighthouse Report 🚦
-          
-          ${{ steps.format_lighthouse_score.outputs.results }}
-        
+      # Optional: Add a step to comment on PR with Lighthouse results
+      - name: Format Lighthouse score
+        if: github.event_name == 'pull_request'
+        id: format_lighthouse_score
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const results = require('./lighthouse/manifest.json');
+            const links = results.map(result => {
+              return {
+                url: result.url,
+                report: result.html_report
+              };
+            });
+            const score = links.map(link => `[Report for ${link.url}](${link.report})`).join('\n');
+            core.setOutput('results', score);
+            
+      - name: Add Lighthouse stats as comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: lighthouse
+          message: |
+            # Lighthouse Report 🚦
+            
+            ${{ steps.format_lighthouse_score.outputs.results }}

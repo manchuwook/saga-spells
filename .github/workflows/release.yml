@@ -7,52 +7,32 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Build
+        run: pnpm build
         
-    - name: Install pnpm
-      uses: pnpm/action-setup@v2
-      with:
-        version: 8
-        run_install: false
-        
-    - name: Get pnpm store directory
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-    
-    - name: Setup pnpm cache
-      uses: actions/cache@v3
-      with:
-        path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
-          
-    - name: Install dependencies
-      run: pnpm install
+      - name: Create release artifact
+        run: |
+          cd dist
+          zip -r ../saga-spells-${{ github.event.release.tag_name }}.zip .
+          cd ..
       
-    - name: Build
-      run: pnpm build
-      
-    - name: Create release artifact
-      run: |
-        cd dist
-        zip -r ../saga-spells-${{ github.event.release.tag_name }}.zip .
-        cd ..
-    
-    - name: Upload release artifact
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./saga-spells-${{ github.event.release.tag_name }}.zip
-        asset_name: saga-spells-${{ github.event.release.tag_name }}.zip
-        asset_content_type: application/zip
+      - name: Upload release artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./saga-spells-${{ github.event.release.tag_name }}.zip
+          asset_name: saga-spells-${{ github.event.release.tag_name }}.zip
+          asset_content_type: application/zip
