@@ -85,7 +85,7 @@ jobs:
           if-no-files-found: ignore
           
       - name: Format Lighthouse results as PR comment
-        if: github.event_name == 'pull_request' && steps.lighthouse.outputs.manifest != ''
+        if: github.event_name == 'pull_request' && steps.lighthouse.outcome == 'success'
         uses: actions/github-script@v7
         env:
           LIGHTHOUSE_RESULTS: ${{ steps.lighthouse.outputs.manifest }}
@@ -124,18 +124,3 @@ jobs:
               };
               
               const comment = `## 🚦 Lighthouse Report
-
-${createTable()}
-
-${links.html ? `[View Full Report](${links.html})` : 'No report link available'}
-              `;
-              
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: comment
-              });
-            } catch (error) {
-              console.error('Error parsing lighthouse results:', error);
-            }
