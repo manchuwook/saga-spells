@@ -316,7 +316,8 @@ export const exportSpellsToPDF = (spells: Spell[]) => {
     if (isAlternateRow) {
       doc.setFillColor(245, 245, 245);
       doc.rect(14, yPos - 5, doc.internal.pageSize.width - 28, lineHeight, 'F');
-    }    isAlternateRow = !isAlternateRow;
+    }
+    isAlternateRow = !isAlternateRow;
     
     // Calculate the page number based on two spells per page
     const pageNum = Math.floor(index / 2) + 3; // Summary page + TOC + index, with 2 spells per page
@@ -333,6 +334,7 @@ export const exportSpellsToPDF = (spells: Spell[]) => {
     
     yPos += lineHeight;
   });
+  
   // Detailed spell descriptions - two spells per page
   for (let i = 0; i < spells.length; i += 2) {
     if (i + 1 < spells.length) {
@@ -549,7 +551,8 @@ const addTableOfContents = (doc: jsPDF, spells: Spell[]) => {
     if (isAlternateRow) {
       doc.setFillColor(245, 245, 245);
       doc.rect(14, yPos - 5, doc.internal.pageSize.width - 28, lineHeight, 'F');
-    }    isAlternateRow = !isAlternateRow;
+    }
+    isAlternateRow = !isAlternateRow;
     
     // Calculate the page number based on two spells per page
     const pageNum = Math.floor(index / 2) + 3; // Cover page + TOC + index, with 2 spells per page
@@ -612,7 +615,8 @@ export const exportSpellbookToPDF = (spellbook: Spellbook) => {
   
   // Summary table
   formatSpellsTable(doc, spellbook.spells);
-    // Detailed spell descriptions - two spells per page
+  
+  // Detailed spell descriptions - two spells per page
   for (let i = 0; i < spellbook.spells.length; i += 2) {
     if (i + 1 < spellbook.spells.length) {
       // Add two spells per page when possible

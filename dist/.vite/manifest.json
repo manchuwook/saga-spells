@@ -1,21 +1,21 @@
 {
-  "_EditSpellbookModal-C_xcxVTP.js": {
-    "file": "assets/EditSpellbookModal-C_xcxVTP.js",
+  "_EditSpellbookModal-DmRIEGub.js": {
+    "file": "assets/EditSpellbookModal-DmRIEGub.js",
     "name": "EditSpellbookModal",
     "imports": [
-      "_mantine-core-BeatNbxd.js",
-      "_useSpellbooks-S5uk6DQQ.js",
-      "_mantine-extras-dDECZjr3.js"
+      "_mantine-core-DsMsSb2l.js",
+      "_useSpellbooks-BBNpsP0i.js",
+      "_mantine-extras-C7JCdAhW.js"
     ]
   },
-  "_SpellsFilter-CcXxNMso.js": {
-    "file": "assets/SpellsFilter-CcXxNMso.js",
+  "_SpellsFilter-QrGrgeK_.js": {
+    "file": "assets/SpellsFilter-QrGrgeK_.js",
     "name": "SpellsFilter",
     "imports": [
-      "_data-vendor-CxQbNU04.js",
-      "_mantine-core-BeatNbxd.js",
+      "_data-vendor-JK2JCimK.js",
+      "_mantine-core-DsMsSb2l.js",
       "index.html",
-      "_icons-BIZumlmt.js",
+      "_icons-DD1o_37P.js",
       "_react-vendor-euMfggM7.js"
     ],
     "css": [
@@ -26,34 +26,34 @@
     "file": "assets/SpellsFilter-WTRCMbU2.css",
     "src": "_SpellsFilter-WTRCMbU2.css"
   },
-  "_data-vendor-CxQbNU04.js": {
-    "file": "assets/data-vendor-CxQbNU04.js",
+  "_data-vendor-JK2JCimK.js": {
+    "file": "assets/data-vendor-JK2JCimK.js",
     "name": "data-vendor",
     "imports": [
       "_react-vendor-euMfggM7.js",
-      "_mantine-core-BeatNbxd.js"
+      "_mantine-core-DsMsSb2l.js"
     ]
   },
-  "_icons-BIZumlmt.js": {
-    "file": "assets/icons-BIZumlmt.js",
+  "_icons-DD1o_37P.js": {
+    "file": "assets/icons-DD1o_37P.js",
     "name": "icons",
     "imports": [
       "_react-vendor-euMfggM7.js"
     ]
   },
-  "_mantine-core-BeatNbxd.js": {
-    "file": "assets/mantine-core-BeatNbxd.js",
+  "_mantine-core-DsMsSb2l.js": {
+    "file": "assets/mantine-core-DsMsSb2l.js",
     "name": "mantine-core",
     "imports": [
       "_react-vendor-euMfggM7.js"
     ]
   },
-  "_mantine-extras-dDECZjr3.js": {
-    "file": "assets/mantine-extras-dDECZjr3.js",
+  "_mantine-extras-C7JCdAhW.js": {
+    "file": "assets/mantine-extras-C7JCdAhW.js",
     "name": "mantine-extras",
     "imports": [
       "_react-vendor-euMfggM7.js",
-      "_mantine-core-BeatNbxd.js"
+      "_mantine-core-DsMsSb2l.js"
     ]
   },
   "_pdf-vendor-DgBXY6CA.js": {
@@ -68,8 +68,8 @@
     "file": "assets/react-vendor-euMfggM7.js",
     "name": "react-vendor"
   },
-  "_useSpellbooks-S5uk6DQQ.js": {
-    "file": "assets/useSpellbooks-S5uk6DQQ.js",
+  "_useSpellbooks-BBNpsP0i.js": {
+    "file": "assets/useSpellbooks-BBNpsP0i.js",
     "name": "useSpellbooks",
     "imports": [
       "_react-vendor-euMfggM7.js",
@@ -77,17 +77,17 @@
     ]
   },
   "index.html": {
-    "file": "assets/index-DUbUenTs.js",
+    "file": "assets/index-v6038iYS.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
     "imports": [
-      "_mantine-core-BeatNbxd.js",
+      "_mantine-core-DsMsSb2l.js",
       "_react-vendor-euMfggM7.js",
-      "_data-vendor-CxQbNU04.js",
+      "_data-vendor-JK2JCimK.js",
       "_pdf-vendor-DgBXY6CA.js",
-      "_icons-BIZumlmt.js",
-      "_mantine-extras-dDECZjr3.js"
+      "_icons-DD1o_37P.js",
+      "_mantine-extras-C7JCdAhW.js"
     ],
     "dynamicImports": [
       "src/pages/SpellsPage.tsx",
@@ -100,9 +100,6 @@
     ],
     "css": [
       "assets/index-BqpdPBoP.css"
-    ],
-    "assets": [
-      "assets/main-CPxGXLuG.tsx"
     ]
   },
   "node_modules/.pnpm/canvg@3.0.11/node_modules/canvg/lib/index.es.js": {
@@ -130,60 +127,56 @@
       "_pdf-vendor-DgBXY6CA.js"
     ]
   },
-  "src/main.tsx": {
-    "file": "assets/main-CPxGXLuG.tsx",
-    "src": "src/main.tsx"
-  },
   "src/pages/SpellbookDetailPage.tsx": {
-    "file": "assets/SpellbookDetailPage-7Dwb8myl.js",
+    "file": "assets/SpellbookDetailPage-B47yIE5a.js",
     "name": "SpellbookDetailPage",
     "src": "src/pages/SpellbookDetailPage.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_mantine-core-BeatNbxd.js",
+      "_mantine-core-DsMsSb2l.js",
       "_react-vendor-euMfggM7.js",
-      "_useSpellbooks-S5uk6DQQ.js",
-      "_SpellsFilter-CcXxNMso.js",
-      "_EditSpellbookModal-C_xcxVTP.js",
+      "_useSpellbooks-BBNpsP0i.js",
+      "_SpellsFilter-QrGrgeK_.js",
+      "_EditSpellbookModal-DmRIEGub.js",
       "src/lib/pdfExport.enhanced.ts",
-      "_icons-BIZumlmt.js",
-      "_mantine-extras-dDECZjr3.js",
+      "_icons-DD1o_37P.js",
       "index.html",
-      "_data-vendor-CxQbNU04.js",
+      "_mantine-extras-C7JCdAhW.js",
+      "_data-vendor-JK2JCimK.js",
       "_pdf-vendor-DgBXY6CA.js"
     ]
   },
   "src/pages/SpellbooksPage.tsx": {
-    "file": "assets/SpellbooksPage-1_TG-J2a.js",
+    "file": "assets/SpellbooksPage-Cu3dU5RT.js",
     "name": "SpellbooksPage",
     "src": "src/pages/SpellbooksPage.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_mantine-core-BeatNbxd.js",
+      "_mantine-core-DsMsSb2l.js",
       "_react-vendor-euMfggM7.js",
-      "_useSpellbooks-S5uk6DQQ.js",
-      "_mantine-extras-dDECZjr3.js",
-      "_EditSpellbookModal-C_xcxVTP.js",
-      "_icons-BIZumlmt.js",
+      "_useSpellbooks-BBNpsP0i.js",
+      "_mantine-extras-C7JCdAhW.js",
+      "_EditSpellbookModal-DmRIEGub.js",
+      "_icons-DD1o_37P.js",
       "index.html",
-      "_data-vendor-CxQbNU04.js",
+      "_data-vendor-JK2JCimK.js",
       "_pdf-vendor-DgBXY6CA.js"
     ]
   },
   "src/pages/SpellsPage.tsx": {
-    "file": "assets/SpellsPage-DiTRx3lx.js",
+    "file": "assets/SpellsPage-Byqb5EtJ.js",
     "name": "SpellsPage",
     "src": "src/pages/SpellsPage.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_mantine-core-BeatNbxd.js",
+      "_mantine-core-DsMsSb2l.js",
       "_react-vendor-euMfggM7.js",
-      "_SpellsFilter-CcXxNMso.js",
-      "_useSpellbooks-S5uk6DQQ.js",
-      "_mantine-extras-dDECZjr3.js",
+      "_SpellsFilter-QrGrgeK_.js",
+      "_useSpellbooks-BBNpsP0i.js",
+      "_mantine-extras-C7JCdAhW.js",
       "src/lib/pdfExport.enhanced.ts",
-      "_icons-BIZumlmt.js",
-      "_data-vendor-CxQbNU04.js",
+      "_icons-DD1o_37P.js",
+      "_data-vendor-JK2JCimK.js",
       "index.html",
       "_pdf-vendor-DgBXY6CA.js"
     ]

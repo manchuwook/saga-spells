@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import App from '../App';
+import AppWrapper from '../components/AppWrapper';
 import ErrorPage from '../pages/ErrorPage';
 import { Loader, Center } from '@mantine/core';
 
@@ -19,7 +19,7 @@ const PageLoader = () => (
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <AppWrapper />,
     errorElement: <ErrorPage />,
     children: [
       {

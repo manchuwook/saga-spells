@@ -42,18 +42,39 @@ export default function SpellbooksPage() {
   const handleViewSpellbook = (id: string) => {
     navigate(`/spellbooks/${id}`);
   };
-
   const handleDeleteSpellbook = (spellbook: Spellbook) => {
     modals.openConfirmModal({
-      title: 'Delete Spellbook',
+      title: <Text c={isDark ? 'white' : 'dark.9'} fw={700}>Delete Spellbook</Text>,
       children: (
-        <Text size="sm">
+        <Text size="sm" c={isDark ? 'gray.2' : 'dark.7'}>
           Are you sure you want to delete "{spellbook.name}" for {spellbook.character}? 
           This action cannot be undone.
         </Text>
       ),
       labels: { confirm: 'Delete', cancel: 'Cancel' },
-      confirmProps: { color: 'red' },
+      confirmProps: { color: isDark ? 'red.4' : 'red.6' },
+      cancelProps: { color: isDark ? 'gray.4' : 'gray.6' },
+      overlayProps: {
+        backgroundOpacity: 0.65,
+        blur: 3,
+        color: isDark ? 'black' : '#e6d9c2',
+      },
+      styles: {
+        header: { 
+          backgroundColor: isDark ? '#1A1B1E' : 'white',
+          color: isDark ? 'white' : 'black',
+          borderBottom: isDark ? '1px solid #2C2E33' : 'inherit',
+        },
+        content: { 
+          backgroundColor: isDark ? '#1A1B1E' : 'white',
+        },
+        body: {
+          backgroundColor: isDark ? '#1A1B1E' : 'white',
+        },
+        close: {
+          color: isDark ? 'white' : 'black',
+        }
+      },
       onConfirm: () => {
         deleteSpellbook(spellbook.id);
         notifications.show({
