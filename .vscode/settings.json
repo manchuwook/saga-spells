@@ -1,3 +1,10 @@
 {
-    "codeQL.createQuery.qlPackLocation": "x:\\dev\\saga-spells"
+    "codeQL.createQuery.qlPackLocation": "x:\\dev\\saga-spells",
+    "sonarlint.connectedMode.project": {
+        "connectionId": "http-localhost-9000",
+        "projectKey": "saga-spells"
+    },
+    "cSpell.words": [
+        "Spellbook"
+    ]
 }
