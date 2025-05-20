@@ -1,4 +1,4 @@
-import { Modal, Text, Title, Grid, Badge, Group, Stack, Paper, useMantineColorScheme } from '@mantine/core';
+import { Modal, Text, Grid, Badge, Group, Stack, Paper, useMantineColorScheme } from '@mantine/core';
 import { Spell } from '../models/spells.zod';
 import { useTheme } from '../context/ThemeContext';
 import '../styles/modal.css';
@@ -32,7 +32,7 @@ export function SpellDetailsModal({ spell, opened, onClose }: SpellDetailsModalP
       <Modal 
         opened={opened} 
         onClose={onClose} 
-        title={<Title order={2} c={isDark ? 'white' : 'dark.9'} fw={700}>{spell.spellName}</Title>}
+        title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">{spell.spellName}</Text>}
         size="lg"
         overlayProps={{
           backgroundOpacity: 0.65,

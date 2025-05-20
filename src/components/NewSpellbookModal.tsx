@@ -1,4 +1,4 @@
-import { Modal, TextInput, Textarea, Button, Group, useMantineColorScheme, Text, Paper, Stack, Title } from '@mantine/core';
+import { Modal, TextInput, Textarea, Button, Group, useMantineColorScheme, Text, Paper, Stack } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useSpellbooks } from '../hooks/useSpellbooks';
 import { notifications } from '@mantine/notifications';
@@ -57,7 +57,7 @@ export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
     <Modal 
       opened={opened} 
       onClose={handleClose} 
-      title={<Title order={2} c={isDark ? 'white' : 'dark.9'}>Create New Spellbook</Title>}
+      title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">Create New Spellbook</Text>}
       size="md"
       overlayProps={{
         backgroundOpacity: 0.65,

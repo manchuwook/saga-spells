@@ -2,14 +2,17 @@ import { AppShell, Group, Title, UnstyledButton, rem, useMantineColorScheme } fr
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { ThemeCustomizer } from './components/ThemeCustomizer';
 import { ColorSchemeToggle } from './components/ColorSchemeToggle';
+import { ThemeToggle } from './components/ThemeToggle';
 import { useTheme } from './context/ThemeContext';
 import { Prefetcher } from './components/Prefetcher';
+import { useState } from 'react';
 
 export default function App() {
   const location = useLocation();
   const { colors } = useTheme();
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
+  const [themeSettingsOpened, setThemeSettingsOpened] = useState(false);
   
   // Generate inline styles based on theme settings
   const getComponentStyles = () => ({
@@ -88,12 +91,12 @@ export default function App() {
             My Spellbooks
           </UnstyledButton>
         </AppShell.Section>
-      </AppShell.Navbar>
-        <AppShell.Main style={styles.main}>
+      </AppShell.Navbar>        <AppShell.Main style={styles.main}>
         {/* Invisible component that prefetches critical resources */}
         <Prefetcher />
         <Outlet />
-        <ThemeCustomizer />
+        <ThemeCustomizer opened={themeSettingsOpened} />
+        <ThemeToggle onToggle={() => setThemeSettingsOpened(!themeSettingsOpened)} />
       </AppShell.Main>
     </AppShell>
   );

@@ -15,7 +15,7 @@ import {
   Paper
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconArrowLeft, IconEdit, IconPlus, IconSearch } from '@tabler/icons-react';
+import { IconArrowLeft, IconEdit, IconPlus, IconSearch, IconBooks } from '@tabler/icons-react';
 import { useSpellbooks } from '../hooks/useSpellbooks';
 import { SpellCard } from '../components/SpellCard';
 import { SpellDetailsModal } from '../components/SpellDetailsModal';
@@ -85,18 +85,19 @@ export default function SpellbookDetailPage() {
         }
       },
     });
-  };
-
-  const handleAddSpell = (spell: Spell) => {
+  };  const handleAddSpell = (spell: Spell) => {
     if (id) {
       addSpellToSpellbook(id, spell);
       notifications.show({
         title: 'Spell Added',
         message: `${spell.spellName} has been added to ${spellbook.name}`,
         color: 'green',
+        icon: <IconBooks size={20} />,
+        autoClose: 3000,
+        withBorder: true,
+        style: { borderRadius: '8px' },
       });
-      // Switch to the spells tab
-      setActiveTab('spells');
+      // Removed auto-switching to spells tab to keep user on add-spells tab
     }
   };
 

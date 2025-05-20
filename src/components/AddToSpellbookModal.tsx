@@ -1,4 +1,4 @@
-import { Modal, Button, Select, Text, useMantineColorScheme, Paper, Title } from '@mantine/core';
+import { Modal, Button, Select, Text, useMantineColorScheme, Paper } from '@mantine/core';
 import { useSpellbooks } from '../hooks/useSpellbooks';
 import { Spell } from '../models/spells.zod';
 import { useState } from 'react';
@@ -117,7 +117,7 @@ export function AddToSpellbookModal({ spell, opened, onClose }: AddToSpellbookMo
     <Modal 
       opened={opened} 
       onClose={handleClose} 
-      title={<Title order={2} c={isDark ? 'white' : 'dark.9'} fw={700}>Add to Spellbook</Title>}
+      title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">Add to Spellbook</Text>}
       size="md"
       overlayProps={{
         backgroundOpacity: 0.65,
