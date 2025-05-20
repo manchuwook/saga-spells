@@ -374,7 +374,7 @@
     "skill": "Axiomatic Magic",
     "focus": "Formulae",
     "spellType": "Spell",
-    "description": "The veil that seperates the physical world from the spiritual world is permeable and varies in thickness and strength. By assailing it, the mage can reinforce it, or chip away at its strength for a brief time. Each DoS scored can increase or decrease the rating of the Veil by 1, at the caster's discretion. Each Cycle Maintenance, as a Periodic Effect, the veil restabilizes, moving one value back to its original strength. The TN of this spell is equal to spell Complexity, and the numerical value of the Veil (this is a number agnostic to whether it is positive or negative). A Veil Strength of -3 is a TN of 3+[c]. A Veil Strength of 3 is a TN of 3+[c].",
+    "description": "The veil that separates the physical world from the spiritual world is permeable and varies in thickness and strength. By assailing it, the mage can reinforce it, or chip away at its strength for a brief time. Each DoS scored can increase or decrease the rating of the Veil by 1, at the caster's discretion. Each Cycle Maintenance, as a Periodic Effect, the veil restabilizes, moving one value back to its original strength. The TN of this spell is equal to spell Complexity, and the numerical value of the Veil (this is a number agnostic to whether it is positive or negative). A Veil Strength of -3 is a TN of 3+[c]. A Veil Strength of 3 is a TN of 3+[c].",
     "altDescription": "-"
   },
   {
@@ -752,7 +752,7 @@
     "skill": "Focus Magic",
     "focus": "Manipulate",
     "spellType": "Spell",
-    "description": "Your enemy's sword escapes their grasp and flies unneringly to your outstretched hand, and in to your grasp. This spell targets one hand held ferrous item and moves it directly, and safely, into your grip. If the item is held by an enemy, they must make a Athletics (Grapple) Action Check with a TN equal to your Effect to hold onto it and negate the spell. If it is belted, sheathed, or otherwise unrestrained, you gain Momentum.",
+    "description": "Your enemy's sword escapes their grasp and flies unerringly to your outstretched hand, and in to your grasp. This spell targets one hand held ferrous item and moves it directly, and safely, into your grip. If the item is held by an enemy, they must make a Athletics (Grapple) Action Check with a TN equal to your Effect to hold onto it and negate the spell. If it is belted, sheathed, or otherwise unrestrained, you gain Momentum.",
     "altDescription": null
   },
   {
@@ -770,7 +770,7 @@
     "skill": "Axiomatic Magic",
     "focus": "Formulae",
     "spellType": "Spell",
-    "description": "With a soft rush of wiind, an item you can see is teleported into your hand. You may teleport into your hand any single item you can see that you could feasibly hold in your outstretched hand. If the object is held by someone, the TN increases by their SPI defense.",
+    "description": "With a soft rush of wind, an item you can see is teleported into your hand. You may teleport into your hand any single item you can see that you could feasibly hold in your outstretched hand. If the object is held by someone, the TN increases by their SPI defense.",
     "altDescription": "-"
   },
   {
@@ -2517,7 +2517,7 @@
     "focus": "Manipulate",
     "spellType": "Spell",
     "description": "Target is encased in flames.  This damage is hM(6+): H-0, Lingering Fire Damage and is Pervasive (1) per DoS.  Target may make a 60T Complex Action to Stop/Drop/Roll and end the Duration.",
-    "altDescription": "In an Exploration Scene, Purify Air can be bid as a Counter to an airborn toxin trap, costing 1AP and 2 Flare, rendering the air safe for the immediate area of the caster."
+    "altDescription": "In an Exploration Scene, Purify Air can be bid as a Counter to an airborne toxin trap, costing 1AP and 2 Flare, rendering the air safe for the immediate area of the caster."
   },
   {
     "spellName": "Illuminate",
@@ -2660,7 +2660,7 @@
     "skill": "Axiomatic Magic",
     "focus": "Formulae",
     "spellType": "Spell",
-    "description": "Fortune assigns no favor. You may purchase Inconveniences and apply them to the target as Maneuvers:\u000a\u000a2 Eff: Bowsting or Crossbow Line are Snapped\u000a3 Eff: Armor Straps come undone, making all physical action checks Accurate (-1)\u000a1 Eff: If the target has a Helm, the target becomes Blind, requiring a 20T Complex Action to fix their Helm\u000a3 Eff: Target loses focus, and drops Guard\u000a3 Eff: On the target's next Move Action, they instead become Sprawled\u000a2 Eff: Target's belt falls off, dropping all belted items to the ground\u000a4 Eff: On Target's next Melee Attack, after the attack is resolved they drop their held weapon\u000a",
+    "description": "Fortune assigns no favor. You may purchase Inconveniences and apply them to the target as Maneuvers:\u000a\u000a2 Eff: Bowstring or Crossbow Line are Snapped\u000a3 Eff: Armor Straps come undone, making all physical action checks Accurate (-1)\u000a1 Eff: If the target has a Helm, the target becomes Blind, requiring a 20T Complex Action to fix their Helm\u000a3 Eff: Target loses focus, and drops Guard\u000a3 Eff: On the target's next Move Action, they instead become Sprawled\u000a2 Eff: Target's belt falls off, dropping all belted items to the ground\u000a4 Eff: On Target's next Melee Attack, after the attack is resolved they drop their held weapon\u000a",
     "altDescription": null
   },
   {
@@ -2714,7 +2714,7 @@
     "skill": "Blood Magic",
     "focus": "Morphic",
     "spellType": "Spell",
-    "description": "The wound begins to steam and give off a bright red glow as it rapidly heald. This spell applied Wound Closure (DoS) to the target wound, and deals damage in a new wound, that is equal to DoS. This damage is Lingering and Psychic.",
+    "description": "The wound begins to steam and give off a bright red glow as it rapidly healed. This spell applied Wound Closure (DoS) to the target wound, and deals damage in a new wound, that is equal to DoS. This damage is Lingering and Psychic.",
     "altDescription": null
   },
   {
@@ -2840,7 +2840,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "An energizing and refreshing silve light bursts around you. All within the affected restore 1 lost AP per DoS. If the amount of AP restored is greater than their max AP, they gain Momentum (cannot restore AP beyond their maximum).",
+    "description": "An energizing and refreshing silver light bursts around you. All within the affected restore 1 lost AP per DoS. If the amount of AP restored is greater than their max AP, they gain Momentum (cannot restore AP beyond their maximum).",
     "altDescription": null
   },
   {
@@ -2930,7 +2930,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "You coax a complex lock into opening. The more complex the lock, the harder it is to open. The complexity of the lock (its disarm TN) is directly added to the complexity of the spell to determine the TN to cast sucessfully. This only works on mechanical locks, and does not work on barred doors.",
+    "description": "You coax a complex lock into opening. The more complex the lock, the harder it is to open. The complexity of the lock (its disarm TN) is directly added to the complexity of the spell to determine the TN to cast successfully. This only works on mechanical locks, and does not work on barred doors.",
     "altDescription": null
   },
   {
@@ -2966,7 +2966,7 @@
     "skill": "Blood Magic",
     "focus": "Morphic",
     "spellType": "Spell",
-    "description": "Your jump is spurred to supernatural heights. This spell is a Boost to a High Jump (Complex Action), or a Long Jump (a Boost to a Move Action). Each Effect Scored is added to your Athletcis (Prowess) Action Check to perform the jump, and the height/length of this jump is not limited by your Body Power as normal.",
+    "description": "Your jump is spurred to supernatural heights. This spell is a Boost to a High Jump (Complex Action), or a Long Jump (a Boost to a Move Action). Each Effect Scored is added to your Athletics (Prowess) Action Check to perform the jump, and the height/length of this jump is not limited by your Body Power as normal.",
     "altDescription": "-"
   },
   {
@@ -3092,7 +3092,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "The target is best by whispers in their mind, a cacaphony in a language they do not understand, but a terrible message they fully do. Reference DoS for results. Effects are cummulative:\u000a\u000aDoS 1: Target is Distracted\u000aDoS 2: Target gains Cowed\u000aDoS 3: Target has a C-TAG for the duration\u000aDoS 4: Each Cycle Maintenance, as a Spell Effect, the Target takes hM(9+): D-0, Lingering, Psychic Damage\u000aDoS 5: Target gains Cowed, a C-TAG for the duration, and increases the periodic damage dice pool by +5",
+    "description": "The target is best by whispers in their mind, a cacophony in a language they do not understand, but a terrible message they fully do. Reference DoS for results. Effects are cumulative:\u000a\u000aDoS 1: Target is Distracted\u000aDoS 2: Target gains Cowed\u000aDoS 3: Target has a C-TAG for the duration\u000aDoS 4: Each Cycle Maintenance, as a Spell Effect, the Target takes hM(9+): D-0, Lingering, Psychic Damage\u000aDoS 5: Target gains Cowed, a C-TAG for the duration, and increases the periodic damage dice pool by +5",
     "altDescription": "Key can be used as a \"Skill/Talent\" resolution path to unlock doors."
   },
   {
@@ -3158,13 +3158,13 @@
     "action": "Cmplx (45T)",
     "duration": "Instant",
     "keywords": "-",
-    "check": "Focus Magic (Manipuate): Special+[c]",
+    "check": "Focus Magic (Manipulate): Special+[c]",
     "spellClass": "Sorcery",
     "school": "Telekinesis",
     "skill": "Focus Magic",
     "focus": "Manipulate",
     "spellType": "Spell",
-    "description": "You may manipulate a lever, door handle, uncross a loosely tied rope. The TN is modified by the how strenous or complex the action is. (+0 to +6TN). Pushing open an unlatched door or working a simple lever would be +0, while untieing a sailor's knot with a massive and thickly corded rope would be +6.",
+    "description": "You may manipulate a lever, door handle, uncross a loosely tied rope. The TN is modified by the how strenuous or complex the action is. (+0 to +6TN). Pushing open an unlatched door or working a simple lever would be +0, while untying a sailor's knot with a massive and thickly corded rope would be +6.",
     "altDescription": null
   },
   {
@@ -3182,7 +3182,7 @@
     "skill": "Axiomatic Magic",
     "focus": "Formulae",
     "spellType": "Spell",
-    "description": "You disappear, leaving behind an illusory repliaca of yourself. Immediately teleport a number of yards within your facing forward equal to your Effect, and become Invisible for 1 Cycle. In your place is an illusion of you that lasts for 1 Cycle.",
+    "description": "You disappear, leaving behind an illusory replica of yourself. Immediately teleport a number of yards within your facing forward equal to your Effect, and become Invisible for 1 Cycle. In your place is an illusion of you that lasts for 1 Cycle.",
     "altDescription": null
   },
   {
@@ -3470,7 +3470,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "You forment in the mind a new memory, one that feel as real as any other. You can construct a memory that encapsulates a minute of time per DoS scored. The TN for this spell is further increased by how believable, or rather, unbelieavable the memory is. A memory that is minor and inconsequential is TN +0, while a memory that involves actions that the target of this spell would never willingly make, or actions of others they know irrefutably to be untrue, would increase the TN by +5. Memories that are demonstrably untrue, and completely incompatible with reality, would not be perceived as a memory, but more like a passing dream. Persuade (Con) Action Checks against this target that pertain to the new memory, or involve it in some way, are Accurate (+5).",
+    "description": "You foment in the mind a new memory, one that feel as real as any other. You can construct a memory that encapsulates a minute of time per DoS scored. The TN for this spell is further increased by how believable, or rather, unbelieavable the memory is. A memory that is minor and inconsequential is TN +0, while a memory that involves actions that the target of this spell would never willingly make, or actions of others they know irrefutably to be untrue, would increase the TN by +5. Memories that are demonstrably untrue, and completely incompatible with reality, would not be perceived as a memory, but more like a passing dream. Persuade (Con) Action Checks against this target that pertain to the new memory, or involve it in some way, are Accurate (+5).",
     "altDescription": "-"
   },
   {
@@ -3524,7 +3524,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "You demand all to show deference, and show it they must. Your Effect on casting this Spell is compared to the SPI defense of all in the affected area (you may exclude allies). If your Effect exceeds their SPI defense, they must, as a Surge (10T), take a Movement Action to Kneel and bow their heads, if they are physicall able to do so. Animals may sit on their haunch. While they may stand up on their next pass, they begin their pass in the Kneel position, and have no one in their Line of Sight at the start of their Pass. A target may not be compelled by this spell more than once in a Scene.",
+    "description": "You demand all to show deference, and show it they must. Your Effect on casting this Spell is compared to the SPI defense of all in the affected area (you may exclude allies). If your Effect exceeds their SPI defense, they must, as a Surge (10T), take a Movement Action to Kneel and bow their heads, if they are physical able to do so. Animals may sit on their haunch. While they may stand up on their next pass, they begin their pass in the Kneel position, and have no one in their Line of Sight at the start of their Pass. A target may not be compelled by this spell more than once in a Scene.",
     "altDescription": "-"
   },
   {
@@ -3546,7 +3546,7 @@
     "altDescription": "-"
   },
   {
-    "spellName": "Painful Forebearance",
+    "spellName": "Painful Forbearance",
     "complexity": "3",
     "flare": "3",
     "range": "10 yds",
@@ -3594,7 +3594,7 @@
     "spellClass": "Sorcery",
     "school": "Conjuration",
     "skill": "Axiomatic Magic",
-    "focus": "Forumulae",
+    "focus": "Formulae",
     "spellType": "Spell",
     "description": "You phase through solid objects. You may move 1 yd per DoS through solid barriers, like doors, walls, etc. This can be dangerous if you don't know what is on the other side. If the barrier is thicker than your movement distance, and it is a solid mass such as earth, stone, etc., the structure is damaged and the caster is Dead. If it a flimsy structure such as tightly wound hay, thin wood, you take 20d(8+): I-0, Impact, Pervasive (9) damage, and the structure, if any, is Broken.",
     "altDescription": null
@@ -3726,7 +3726,7 @@
     "altDescription": "-"
   },
   {
-    "spellName": "Portentious Insight",
+    "spellName": "Portentous Insight",
     "complexity": "2",
     "flare": "2",
     "range": "Self",
@@ -3902,7 +3902,7 @@
     "skill": "Focus Magic",
     "focus": "Banish",
     "spellType": "Spell",
-    "description": "The area is dispursed of foul air, clouds, ash, or airborne particles, keeping it clear and fresh, while sustained. Airborne poisons, mists, clouds, and vapors cannot affect anyone in the targeted area.",
+    "description": "The area is dispersed of foul air, clouds, ash, or airborne particles, keeping it clear and fresh, while sustained. Airborne poisons, mists, clouds, and vapors cannot affect anyone in the targeted area.",
     "altDescription": null
   },
   {
@@ -3920,13 +3920,13 @@
     "skill": "Focus Magic",
     "focus": "Manipulate",
     "spellType": "Spell",
-    "description": "You cleanse liquid of dangerous elements. The TN is modified by the virulity, toxicity, or contamination of the drink. +0 TN (muddy), +2 TN (poisons/disease present), +4 (parasites, rancid), +6 (acids/corrossives). Purifies 1 Serving of liquid per DoS.",
+    "description": "You cleanse liquid of dangerous elements. The TN is modified by the virality, toxicity, or contamination of the drink. +0 TN (muddy), +2 TN (poisons/disease present), +4 (parasites, rancid), +6 (acids/corrosives). Purifies 1 Serving of liquid per DoS.",
     "altDescription": null
   },
   {
     "spellName": "Push",
     "complexity": "1",
-    "flare": "1",
+    "flare": "1", 
     "range": "10 yds",
     "target": "Single",
     "action": "Stndrd (30T+M)",
@@ -4028,7 +4028,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "Complex mechanical workflows become automated in a programatic sequence, allowing crossbows to automatically crank back into place after being fired. This spell is cast on a Crossbow, Ballista, Catapult, or Trebuchet. Each DoS Scored reduces the Loadtime for these weapons by 1. The Missile must still be readied. While you can sustain this spell on multiple weapons, no single weapon can benefit from more than one at time.",
+    "description": "Complex mechanical workflows become automated in a programmatic sequence, allowing crossbows to automatically crank back into place after being fired. This spell is cast on a Crossbow, Ballista, Catapult, or Trebuchet. Each DoS Scored reduces the load time for these weapons by 1. The Missile must still be readied. While you can sustain this spell on multiple weapons, no single weapon can benefit from more than one at time.",
     "altDescription": "-"
   },
   {
@@ -4064,7 +4064,7 @@
     "skill": "Axiomatic Magic",
     "focus": "Formulae",
     "spellType": "Spell",
-    "description": "Your enemy disappears from the field, emerging moments later, delerious. The target disappears for 10T per DoS (this is added to the target's current Initiative). At the end of the duration they reappear exactly where they disappeared from, and are Dazed. If the target is an Auxiliary, they are gone for 1 Cycle per DoS.",
+    "description": "Your enemy disappears from the field, emerging moments later, delirious. The target disappears for 10T per DoS (this is added to the target's current Initiative). At the end of the duration they reappear exactly where they disappeared from, and are Dazed. If the target is an Auxiliary, they are gone for 1 Cycle per DoS.",
     "altDescription": "-"
   },
   {
@@ -4316,7 +4316,7 @@
     "skill": "Bonds Magic",
     "focus": "Ego",
     "spellType": "Spell",
-    "description": "You determine if the target is suffering from Daemonic Oppression or Posession, and whether the entity is in control at this moment.  Gain 1 S-TAG on the target per DoS scored if the entity is active.",
+    "description": "You determine if the target is suffering from Daemonic Oppression or Possession, and whether the entity is in control at this moment.  Gain 1 S-TAG on the target per DoS scored if the entity is active.",
     "altDescription": null
   },
   {
@@ -4550,7 +4550,7 @@
     "skill": "Focus Magic",
     "focus": "Manipulate",
     "spellType": "Spell",
-    "description": "Your frame and body are buoyed against the burden of weight while sustaining this spell. Your Stability is considered +1 per DoS for purposes of determining Bulk Management, and your Carrying Capacity is considered +10 lbs. per DoS for Encumberance.",
+    "description": "Your frame and body are buoyed against the burden of weight while sustaining this spell. Your Stability is considered +1 per DoS for purposes of determining Bulk Management, and your Carrying Capacity is considered +10 lbs. per DoS for Encumbrance.",
     "altDescription": null
   },
   {
@@ -4694,7 +4694,7 @@
     "skill": "Blood Magic",
     "focus": "Inherited",
     "spellType": "Spell",
-    "description": "While standing on stone or earth, you become more difficult to move. Gain Momentum on cast. Gain Immobilized throuhout the duration of this Spell. Gain a Accurate (+1) per DoS to Athletics (Grapple) Action Checks and BOD Defense against effects that would cause you to become Prone, Sprawled, or lifted from the ground. Grapple Maneuvers that produce these conditions require additional Effect equal to DoS.",
+    "description": "While standing on stone or earth, you become more difficult to move. Gain Momentum on cast. Gain Immobilized throughout the duration of this Spell. Gain a Accurate (+1) per DoS to Athletics (Grapple) Action Checks and BOD Defense against effects that would cause you to become Prone, Sprawled, or lifted from the ground. Grapple Maneuvers that produce these conditions require additional Effect equal to DoS.",
     "altDescription": "-"
   },
   {
@@ -4838,7 +4838,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "You telepathically speak with the spirit of any Fauna. This allows you to engage an animal in a mental conversation. It's reasoning and logic skills are equivalent to a 3 year old human child, and they mostly think in terms of needs and emotions. As it is telepathic language is not a factor. While this does not make them under your command, you may enage them in effects that impact their Morale and Logic (Morale and Logic Conditions), and communicate with them directly, gaining a bonus to Charisma based action checks against them equal to your DoS.",
+    "description": "You telepathically speak with the spirit of any Fauna. This allows you to engage an animal in a mental conversation. It's reasoning and logic skills are equivalent to a 3 year old human child, and they mostly think in terms of needs and emotions. As it is telepathic language is not a factor. While this does not make them under your command, you may engage them in effects that impact their Morale and Logic (Morale and Logic Conditions), and communicate with them directly, gaining a bonus to Charisma based action checks against them equal to your DoS.",
     "altDescription": "-"
   },
   {
@@ -4856,7 +4856,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "You telepathically speak with the spirit of any Creature (Beast). This allows you to engage it in a mental conversation. As it is telepathic language is not a factor. While this does not make them under your command, you may enage them in effects that impact their Morale and Logic (Morale and Logic Conditions), and communicate with them directly, gaining a bonus to Charisma based action checks against them equal to your DoS.",
+    "description": "You telepathically speak with the spirit of any Creature (Beast). This allows you to engage it in a mental conversation. As it is telepathic language is not a factor. While this does not make them under your command, you may engage them in effects that impact their Morale and Logic (Morale and Logic Conditions), and communicate with them directly, gaining a bonus to Charisma based action checks against them equal to your DoS.",
     "altDescription": null
   },
   {
@@ -4928,7 +4928,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "Black pustulent mushrooms begin growing from the ground and release a toxin cloud of spores. Targets in the area are unable to breath (Suffocating), and gain Suffocation Counters equal to DoS, and are Blind while in the affected area. Exiting the affected area allows them to breathe again, and Blind ends on the first Cycle Maintenance after existing the area as a Periodic Effect.",
+    "description": "Black pustulant mushrooms begin growing from the ground and release a toxin cloud of spores. Targets in the area are unable to breath (Suffocating), and gain Suffocation Counters equal to DoS, and are Blind while in the affected area. Exiting the affected area allows them to breathe again, and Blind ends on the first Cycle Maintenance after existing the area as a Periodic Effect.",
     "altDescription": "-"
   },
   {
@@ -5450,7 +5450,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "The blade is encased in a numbus of golden light. This spell can target a single melee weapon. This weapon gains Accurate (+1) per DoS on its next melee attack action. If this is not used within the Scene within which the spell is cast, the spell ends at the conclusion of the scene.",
+    "description": "The blade is encased in a nimbus of golden light. This spell can target a single melee weapon. This weapon gains Accurate (+1) per DoS on its next melee attack action. If this is not used within the Scene within which the spell is cast, the spell ends at the conclusion of the scene.",
     "altDescription": null
   },
   {
@@ -5540,7 +5540,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "A resounding boom and crack erups when the enchanted weapon strikes its foe. Thunderous Strike can be cast on a melee weapon, or fists, that deal Impact Damage. On its next damage check, the enchanted weapon gains +3 damage dice for each DoS scored. If this is not used within the Scene within which the spell is cast, the spell ends at the conclusion of the scene.",
+    "description": "A resounding boom and crack erupts when the enchanted weapon strikes its foe. Thunderous Strike can be cast on a melee weapon, or fists, that deal Impact Damage. On its next damage check, the enchanted weapon gains +3 damage dice for each DoS scored. If this is not used within the Scene within which the spell is cast, the spell ends at the conclusion of the scene.",
     "altDescription": "-"
   },
   {
@@ -5972,11 +5972,11 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "Held items become heavier and heavier. Whatever the target is holding, becomes heavier and heavier. If this is a weapon, they suffer Accurate (-1) per DoS, and the weapon gains Tiring and Unwieldy. Shields provide -1 Cover per DoS. If they are holding anything other than a weapon or a shield, the item's weight is effectively multipled by the DoS. If they were holding a small child, for example, that could go from 40 lbs to 160 lbs at DoS 4.",
+    "description": "Held items become heavier and heavier. Whatever the target is holding, becomes heavier and heavier. If this is a weapon, they suffer Accurate (-1) per DoS, and the weapon gains Tiring and Unwieldy. Shields provide -1 Cover per DoS. If they are holding anything other than a weapon or a shield, the item's weight is effectively multiplied by the DoS. If they were holding a small child, for example, that could go from 40 lbs to 160 lbs at DoS 4.",
     "altDescription": null
   },
   {
-    "spellName": "Willo-Whip",
+    "spellName": "Willow-Whip",
     "complexity": "2",
     "flare": "2",
     "range": "20 yds",
@@ -5990,7 +5990,7 @@
     "skill": "Bonds Magic",
     "focus": "Spirit",
     "spellType": "Spell",
-    "description": "The vegetation coils and stitches together into an uncanny walking man.  This creates a Willo-Whip Auxiliary under the caster's control with 1 Encounter Pool per DoS.",
+    "description": "The vegetation coils and stitches together into an uncanny walking man.  This creates a Willow-Whip Auxiliary under the caster's control with 1 Encounter Pool per DoS.",
     "altDescription": null
   },
   {
