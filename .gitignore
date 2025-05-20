@@ -1,5 +1,6 @@
 /.env.development
 /.env.production
+/codeql-*
 node_modules
 wrangler.toml
 dist
