@@ -47,7 +47,7 @@ export function SpellbooksProvider({ children }: { children: ReactNode }) {
       return parsed.map((spellbook: any) => ({
         ...spellbook,
         // Sort spells alphabetically when loading from localStorage
-        spells: [...(spellbook.spells ?? [])].sort((a, b) => 
+        spells: [...(spellbook.spells || [])].sort((a, b) => 
           a.spellName.localeCompare(b.spellName)
         ),
         createdAt: new Date(spellbook.createdAt),
