@@ -2,6 +2,7 @@ import { Modal, TextInput, Textarea, Button, Group, useMantineColorScheme, Text,
 import { useForm } from '@mantine/form';
 import { useSpellbooks } from '../hooks/useSpellbooks';
 import { notifications } from '@mantine/notifications';
+import { useStyles } from '../hooks/useStyles';
 
 interface NewSpellbookModalProps {
   opened: boolean;
@@ -18,6 +19,7 @@ export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
   const { addSpellbook } = useSpellbooks();
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
+  const { modalStyles } = useStyles();
   
   const form = useForm<FormValues>({
     initialValues: {
@@ -52,17 +54,20 @@ export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
   const handleClose = () => {
     form.reset();
     onClose();
-  };
-  return (
+  };  return (
     <Modal 
       opened={opened} 
       onClose={handleClose} 
       title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">Create New Spellbook</Text>}
       size="md"
-      overlayProps={{
-        backgroundOpacity: 0.65,
-        blur: 4,
-        color: isDark ? 'black' : '#e6d9c2',
+      overlayProps={modalStyles.overlayProps}
+      styles={{
+        header: modalStyles.header,
+        content: modalStyles.content, 
+        close: modalStyles.close,
+        body: {
+          padding: 0,
+        }
       }}
     >
       <Paper p="md" withBorder={false} bg={isDark ? 'dark.6' : 'gray.0'}>

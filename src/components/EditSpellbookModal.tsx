@@ -3,6 +3,7 @@ import { useForm } from '@mantine/form';
 import { useSpellbooks } from '../hooks/useSpellbooks';
 import { Spellbook } from '../context/SpellbooksContext';
 import { notifications } from '@mantine/notifications';
+import { useStyles } from '../hooks/useStyles';
 
 interface EditSpellbookModalProps {
   spellbook: Spellbook | null;
@@ -20,6 +21,7 @@ export function EditSpellbookModal({ spellbook, opened, onClose }: EditSpellbook
   const { updateSpellbook } = useSpellbooks();
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
+  const { modalStyles } = useStyles();
   
   const form = useForm<FormValues>({
     initialValues: {
@@ -74,16 +76,17 @@ export function EditSpellbookModal({ spellbook, opened, onClose }: EditSpellbook
   if (!spellbook) {
     return null;
   }
-
   return (
     <Modal 
       opened={opened} 
       onClose={handleClose} 
       title={<Text fw={700} c={isDark ? 'gray.1' : 'dark.8'}>Edit Spellbook</Text>}
-      overlayProps={{
-        backgroundOpacity: 0.65,
-        blur: 3,
-        color: isDark ? 'dark.8' : '#e6d9c2',
+      overlayProps={modalStyles.overlayProps}
+      styles={{
+        header: modalStyles.header,
+        content: modalStyles.content, 
+        close: modalStyles.close,
+        body: modalStyles.body
       }}
     >
       <form onSubmit={form.onSubmit(handleSubmit)}>

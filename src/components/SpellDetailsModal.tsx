@@ -1,7 +1,6 @@
 import { Modal, Text, Grid, Badge, Group, Stack, Paper, useMantineColorScheme } from '@mantine/core';
 import { Spell } from '../models/spells.zod';
-import { useTheme } from '../context/ThemeContext';
-import '../styles/modal.css';
+import { useStyles } from '../hooks/useStyles';
 
 interface SpellDetailsModalProps {
   spell: Spell | null;
@@ -10,61 +9,36 @@ interface SpellDetailsModalProps {
 }
 
 export function SpellDetailsModal({ spell, opened, onClose }: SpellDetailsModalProps) {
-  const { colors } = useTheme();
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
-  
+  const { modalStyles, textStyles } = useStyles();
+
   if (!spell) {
     return null;
   }
-  
-  // Apply theme settings
-  const textStyles = {
-    fontSize: `${colors.fontScale}rem`
-  };
+  // Using textStyles directly from StyleService - font scale is already integrated
 
-  return (    <div style={{ 
-      position: 'relative', 
-      zIndex: 1000, 
-      '--modal-bg-color': isDark ? '#1A1B1E' : 'white',
-      '--modal-text-color': isDark ? 'white' : 'black',
-    } as React.CSSProperties}>
-      <Modal 
-        opened={opened} 
-        onClose={onClose} 
-        title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">{spell.spellName}</Text>}
-        size="lg"
-        overlayProps={{
-          backgroundOpacity: 0.65,
-          blur: 4,
-          color: isDark ? 'black' : '#e6d9c2',
-        }}
-        className="spell-details-modal"
-        data-dark={isDark ? "true" : "false"}
-        styles={{
-          header: { 
-            backgroundColor: 'var(--modal-bg-color)',
-            color: 'var(--modal-text-color)',
-            borderBottom: isDark ? '1px solid #2C2E33' : 'inherit',
-          },
-          content: { 
-            backgroundColor: 'var(--modal-bg-color)',
-          },
-          close: {
-            color: 'var(--modal-text-color)',
-          },
-          body: {
-            padding: 0,
-          },
-        }}
+  return (
+    <Modal
+      opened={opened}
+      onClose={onClose}
+      title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">{spell.spellName}</Text>}
+      size="lg"
+      overlayProps={modalStyles.overlayProps}
+      styles={{
+        header: modalStyles.header,
+        content: modalStyles.content,
+        close: modalStyles.close,
+        body: {
+          padding: 0,
+        },
+      }}
     >
-      <Paper 
-        p="md" 
-        withBorder={false} 
-        bg={isDark ? '#1A1B1E' : 'white'}
-        style={{ backgroundColor: isDark ? '#1A1B1E' : 'white' }}
-        data-dark={isDark ? "true" : "false"}
-        className={isDark ? 'dark-modal-paper' : ''}>
+      <Paper
+        p="md"
+        withBorder={false}
+        bg={isDark ? 'dark.6' : 'white'}
+      >
         <Stack gap="md">
           <Group>
             <Badge color="blue" size="lg">{spell.spellClass}</Badge>
@@ -127,7 +101,7 @@ export function SpellDetailsModal({ spell, opened, onClose }: SpellDetailsModalP
             </Stack>
           )}
         </Stack>
-      </Paper>    </Modal>
-    </div>
+      </Paper>
+    </Modal>
   );
 }

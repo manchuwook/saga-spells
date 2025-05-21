@@ -3,7 +3,7 @@ import { useSpellbooks } from '../hooks/useSpellbooks';
 import { Spell } from '../models/spells.zod';
 import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
-import '../styles/modal.css';
+import { useStyles } from '../hooks/useStyles';
 
 interface AddToSpellbookModalProps {
   readonly spell: Spell | null;
@@ -27,13 +27,14 @@ function ModalContent({
   readonly handleAddToSpellbook: () => void;
   readonly isDark: boolean;
 }) {
+  const { inputStyles } = useStyles();
+  
   return (
     <Paper 
       p="md" 
       withBorder={false} 
-      bg={isDark ? '#1A1B1E' : 'gray.0'}
-      className={isDark ? 'dark-modal-paper' : ''}
-      style={{ borderRadius: 0, height: '100%', margin: 0 }}
+      bg={isDark ? 'dark.6' : 'gray.0'}
+      style={{ height: '100%', margin: 0 }}
     >
       <Text mb="md" c={isDark ? 'gray.2' : 'dark.7'}>
         Add <strong>{spell.spellName}</strong> to one of your spellbooks:
@@ -47,13 +48,9 @@ function ModalContent({
         clearable
         mb="md"
         styles={{
-          input: {
-            backgroundColor: isDark ? '#25262B' : 'white',
-            borderColor: isDark ? '#373A40' : 'var(--mantine-color-gray-4)',
-            color: isDark ? 'white' : 'inherit',
-          },
+          input: inputStyles.input,
           dropdown: {
-            backgroundColor: isDark ? '#25262B' : 'white',
+            backgroundColor: isDark ? 'var(--mantine-color-dark-5)' : 'white',
           }
         }}
       />
@@ -79,6 +76,7 @@ export function AddToSpellbookModal({ spell, opened, onClose }: AddToSpellbookMo
   const [selectedSpellbookId, setSelectedSpellbookId] = useState<string | null>(null);
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
+  const { modalStyles } = useStyles();
 
   if (!spell) return null;
 
@@ -110,44 +108,22 @@ export function AddToSpellbookModal({ spell, opened, onClose }: AddToSpellbookMo
     setSelectedSpellbookId(null);
     onClose();
   };
-  // Theme-related styling
-  const modalClass = isDark ? 'dark-mode-modal' : '';
-  
+
   return (
     <Modal 
       opened={opened} 
       onClose={handleClose} 
       title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">Add to Spellbook</Text>}
       size="md"
-      overlayProps={{
-        backgroundOpacity: 0.65,
-        blur: 4,
-        color: isDark ? 'black' : '#e6d9c2',
-      }}
-      className={`spell-details-modal ${modalClass}`}
-      data-dark={isDark ? "true" : "false"}
+      overlayProps={modalStyles.overlayProps}
       styles={{
-        header: { 
-          backgroundColor: isDark ? '#1A1B1E' : 'white',
-          color: isDark ? 'white' : 'black',
-          borderBottom: isDark ? '1px solid #2C2E33' : 'inherit',
-        },
-        content: { 
-          backgroundColor: isDark ? '#1A1B1E' : 'white',
-          padding: 0,
-        },
+        header: modalStyles.header,
+        content: modalStyles.content, 
+        close: modalStyles.close,
         body: {
           padding: 0,
-        },
-        inner: {
-          padding: 0,
-        },
-        close: {
-          color: isDark ? 'white' : 'black',
         }
       }}
-      radius={0}
-      padding={0}
     >
       <ModalContent
         spell={spell}
