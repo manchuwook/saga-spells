@@ -1,4 +1,4 @@
-import { MantineColorScheme, MantineTheme, Text, createTheme, mergeMantineTheme } from '@mantine/core';
+import { MantineColorScheme, MantineTheme, createTheme, mergeMantineTheme } from '@mantine/core';
 import { ThemeColors } from '../context/ThemeContext';
 
 // Helper type for theme context
@@ -391,11 +391,10 @@ export class StyleService {
             radius: this.mantineTheme.radius.sm,
             size: 'sm',
         };
-    }
-
-    /**
+    }    /**
      * Get tab styles with consistent theming
-     */    public getTabsStyles() {
+     */
+    public getTabsStyles() {
         // Get the theme's Tabs styles or fallback to our custom styles if not defined
         const themeTabsStyles = this.mantineTheme.components?.Tabs?.styles;
 
@@ -403,23 +402,26 @@ export class StyleService {
             // If theme has Tabs styles defined, use those
             return themeTabsStyles(this.mantineTheme as unknown as ThemeWithColorScheme);
         }
-
+        
         // Otherwise return our custom styles
         return {
             tab: {
-                color: this.isDark ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-dark-6)',
+                color: this.isDark ? 'white' : 'black', // Simple white/black text for maximum contrast
                 backgroundColor: this.isDark ? 'var(--mantine-color-dark-7)' : 'var(--mantine-color-white)',
-                '&[data-active="true"]': {
-                    color: this.isDark
-                        ? `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-4)`
-                        : `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-6)`,
+                '&:hover': {
+                    backgroundColor: this.isDark ? 'var(--mantine-color-dark-6)' : 'var(--mantine-color-gray-1)',
+                },                '&[data-active="true"]': {
+                    color: this.isDark ? 'white' : 'black', // Keep text white in dark mode, black in light mode
                     borderColor: this.isDark
-                        ? `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-4)`
+                        ? `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-3)` // Matching border color
                         : `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-6)`,
+                    fontWeight: 600, // Make active tab text bold
+                    backgroundColor: this.isDark ? 'var(--mantine-color-dark-6)' : 'var(--mantine-color-white)',
                 },
             },
             tabsList: {
-                borderBottomColor: this.isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-3)',
+                borderBottomColor: this.isDark ? 'var(--mantine-color-dark-3)' : 'var(--mantine-color-gray-3)',
+                borderBottomWidth: this.isDark ? '2px' : '1px', // Thicker border in dark mode for better visibility
             },
             panel: {
                 color: this.isDark ? 'var(--mantine-color-white)' : 'var(--mantine-color-dark-8)',

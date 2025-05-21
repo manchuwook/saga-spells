@@ -45,14 +45,14 @@ export default function SpellbookDetailPage() {
   if (!spellbook) {
     return (
       <Container size="md" py="xl">        <Paper p="xl" withBorder radius="md" bg={isDark ? 'dark.6' : 'white'}>
-          <Title order={2} ta="center" mb="md" c={isDark ? 'white' : 'dark.8'}>Spellbook Not Found</Title>
-          <Text ta="center" mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>The spellbook you're looking for doesn't exist or has been deleted.</Text>
-          <Group justify="center">
-            <Button onClick={() => navigate('/spellbooks')} color={isDark ? 'blue.4' : 'blue.6'}>
-              Back to Spellbooks
-            </Button>
-          </Group>
-        </Paper>
+        <Title order={2} ta="center" mb="md" c={isDark ? 'white' : 'dark.8'}>Spellbook Not Found</Title>
+        <Text ta="center" mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>The spellbook you're looking for doesn't exist or has been deleted.</Text>
+        <Group justify="center">
+          <Button onClick={() => navigate('/spellbooks')} color={isDark ? 'blue.4' : 'blue.6'}>
+            Back to Spellbooks
+          </Button>
+        </Group>
+      </Paper>
       </Container>
     );
   }
@@ -150,26 +150,26 @@ export default function SpellbookDetailPage() {
       <Tabs
         value={activeTab}
         onChange={setActiveTab}
-        styles={styleService.getTabsStyles()}
-      >        <Tabs.List mb="xl" bg={isDark ? 'dark.7' : 'white'}>
-          <Tabs.Tab value="spells" leftSection={<IconSearch size={16} />} c={isDark ? 'gray.2' : undefined}>
+        styles={styleService.getTabsStyles()}      >
+        <Tabs.List mb="xl" bg={isDark ? 'dark.6' : 'white'} style={isDark ? { borderRadius: '4px' } : undefined}>
+          <Tabs.Tab value="spells" style={{ color: isDark ? 'white' : 'black' }} leftSection={<IconSearch size={16} />}>
             Spellbook Contents ({spellbook.spells.length})
           </Tabs.Tab>
-          <Tabs.Tab value="add-spells" leftSection={<IconPlus size={16} />} c={isDark ? 'gray.2' : undefined}>
+          <Tabs.Tab value="add-spells" style={{ color: isDark ? 'white' : 'black' }} leftSection={<IconPlus size={16} />}>
             Add Spells
           </Tabs.Tab>
         </Tabs.List>
 
         <Tabs.Panel value="spells">
-          {spellbook.spells.length === 0 ? (            <Card withBorder p="xl" ta="center" bg={isDark ? 'dark.6' : 'white'}>
-              <Text size="lg" fw={500} mb="md" c={isDark ? 'gray.1' : 'dark.8'}>
-                This spellbook is empty
-              </Text>
-              <Text mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>
-                Go to the "Add Spells" tab to start adding spells to this spellbook.
-              </Text>
-              <Button onClick={() => setActiveTab('add-spells')} color={isDark ? 'blue.4' : 'blue.6'}>Add Spells</Button>
-            </Card>
+          {spellbook.spells.length === 0 ? (<Card withBorder p="xl" ta="center" bg={isDark ? 'dark.6' : 'white'}>
+            <Text size="lg" fw={500} mb="md" c={isDark ? 'gray.1' : 'dark.8'}>
+              This spellbook is empty
+            </Text>
+            <Text mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>
+              Go to the "Add Spells" tab to start adding spells to this spellbook.
+            </Text>
+            <Button onClick={() => setActiveTab('add-spells')} color={isDark ? 'blue.4' : 'blue.6'}>Add Spells</Button>
+          </Card>
           ) : (
             <SimpleGrid
               cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
