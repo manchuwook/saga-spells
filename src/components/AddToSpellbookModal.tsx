@@ -79,12 +79,13 @@ export function AddToSpellbookModal({ spell, opened, onClose }: AddToSpellbookMo
   const { modalStyles } = useStyles();
 
   if (!spell) return null;
-
-  // Convert spellbooks to options for Select
-  const spellbookOptions = spellbooks.map(sb => ({
-    value: sb.id,
-    label: `${sb.name} (${sb.character})`,
-  }));
+  // Convert spellbooks to options for Select and sort alphabetically
+  const spellbookOptions = spellbooks
+    .map(sb => ({
+      value: sb.id,
+      label: `${sb.name} (${sb.character})`,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   // Handle adding spell to spellbook
   const handleAddToSpellbook = () => {

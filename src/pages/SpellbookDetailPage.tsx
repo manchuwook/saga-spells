@@ -111,11 +111,10 @@ export default function SpellbookDetailPage() {
       // Removed auto-switching to spells tab to keep user on add-spells tab
     }
   };
-
-  // Filter out spells that are already in the spellbook
+  // Filter out spells that are already in the spellbook and sort alphabetically
   const availableSpells = allSpells?.filter(
     spell => !spellbook.spells.some(s => s.spellName === spell.spellName)
-  ) || [];
+  )?.sort((a, b) => a.spellName.localeCompare(b.spellName)) || [];
 
   return (
     <Container size="xl" py="xl">
@@ -170,19 +169,21 @@ export default function SpellbookDetailPage() {
             </Text>
             <Button onClick={() => setActiveTab('add-spells')} color={isDark ? 'blue.4' : 'blue.6'}>Add Spells</Button>
           </Card>
-          ) : (
-            <SimpleGrid
+          ) : (            <SimpleGrid
               cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
               spacing="md"
             >
-              {spellbook.spells.map((spell) => (
-                <SpellCard
-                  key={spell.spellName}
-                  spell={spell}
-                  onViewDetails={handleViewDetails}
-                  onRemoveFromSpellbook={handleRemoveSpell}
-                  showRemoveButton
-                />
+              {/* Display spells alphabetically by name */}
+              {[...spellbook.spells]
+                .sort((a, b) => a.spellName.localeCompare(b.spellName))
+                .map((spell) => (
+                  <SpellCard
+                    key={spell.spellName}
+                    spell={spell}
+                    onViewDetails={handleViewDetails}
+                    onRemoveFromSpellbook={handleRemoveSpell}
+                    showRemoveButton
+                  />
               ))}
             </SimpleGrid>
           )}
@@ -195,20 +196,20 @@ export default function SpellbookDetailPage() {
               onFilterChange={setFilteredSpells}
             />            <Text c={isDark ? 'white' : 'dark.7'} fw={isDark ? 500 : 400}>
               {filteredSpells.length} available {filteredSpells.length === 1 ? 'spell' : 'spells'}
-            </Text>
-
-            <SimpleGrid
+            </Text>            <SimpleGrid
               cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
               spacing="md"
             >
-              {filteredSpells.map((spell) => (
-                <SpellCard
-                  key={spell.spellName}
-                  spell={spell}
-                  onViewDetails={handleViewDetails}
-                  onAddToSpellbook={handleAddSpell}
-                />
-              ))}
+              {[...filteredSpells]
+                .sort((a, b) => a.spellName.localeCompare(b.spellName))
+                .map((spell) => (
+                  <SpellCard
+                    key={spell.spellName}
+                    spell={spell}
+                    onViewDetails={handleViewDetails}
+                    onAddToSpellbook={handleAddSpell}
+                  />
+                ))}
             </SimpleGrid>
           </Stack>
         </Tabs.Panel>

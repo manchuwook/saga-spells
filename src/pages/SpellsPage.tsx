@@ -33,7 +33,8 @@ export default function SpellsPage() {
   // Initialize filtered spells when data is loaded
   useEffect(() => {
     if (spells) {
-      setFilteredSpells(spells);
+      // Sort spells alphabetically by name
+      setFilteredSpells([...spells].sort((a, b) => a.spellName.localeCompare(b.spellName)));
     }
   }, [spells]);
 
@@ -45,6 +46,12 @@ export default function SpellsPage() {
   const handleAddToSpellbook = (spell: Spell) => {
     setSelectedSpell(spell);
     openSpellbookModal();
+  };
+  // Custom filter handler to ensure alphabetical sorting after filtering
+  const handleFilterChange = (filtered: Spell[]) => {
+    // Create a new sorted array rather than modifying the input
+    const sortedSpells = [...filtered].sort((a, b) => a.spellName.localeCompare(b.spellName));
+    setFilteredSpells(sortedSpells);
   };
 
   if (isLoading) {
@@ -79,7 +86,7 @@ export default function SpellsPage() {
       
       <SpellsFilter 
         spells={spells || []} 
-        onFilterChange={setFilteredSpells} 
+        onFilterChange={handleFilterChange} 
       />
       
       <Text mt="md" mb="md" c={isDark ? 'gray.3' : 'dark.7'}>

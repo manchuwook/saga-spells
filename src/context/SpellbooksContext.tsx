@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from 'react';
+import { createContext, ReactNode, useMemo } from 'react';
 import { useLocalStorage } from '@mantine/hooks';
 import { Spell } from '../models/spells.zod';
 
@@ -46,6 +46,10 @@ export function SpellbooksProvider({ children }: { children: ReactNode }) {
       const parsed = JSON.parse(value ?? '[]');
       return parsed.map((spellbook: any) => ({
         ...spellbook,
+        // Sort spells alphabetically when loading from localStorage
+        spells: [...(spellbook.spells ?? [])].sort((a, b) => 
+          a.spellName.localeCompare(b.spellName)
+        ),
         createdAt: new Date(spellbook.createdAt),
         updatedAt: new Date(spellbook.updatedAt),
       }));
@@ -85,7 +89,6 @@ export function SpellbooksProvider({ children }: { children: ReactNode }) {
   const getSpellbook = (id: string) => {
     return spellbooks.find((spellbook) => spellbook.id === id);
   };
-
   const addSpellToSpellbook = (spellbookId: string, spell: Spell) => {
     setSpellbooks(
       spellbooks.map((spellbook) => {
@@ -99,9 +102,14 @@ export function SpellbooksProvider({ children }: { children: ReactNode }) {
             return spellbook; // Don't add duplicate spells
           }
           
+          // Add spell and sort alphabetically by spell name
+          const updatedSpells = [...spellbook.spells, spell].sort((a, b) => 
+            a.spellName.localeCompare(b.spellName)
+          );
+          
           return {
             ...spellbook,
-            spells: [...spellbook.spells, spell],
+            spells: updatedSpells,
             updatedAt: new Date(),
           };
         }
@@ -109,14 +117,18 @@ export function SpellbooksProvider({ children }: { children: ReactNode }) {
       })
     );
   };
-
   const removeSpellFromSpellbook = (spellbookId: string, spellName: string) => {
     setSpellbooks(
       spellbooks.map((spellbook) => {
         if (spellbook.id === spellbookId) {
+          // Filter out the spell to remove and keep the alphabetical order
+          const updatedSpells = spellbook.spells
+            .filter((spell) => spell.spellName !== spellName)
+            .sort((a, b) => a.spellName.localeCompare(b.spellName));
+            
           return {
             ...spellbook,
-            spells: spellbook.spells.filter((spell) => spell.spellName !== spellName),
+            spells: updatedSpells,
             updatedAt: new Date(),
           };
         }
@@ -124,19 +136,19 @@ export function SpellbooksProvider({ children }: { children: ReactNode }) {
       })
     );
   };
+  // Use useMemo to prevent unnecessary re-renders
+  const contextValue = useMemo(() => ({
+    spellbooks,
+    addSpellbook,
+    updateSpellbook,
+    deleteSpellbook,
+    getSpellbook,
+    addSpellToSpellbook,
+    removeSpellFromSpellbook,
+  }), [spellbooks]);
 
   return (
-    <SpellbooksContext.Provider
-      value={{
-        spellbooks,
-        addSpellbook,
-        updateSpellbook,
-        deleteSpellbook,
-        getSpellbook,
-        addSpellToSpellbook,
-        removeSpellFromSpellbook,
-      }}
-    >
+    <SpellbooksContext.Provider value={contextValue}>
       {children}
     </SpellbooksContext.Provider>
   );

@@ -17,7 +17,12 @@ async function fetchSpellTags(): Promise<SpellTagsData> {
     throw new Error('Failed to fetch spell tags');
   }
   
-  return await response.json();
+  const data = await response.json();
+  
+  // Sort tags alphabetically by name
+  data.tags = data.tags.sort((a: SpellTag, b: SpellTag) => a.name.localeCompare(b.name));
+  
+  return data;
 }
 
 export function useSpellTags() {

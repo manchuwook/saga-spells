@@ -8,7 +8,10 @@ async function fetchSpells(): Promise<Spell[]> {
   }
   
   const data = await response.json();
-  return validateSpells(data);
+  const validatedSpells = validateSpells(data);
+  
+  // Sort spells alphabetically by name
+  return validatedSpells.sort((a, b) => a.spellName.localeCompare(b.spellName));
 }
 
 export function useSpells() {
