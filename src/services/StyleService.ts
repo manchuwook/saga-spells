@@ -34,14 +34,21 @@ export class StyleService {
                 lg: '6px',
                 xl: '8px'
             },
+            fontSizes: {
+                xs: '12px',
+                sm: '14px',
+                md: '16px',
+                lg: '18px',
+                xl: '20px'
+            },
             components: {
                 Modal: {
                     styles: (theme: ThemeWithColorScheme) => ({
                         header: {
-                            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
+                            backgroundColor: theme.colorScheme === 'dark' ? theme.colors?.dark?.[6] || '#1A1B1E' : theme.white || 'white',
                         },
                         body: {
-                            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
+                            backgroundColor: theme.colorScheme === 'dark' ? theme.colors?.dark?.[6] || '#1A1B1E' : theme.white || 'white',
                         },
                     }),
                 },
@@ -88,113 +95,171 @@ export class StyleService {
     /**
      * Update Mantine theme based on custom theme settings
      * This method creates a new Mantine theme that incorporates our custom settings
-     */
-    private updateMantineTheme(): void {
-        // Extract primary color name (e.g., 'blue' from 'blue.6')
-        const primaryColorName = this.customTheme.primaryColor.split('.')[0];
+     */    private updateMantineTheme(): void {        // Safety check - if mantineTheme is not properly initialized, don't update
+        if (!this.mantineTheme?.colors) {
+            console.warn('Cannot update Mantine theme: theme or theme.colors is undefined');
+            return;
+        }        try {
+            // Default colors if customTheme is undefined
+            if (!this.customTheme) {
+                this.customTheme = {
+                    primaryColor: 'blue',
+                    accentColor: 'blue',
+                    borderRadius: 4,
+                    fontScale: 1,
+                    imageEnabled: false,
+                };
+            }
+            
+            // For Mantine, primaryColor must be a key in the theme's colors object, not a color with shade
+            // Extract just the color part (e.g., 'blue' from 'blue.6')
+            let primaryColorName = 'blue'; // Default
+            if (this.customTheme.primaryColor) {
+                // If it contains a dot, take just the part before the dot
+                if (this.customTheme.primaryColor.includes('.')) {
+                    primaryColorName = this.customTheme.primaryColor.split('.')[0];
+                } else {
+                    primaryColorName = this.customTheme.primaryColor;
+                }
+            }
+            
+            // Make sure the color exists in Mantine's colors
+            const mantineColors = ['red', 'pink', 'grape', 'violet', 'indigo', 'blue', 
+                 'cyan', 'teal', 'green', 'lime', 'yellow', 'orange', 'gray', 'dark'];
+            if (!primaryColorName || !mantineColors.includes(primaryColorName)) {
+                primaryColorName = 'blue'; // Fallback to blue if not a valid Mantine color
+            }
 
-        // Extract shade value or default to 6
-        const primaryShadeValue = parseInt(this.customTheme.primaryColor.split('.')[1] || '6');
-        const safeShade = (primaryShadeValue >= 1 && primaryShadeValue <= 9) ?
-            primaryShadeValue as MantineColorShadeType :
-            6 as MantineColorShadeType;
+            // Extract shade value or default to 6
+            const primaryShadeValue = parseInt(this.customTheme.primaryColor?.split('.')[1] || '6');
+            const safeShade = (primaryShadeValue >= 1 && primaryShadeValue <= 9) ?
+                primaryShadeValue as MantineColorShadeType :
+                6 as MantineColorShadeType;
 
-        // Set radius values based on our custom borderRadius
-        const radiusXs = `${this.customTheme.borderRadius * 0.5}px`;
-        const radiusSm = `${this.customTheme.borderRadius * 0.75}px`;
-        const radiusMd = `${this.customTheme.borderRadius}px`;
-        const radiusLg = `${this.customTheme.borderRadius * 1.5}px`;
-        const radiusXl = `${this.customTheme.borderRadius * 2}px`;
+            // Set default border radius if not provided
+            const borderRadius = this.customTheme?.borderRadius ?? 4;
+            const fontScale = this.customTheme?.fontScale ?? 1;
 
-        // Set font sizes with scale
-        const fontSizeXs = `${12 * this.customTheme.fontScale}px`;
-        const fontSizeSm = `${14 * this.customTheme.fontScale}px`;
-        const fontSizeMd = `${16 * this.customTheme.fontScale}px`;
-        const fontSizeLg = `${18 * this.customTheme.fontScale}px`;
-        const fontSizeXl = `${20 * this.customTheme.fontScale}px`;
+            // Set radius values based on our custom borderRadius
+            const radiusXs = `${borderRadius * 0.5}px`;
+            const radiusSm = `${borderRadius * 0.75}px`;
+            const radiusMd = `${borderRadius}px`;
+            const radiusLg = `${borderRadius * 1.5}px`;
+            const radiusXl = `${borderRadius * 2}px`;
 
-        // Create custom theme extensions
-        const customExtensions = createTheme({
-            primaryColor: primaryColorName,
-            primaryShade: {
-                light: safeShade,
-                dark: safeShade
-            },
-            radius: {
-                xs: radiusXs,
-                sm: radiusSm,
-                md: radiusMd,
-                lg: radiusLg,
-                xl: radiusXl
-            },
-            fontSizes: {
-                xs: fontSizeXs,
-                sm: fontSizeSm,
-                md: fontSizeMd,
-                lg: fontSizeLg,
-                xl: fontSizeXl
-            },
-            components: {
-                // Card styling
-                Card: {
-                    styles: (theme: ThemeWithColorScheme) => ({
-                        root: {
-                            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : 'white',
-                            borderColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3],
-                        },
-                    }),
+            // Set font sizes with scale
+            const fontSizeXs = `${12 * fontScale}px`;
+            const fontSizeSm = `${14 * fontScale}px`;
+            const fontSizeMd = `${16 * fontScale}px`;
+            const fontSizeLg = `${18 * fontScale}px`;
+            const fontSizeXl = `${20 * fontScale}px`;            // Create custom theme extensions
+            // Make sure primaryColorName is one of the valid Mantine color names, not a custom format with a dot
+            const safeColorName = primaryColorName.includes('.') ? primaryColorName.split('.')[0] : primaryColorName;
+            
+            const customExtensions = createTheme({
+                primaryColor: safeColorName,
+                primaryShade: {
+                    light: safeShade,
+                    dark: safeShade
                 },
-                // Modal styling
-                Modal: {
-                    styles: (theme: ThemeWithColorScheme) => ({
-                        header: {
-                            backgroundColor: theme.colorScheme === 'dark' ? '#1A1B1E' : 'white',
-                            color: theme.colorScheme === 'dark' ? 'white' : 'black',
-                            borderBottom: theme.colorScheme === 'dark' ? '1px solid #2C2E33' : 'inherit',
-                        },
-                        content: {
-                            backgroundColor: theme.colorScheme === 'dark' ? '#1A1B1E' : 'white',
-                        },
-                        body: {
-                            backgroundColor: theme.colorScheme === 'dark' ? '#1A1B1E' : 'white',
-                        },
-                        close: {
-                            color: theme.colorScheme === 'dark' ? 'white' : 'black',
-                        },
-                    }),
+                radius: {
+                    xs: radiusXs,
+                    sm: radiusSm,
+                    md: radiusMd,
+                    lg: radiusLg,
+                    xl: radiusXl
                 },
-                // Text input styling
-                TextInput: {
-                    styles: (theme: ThemeWithColorScheme) => ({
-                        input: {
-                            backgroundColor: theme.colorScheme === 'dark' ? 'var(--mantine-color-dark-5)' : 'white',
-                            borderColor: theme.colorScheme === 'dark' ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-                            fontSize: `${this.customTheme.fontScale}rem`,
-                        },
-                        label: {
-                            color: theme.colorScheme === 'dark' ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-dark-8)',
-                            fontSize: `${this.customTheme.fontScale}rem`,
-                        }
-                    }),
+                fontSizes: {
+                    xs: fontSizeXs,
+                    sm: fontSizeSm,
+                    md: fontSizeMd,
+                    lg: fontSizeLg,
+                    xl: fontSizeXl
                 },
-                // Tabs styling
-                Tabs: {
-                    styles: (theme: ThemeWithColorScheme) => ({
-                        tab: {
-                            color: theme.colorScheme === 'dark' ? 'var(--mantine-color-gray-4)' : 'var(--mantine-color-dark-6)',
-                            '&[dataActive="true"]': {
-                                color: theme.colorScheme === 'dark'
-                                    ? `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-4)`
-                                    : `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-6)`,
+                components: {
+                    // Card styling
+                    Card: {
+                        styles: (theme: ThemeWithColorScheme) => ({
+                            root: {
+                                backgroundColor: theme.colorScheme === 'dark' ? theme.colors?.dark?.[6] || '#1A1B1E' : 'white',
+                                borderColor: theme.colorScheme === 'dark' ? theme.colors?.dark?.[4] || '#373A40' : theme.colors?.gray?.[3] || '#dee2e6',
                             },
-                        },
-                    }),
+                        }),
+                    },
+                    // Modal styling
+                    Modal: {
+                        styles: (theme: ThemeWithColorScheme) => ({
+                            header: {
+                                backgroundColor: theme.colorScheme === 'dark' ? '#1A1B1E' : 'white',
+                                color: theme.colorScheme === 'dark' ? 'white' : 'black',
+                                borderBottom: theme.colorScheme === 'dark' ? '1px solid #2C2E33' : 'inherit',
+                            },
+                            content: {
+                                backgroundColor: theme.colorScheme === 'dark' ? '#1A1B1E' : 'white',
+                            },
+                            body: {
+                                backgroundColor: theme.colorScheme === 'dark' ? '#1A1B1E' : 'white',
+                            },
+                            close: {
+                                color: theme.colorScheme === 'dark' ? 'white' : 'black',
+                            },
+                        }),
+                    },
+                    // Text input styling
+                    TextInput: {
+                        styles: (theme: ThemeWithColorScheme) => ({
+                            input: {
+                                backgroundColor: theme.colorScheme === 'dark' ? 'var(--mantine-color-dark-5)' : 'white',
+                                borderColor: theme.colorScheme === 'dark' ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
+                                fontSize: `${this.customTheme.fontScale}rem`,
+                            },
+                            label: {
+                                color: theme.colorScheme === 'dark' ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-dark-8)',
+                                fontSize: `${this.customTheme.fontScale}rem`,
+                            }
+                        }),
+                    },                    // Tabs styling
+                    Tabs: {
+                        styles: (theme: ThemeWithColorScheme) => ({
+                            tab: {
+                                color: theme.colorScheme === 'dark' ? 'var(--mantine-color-gray-4)' : 'var(--mantine-color-dark-6)',
+                                '&[data-active="true"]': {
+                                    color: theme.colorScheme === 'dark'
+                                        ? `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-4)`
+                                        : `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-6)`,
+                                },
+                            },
+                        }),
+                    },
                 },
-            },
-        });
+            });
 
-        // Merge the base theme with our custom extensions
-        this.mantineTheme = mergeMantineTheme(this.mantineTheme, customExtensions as MantineTheme);
+            // Merge the base theme with our custom extensions
+            this.mantineTheme = mergeMantineTheme(this.mantineTheme, customExtensions as MantineTheme);
+        } catch (error) {
+            console.error('Error updating Mantine theme:', error);
+            // If there's an error updating the theme, ensure we still have a usable theme
+            if (!this.mantineTheme.fontSizes || !this.mantineTheme.radius) {
+                // Use a minimal theme to prevent errors
+                this.mantineTheme = {
+                    ...this.mantineTheme,
+                    fontSizes: {
+                        xs: '12px',
+                        sm: '14px',
+                        md: '16px',
+                        lg: '18px',
+                        xl: '20px'
+                    },
+                    radius: {
+                        xs: '2px',
+                        sm: '3px',
+                        md: '4px',
+                        lg: '6px',
+                        xl: '8px'
+                    }
+                };
+            }
+        }
     }
 
     /**
@@ -243,7 +308,7 @@ export class StyleService {
      */
     public getCardStyles() {
         return {
-            radius: this.mantineTheme.radius.md,
+            radius: this.mantineTheme.radius?.md || '4px',
             padding: this.mantineTheme.spacing?.md,
             withBorder: true,
             shadow: "sm",
@@ -256,19 +321,29 @@ export class StyleService {
     public getShellStyles() {
         const spacingXs = this.mantineTheme.spacing?.xs;
         const spacingSm = this.mantineTheme.spacing?.sm;
-
-        // Helper function to convert px string to rem
-        const pxToRem = (pxValue: string): string => {
-            const numValue = Number(pxValue.replace('px', ''));
+          // Helper function to convert px string or number to rem
+        const pxToRem = (pxValue: string | number): string => {
+            // If pxValue is already a number, use it directly
+            if (typeof pxValue === 'number') {
+                return `${pxValue / 16}rem`;
+            }
+            // Otherwise parse it as a string
+            const numValue = Number(String(pxValue || '').replace('px', ''));
             return isNaN(numValue) ? '0.875rem' : `${numValue / 16}rem`;
-        };
-
-        // Helper function to get primary color with shade
+        };        // Helper function to get primary color with shade
         const getPrimaryColorWithShade = () => {
-            const colorParts = this.customTheme.primaryColor.split('.');
-            const colorName = colorParts[0];
-            const shade = colorParts[1] || '5';
-            return `var(--mantine-color-${colorName}-${shade})`;
+            try {
+                if (!this.customTheme?.primaryColor) {
+                    return 'var(--mantine-color-blue-5)'; // Default fallback
+                }
+                const colorParts = this.customTheme.primaryColor.split('.');
+                const colorName = colorParts[0] || 'blue';
+                const shade = colorParts[1] || '5';
+                return `var(--mantine-color-${colorName}-${shade})`;
+            } catch (error) {
+                console.warn('Error in getPrimaryColorWithShade:', error);
+                return 'var(--mantine-color-blue-5)'; // Default fallback
+            }
         };
 
         return {
@@ -280,14 +355,14 @@ export class StyleService {
                 backgroundColor: this.isDark ? 'var(--mantine-color-dark-7)' : 'var(--mantine-color-gray-0)',
             },
             navbar: {
-                borderRadius: `0 ${this.mantineTheme.radius.md} ${this.mantineTheme.radius.md} 0`,
+                borderRadius: `0 ${this.mantineTheme.radius?.md || '4px'} ${this.mantineTheme.radius?.md || '4px'} 0`,
                 backgroundColor: this.isDark ? 'var(--mantine-color-dark-6)' : 'var(--mantine-color-gray-1)',
                 borderRight: `1px solid ${this.isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-3)'}`,
             },
             navButton: {
-                borderRadius: this.mantineTheme.radius.sm,
+                borderRadius: this.mantineTheme.radius?.sm || '3px',
                 padding: `${spacingXs}px ${spacingSm}px`,
-                fontSize: pxToRem(this.mantineTheme.fontSizes.sm || '14px'), // Default to 14px if undefined
+                fontSize: pxToRem(this.mantineTheme.fontSizes?.sm || 14), // Default to 14px if fontSizes or sm is undefined
                 transition: 'all 0.2s ease',
             },
             header: {
@@ -308,7 +383,7 @@ export class StyleService {
             icon: null, // Override with your icon when calling this method
             autoClose: 3000,
             withBorder: true,
-            style: { borderRadius: this.mantineTheme.radius.md },
+            style: { borderRadius: this.mantineTheme.radius?.md || '4px' },
         };
     }
     /**
@@ -340,14 +415,12 @@ export class StyleService {
             c: getTextColor(),
             ...(this.isDark && { fw: purpose === 'body' ? 500 : undefined }) // Add font weight in dark mode for body text
         };
-    }
-
-    /**
+    }    /**
      * Get color for active/inactive navigation items
      */
     public getNavLinkColor(isActive: boolean): string {
         if (isActive) {
-            return this.customTheme.accentColor;
+            return this.customTheme?.accentColor || 'blue.6';
         }
         return this.isDark ? 'gray.3' : 'dark.6';
     }
@@ -360,27 +433,25 @@ export class StyleService {
             input: {
                 backgroundColor: this.isDark ? 'var(--mantine-color-dark-5)' : 'white',
                 borderColor: this.isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-                borderRadius: this.mantineTheme.radius.sm,
-                fontSize: this.mantineTheme.fontSizes.sm,
+                borderRadius: this.mantineTheme.radius?.sm || '3px',
+                fontSize: this.mantineTheme.fontSizes?.sm || '14px',
             },
             label: {
                 color: this.isDark ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-dark-8)',
-                fontSize: this.mantineTheme.fontSizes.sm,
+                fontSize: this.mantineTheme.fontSizes?.sm || '14px',
             }
         };
-    }
-
-    /**
+    }    /**
      * Get button styles with consistent theming
      */
     public getButtonStyles(variant: 'primary' | 'secondary' | 'outline' = 'primary') {
         // Helper function to determine button color
         const getButtonColor = () => {
             if (variant === 'primary') {
-                return this.customTheme.primaryColor;
+                return this.customTheme?.primaryColor || 'blue.5';
             }
             if (variant === 'secondary') {
-                return this.customTheme.accentColor;
+                return this.customTheme?.accentColor || 'blue.6';
             }
             return this.isDark ? 'gray.4' : 'dark.4';
         };
@@ -388,10 +459,12 @@ export class StyleService {
         return {
             color: getButtonColor(),
             variant: variant === 'outline' ? 'outline' : 'filled',
-            radius: this.mantineTheme.radius.sm,
+            radius: this.mantineTheme.radius?.sm || '3px',
             size: 'sm',
         };
-    }    /**
+    }
+    
+    /**
      * Get tab styles with consistent theming
      */
     public getTabsStyles() {
@@ -400,7 +473,12 @@ export class StyleService {
 
         if (themeTabsStyles) {
             // If theme has Tabs styles defined, use those
-            return themeTabsStyles(this.mantineTheme as unknown as ThemeWithColorScheme);
+            try {
+                return themeTabsStyles(this.mantineTheme as unknown as ThemeWithColorScheme);
+            } catch (error) {
+                console.warn('Error applying Tabs styles:', error);
+                // Fall through to default styles
+            }
         }
         
         // Otherwise return our custom styles
@@ -413,8 +491,8 @@ export class StyleService {
                 },                '&[data-active="true"]': {
                     color: this.isDark ? 'white' : 'black', // Keep text white in dark mode, black in light mode
                     borderColor: this.isDark
-                        ? `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-3)` // Matching border color
-                        : `var(--mantine-color-${this.customTheme.accentColor.split('.')[0]}-6)`,
+                        ? `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-3)` // Matching border color with fallback
+                        : `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-6)`,
                     fontWeight: 600, // Make active tab text bold
                     backgroundColor: this.isDark ? 'var(--mantine-color-dark-6)' : 'var(--mantine-color-white)',
                 },
