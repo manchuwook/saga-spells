@@ -1,4 +1,5 @@
 {
     "sonarQubeUri": "http://localhost:9000",
-    "projectKey": "saga-spells"
+    "projectKey": "saga-spells",
+    "workDir": ".sonarlint"
 }
