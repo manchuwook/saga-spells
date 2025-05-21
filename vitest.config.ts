@@ -64,8 +64,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: [
-      'react', 
-      'react-dom', 
+      'react',
+      'react-dom',
       'react-router-dom',
       '@mantine/core',
       '@mantine/hooks',
@@ -82,14 +82,34 @@ export default defineConfig({
       'Alt-Svc': 'h3=":443"; ma=86400',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
-  },
-  test: {
+  },  test: {
     globals: true,
     environment: 'happy-dom',
     setupFiles: './src/test/setup.ts',
     coverage: {
-      reporter: ['text', 'html'],
-      exclude: ['node_modules/']
+      provider: 'v8',  // Using V8 coverage provider
+      reporter: ['text', 'html', 'lcov', 'json'],  // Multiple report formats
+      exclude: [
+        'node_modules/**',
+        '**/*.d.ts',
+        '**/dist/**',
+        '**/*.test.{ts,tsx}',
+        '**/*.spec.{ts,tsx}',
+        '**/test/**',
+        '**/.vscode/**',
+        '**/codeql-database/**',
+        '**/vitest.config.ts',
+        '**/vite.config.ts',
+      ],
+      reportsDirectory: './coverage',
+      all: true  // Include non-tested files in report
+      // thresholds disabled while developing tests
+      // thresholds: {
+      //   lines: 70,
+      //   branches: 70,
+      //   functions: 70,
+      //   statements: 70
+      // }
     }
   }
 });

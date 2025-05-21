@@ -5,3 +5,4 @@ node_modules
 wrangler.toml
 dist
 .vscode/chrome-debug-profile/
+coverage
