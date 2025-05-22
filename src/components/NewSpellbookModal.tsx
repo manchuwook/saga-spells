@@ -1,18 +1,14 @@
-import { Modal, TextInput, Textarea, Button, Group, useMantineColorScheme, Text, Paper, Stack } from '@mantine/core';
+import { Text, useMantineColorScheme } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useSpellbooks } from '../hooks/useSpellbooks';
 import { notifications } from '@mantine/notifications';
 import { useStyles } from '../hooks/useStyles';
+import { SpellbookForm, SpellbookFormValues } from './common/SpellbookForm';
+import { Modal } from '@mantine/core';
 
 interface NewSpellbookModalProps {
   opened: boolean;
   onClose: () => void;
-}
-
-interface FormValues {
-  name: string;
-  character: string;
-  description: string;
 }
 
 export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
@@ -21,7 +17,7 @@ export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
   const isDark = colorScheme === 'dark';
   const { modalStyles } = useStyles();
   
-  const form = useForm<FormValues>({
+  const form = useForm<SpellbookFormValues>({
     initialValues: {
       name: '',
       character: '',
@@ -33,7 +29,9 @@ export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
     },
   });
 
-  const handleSubmit = (values: FormValues) => {
+  const handleSubmit = () => {
+    const values = form.values;
+    
     addSpellbook({
       name: values.name,
       character: values.character,
@@ -54,7 +52,9 @@ export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
   const handleClose = () => {
     form.reset();
     onClose();
-  };  return (
+  };  
+  
+  return (
     <Modal 
       opened={opened} 
       onClose={handleClose} 
@@ -70,59 +70,13 @@ export function NewSpellbookModal({ opened, onClose }: NewSpellbookModalProps) {
         }
       }}
     >
-      <Paper p="md" withBorder={false} bg={isDark ? 'dark.6' : 'gray.0'}>
-        <form onSubmit={form.onSubmit(handleSubmit)}>
-          <Stack gap="md">
-            <TextInput
-              label={<Text fw={600} size="sm" c={isDark ? 'gray.2' : 'dark.9'}>Spellbook Name</Text>}
-              placeholder="My Wizard's Spellbook"
-              {...form.getInputProps('name')}
-              styles={{
-                input: {
-                  backgroundColor: isDark ? 'var(--mantine-color-dark-5)' : 'white',
-                  borderColor: isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-                }
-              }}
-            />
-            
-            <TextInput
-              label={<Text fw={600} size="sm" c={isDark ? 'gray.2' : 'dark.9'}>Character Name</Text>}
-              placeholder="Gandalf the Grey"
-              {...form.getInputProps('character')}
-              styles={{
-                input: {
-                  backgroundColor: isDark ? 'var(--mantine-color-dark-5)' : 'white',
-                  borderColor: isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-                }
-              }}
-            />
-            
-            <Textarea
-              label={<Text fw={600} size="sm" c={isDark ? 'gray.2' : 'dark.9'}>Description (Optional)</Text>}
-              placeholder="A brief description of this spellbook..."
-              {...form.getInputProps('description')}
-              autosize
-              minRows={3}
-              maxRows={5}
-              styles={{
-                input: {
-                  backgroundColor: isDark ? 'var(--mantine-color-dark-5)' : 'white',
-                  borderColor: isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-                }
-              }}
-            />
-            
-            <Group justify="flex-end" mt="md">
-              <Button variant="outline" onClick={handleClose} color={isDark ? 'gray.4' : 'gray.6'}>
-                Cancel
-              </Button>
-              <Button type="submit" color={isDark ? 'blue.4' : 'blue.6'}>
-                Create Spellbook
-              </Button>
-            </Group>
-          </Stack>
-        </form>
-      </Paper>
+      <SpellbookForm
+        form={form}
+        onSubmit={handleSubmit}
+        onCancel={handleClose}
+        submitLabel="Create Spellbook"
+        usePaper
+      />
     </Modal>
   );
 }

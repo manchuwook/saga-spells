@@ -21,7 +21,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:coverage:detailed": "vitest run --coverage --reporter=verbose"
+    "test:coverage:detailed": "vitest run --coverage --reporter=verbose",
+    "test:coverage:html": "vitest run --coverage --reporter=html  --reporter=lcov --outdir=coverage"
   },
   "keywords": [],
   "author": "",

@@ -7,12 +7,12 @@ import {
   Text,
   Group,
   Button,
-  Tabs,
   SimpleGrid,
   Card,
   Stack,
   Paper
 } from '@mantine/core';
+import { SafeTabs, TabItem } from '../components/common/SafeTabs';
 import { useDisclosure } from '@mantine/hooks';
 import { IconArrowLeft, IconEdit, IconPlus, IconSearch, IconBooks } from '@tabler/icons-react';
 import { useSpellbooks } from '../hooks/useSpellbooks';
@@ -33,9 +33,8 @@ export default function SpellbookDetailPage() {
   const { getSpellbook, removeSpellFromSpellbook, addSpellToSpellbook } = useSpellbooks();
   const { data: allSpells } = useSpells();
   const { isDark, styleService } = useStyles();
-
   const spellbook = id ? getSpellbook(id) : undefined;
-  const [activeTab, setActiveTab] = useState<string | null>('spells');
+  const [activeTab, setActiveTab] = useState('spells');
   const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
   const [filteredSpells, setFilteredSpells] = useState<Spell[]>([]);
 
@@ -145,75 +144,70 @@ export default function SpellbookDetailPage() {
         </Group>
       </Group>      {spellbook.description && (
         <Text mb="xl" c={isDark ? 'white' : 'dark.7'} fw={isDark ? 500 : 400}>{spellbook.description}</Text>
-      )}
-      <Tabs
-        value={activeTab}
-        onChange={setActiveTab}
-        styles={styleService.getTabsStyles()}      >
-        <Tabs.List mb="xl" bg={isDark ? 'dark.6' : 'white'} style={isDark ? { borderRadius: '4px' } : undefined}>
-          <Tabs.Tab value="spells" style={{ color: isDark ? 'white' : 'black' }} leftSection={<IconSearch size={16} />}>
-            Spellbook Contents ({spellbook.spells.length})
-          </Tabs.Tab>
-          <Tabs.Tab value="add-spells" style={{ color: isDark ? 'white' : 'black' }} leftSection={<IconPlus size={16} />}>
-            Add Spells
-          </Tabs.Tab>
-        </Tabs.List>
-
-        <Tabs.Panel value="spells">
-          {spellbook.spells.length === 0 ? (<Card withBorder p="xl" ta="center" bg={isDark ? 'dark.6' : 'white'}>
-            <Text size="lg" fw={500} mb="md" c={isDark ? 'gray.1' : 'dark.8'}>
-              This spellbook is empty
-            </Text>
-            <Text mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>
-              Go to the "Add Spells" tab to start adding spells to this spellbook.
-            </Text>
-            <Button onClick={() => setActiveTab('add-spells')} color={isDark ? 'blue.4' : 'blue.6'}>Add Spells</Button>
-          </Card>
-          ) : (            <SimpleGrid
-              cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
-              spacing="md"
-            >
-              {/* Display spells alphabetically by name */}
-              {[...spellbook.spells]
-                .sort((a, b) => a.spellName.localeCompare(b.spellName))
-                .map((spell) => (
-                  <SpellCard
-                    key={spell.spellName}
-                    spell={spell}
-                    onViewDetails={handleViewDetails}
-                    onRemoveFromSpellbook={handleRemoveSpell}
-                    showRemoveButton
-                  />
-              ))}
-            </SimpleGrid>
-          )}
-        </Tabs.Panel>
-
-        <Tabs.Panel value="add-spells">
-          <Stack gap="lg">
-            <SpellsFilter
-              spells={availableSpells}
-              onFilterChange={setFilteredSpells}
-            />            <Text c={isDark ? 'white' : 'dark.7'} fw={isDark ? 500 : 400}>
-              {filteredSpells.length} available {filteredSpells.length === 1 ? 'spell' : 'spells'}
-            </Text>            <SimpleGrid
-              cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
-              spacing="md"
-            >
-              {[...filteredSpells]
-                .sort((a, b) => a.spellName.localeCompare(b.spellName))
-                .map((spell) => (
-                  <SpellCard
-                    key={spell.spellName}
-                    spell={spell}
-                    onViewDetails={handleViewDetails}
-                    onAddToSpellbook={handleAddSpell}
-                  />
+      )}      <SafeTabs
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        tabs={[
+          {
+            value: 'spells',
+            label: `Spellbook Contents (${spellbook.spells.length})`,
+            leftSection: <IconSearch size={16} />,
+            content: spellbook.spells.length === 0 ? (
+              <Card withBorder p="xl" ta="center" bg={isDark ? 'dark.6' : 'white'}>
+                <Text size="lg" fw={500} mb="md" c={isDark ? 'gray.1' : 'dark.8'}>
+                  This spellbook is empty
+                </Text>
+                <Text mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>
+                  Go to the "Add Spells" tab to start adding spells to this spellbook.
+                </Text>
+                <Button onClick={() => setActiveTab('add-spells')} color={isDark ? 'blue.4' : 'blue.6'}>Add Spells</Button>
+              </Card>
+            ) : (
+              <SimpleGrid cols={{ base: 1, xs: 2, md: 3, lg: 4 }} spacing="md">
+                {[...spellbook.spells]
+                  .sort((a, b) => a.spellName.localeCompare(b.spellName))
+                  .map((spell) => (
+                    <SpellCard
+                      key={spell.spellName}
+                      spell={spell}
+                      onViewDetails={handleViewDetails}
+                      onRemoveFromSpellbook={handleRemoveSpell}
+                      showRemoveButton
+                    />
                 ))}
-            </SimpleGrid>
-          </Stack>
-        </Tabs.Panel>
-      </Tabs>
+              </SimpleGrid>
+            )
+          },
+          {
+            value: 'add-spells',
+            label: 'Add Spells',
+            leftSection: <IconPlus size={16} />,
+            content: (
+              <Stack gap="lg">
+                <SpellsFilter
+                  spells={availableSpells}
+                  onFilterChange={setFilteredSpells}
+                />
+                <Text c={isDark ? 'white' : 'dark.7'} fw={isDark ? 500 : 400}>
+                  {filteredSpells.length} available {filteredSpells.length === 1 ? 'spell' : 'spells'}
+                </Text>
+                <SimpleGrid cols={{ base: 1, xs: 2, md: 3, lg: 4 }} spacing="md">
+                  {[...filteredSpells]
+                    .sort((a, b) => a.spellName.localeCompare(b.spellName))
+                    .map((spell) => (
+                      <SpellCard
+                        key={spell.spellName}
+                        spell={spell}
+                        onViewDetails={handleViewDetails}
+                        onAddToSpellbook={handleAddSpell}
+                      />
+                    ))}
+                </SimpleGrid>
+              </Stack>
+            )
+          }
+        ]}
+      />
 
       <SpellDetailsModal
         spell={selectedSpell}

@@ -1,6 +1,7 @@
-import { Modal, Text, Grid, Badge, Group, Stack, Paper, useMantineColorScheme } from '@mantine/core';
+import { Text, Grid, Badge, Group, Stack, useMantineColorScheme } from '@mantine/core';
 import { Spell } from '../models/spells.zod';
 import { useStyles } from '../hooks/useStyles';
+import { SafeModal } from './common/SafeModal';
 
 interface SpellDetailsModalProps {
   spell: Spell | null;
@@ -11,34 +12,11 @@ interface SpellDetailsModalProps {
 export function SpellDetailsModal({ spell, opened, onClose }: SpellDetailsModalProps) {
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
-  const { modalStyles, textStyles } = useStyles();
+  const { textStyles } = useStyles();
 
-  if (!spell) {
-    return null;
-  }
   // Using textStyles directly from StyleService - font scale is already integrated
-
-  return (
-    <Modal
-      opened={opened}
-      onClose={onClose}
-      title={<Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">{spell.spellName}</Text>}
-      size="lg"
-      overlayProps={modalStyles.overlayProps}
-      styles={{
-        header: modalStyles.header,
-        content: modalStyles.content,
-        close: modalStyles.close,
-        body: {
-          padding: 0,
-        },
-      }}
-    >
-      <Paper
-        p="md"
-        withBorder={false}
-        bg={isDark ? 'dark.6' : 'white'}
-      >
+  const renderSpellDetails = (spell: Spell) => {
+    return (
         <Stack gap="md">
           <Group>
             <Badge color="blue" size="lg">{spell.spellClass}</Badge>
@@ -92,16 +70,25 @@ export function SpellDetailsModal({ spell, opened, onClose }: SpellDetailsModalP
           <Stack gap="xs">
             <Text fw={700} c={isDark ? 'gray.3' : 'dark.9'}>Description:</Text>
             <Text style={{ whiteSpace: 'pre-wrap' }} c={isDark ? 'white' : 'dark.8'}>{spell.description}</Text>
-          </Stack>
-
-          {spell.altDescription && spell.altDescription !== "-" && spell.altDescription !== "null" && (
+          </Stack>          {spell.altDescription && spell.altDescription !== "-" && spell.altDescription !== "null" && (
             <Stack gap="xs">
               <Text fw={700} c={isDark ? 'gray.3' : 'dark.9'}>Alternative Description:</Text>
               <Text style={{ whiteSpace: 'pre-wrap' }} c={isDark ? 'white' : 'dark.8'}>{spell.altDescription}</Text>
             </Stack>
           )}
         </Stack>
-      </Paper>
-    </Modal>
+    );
+  };
+
+  return (
+    <SafeModal
+      data={spell}
+      opened={opened}
+      onClose={onClose}
+      title={(spell) => <Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">{spell.spellName}</Text>}
+      size="lg"
+    >
+      {renderSpellDetails}
+    </SafeModal>
   );
 }

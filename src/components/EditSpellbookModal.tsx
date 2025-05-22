@@ -1,9 +1,11 @@
-import { Modal, TextInput, Textarea, Button, Group, useMantineColorScheme, Text } from '@mantine/core';
+import { Text, useMantineColorScheme } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useSpellbooks } from '../hooks/useSpellbooks';
 import { Spellbook } from '../context/SpellbooksContext';
 import { notifications } from '@mantine/notifications';
-import { useStyles } from '../hooks/useStyles';
+import { SafeModal } from './common/SafeModal';
+import { useEffect } from 'react';
+import { SpellbookForm, SpellbookFormValues } from './common/SpellbookForm';
 
 interface EditSpellbookModalProps {
   spellbook: Spellbook | null;
@@ -11,23 +13,16 @@ interface EditSpellbookModalProps {
   onClose: () => void;
 }
 
-interface FormValues {
-  name: string;
-  character: string;
-  description: string;
-}
-
 export function EditSpellbookModal({ spellbook, opened, onClose }: EditSpellbookModalProps) {
   const { updateSpellbook } = useSpellbooks();
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === 'dark';
-  const { modalStyles } = useStyles();
   
-  const form = useForm<FormValues>({
+  const form = useForm<SpellbookFormValues>({
     initialValues: {
-      name: spellbook?.name || '',
-      character: spellbook?.character || '',
-      description: spellbook?.description || '',
+      name: '',
+      character: '',
+      description: '',
     },
     validate: {
       name: (value) => (!value ? 'Spellbook name is required' : null),
@@ -36,111 +31,59 @@ export function EditSpellbookModal({ spellbook, opened, onClose }: EditSpellbook
   });
 
   // Update form values when spellbook changes
-  if (spellbook && opened) {
-    if (form.values.name !== spellbook.name ||
-        form.values.character !== spellbook.character ||
-        form.values.description !== spellbook.description) {
+  useEffect(() => {
+    if (spellbook && opened) {
       form.setValues({
         name: spellbook.name,
         character: spellbook.character,
         description: spellbook.description,
       });
     }
-  }
-
-  const handleSubmit = (values: FormValues) => {
-    if (!spellbook) {
-      return;
-    }
-      updateSpellbook(spellbook.id, {
-      name: values.name,
-      character: values.character,
-      description: values.description,
-    });
-    
-    notifications.show({
-      title: 'Spellbook Updated',
-      message: `${values.name} has been updated`,
-      color: 'blue',
-    });
-    
-    form.reset();
-    onClose();
-  };
+  }, [spellbook, opened, form]);
 
   const handleClose = () => {
     form.reset();
     onClose();
   };
 
-  if (!spellbook) {
-    return null;
-  }
+  const renderModalContent = (spellbook: Spellbook) => {
+    const handleSubmit = () => {
+      const values = form.values;
+      
+      updateSpellbook(spellbook.id, {
+        name: values.name,
+        character: values.character,
+        description: values.description,
+      });
+      
+      notifications.show({
+        title: 'Spellbook Updated',
+        message: `${values.name} has been updated`,
+        color: 'blue',
+      });
+      
+      form.reset();
+      onClose();
+    };
+
+    return (
+      <SpellbookForm
+        form={form}
+        onSubmit={handleSubmit}
+        onCancel={handleClose}
+        submitLabel="Save Changes"
+      />
+    );
+  };
+
   return (
-    <Modal 
-      opened={opened} 
-      onClose={handleClose} 
-      title={<Text fw={700} c={isDark ? 'gray.1' : 'dark.8'}>Edit Spellbook</Text>}
-      overlayProps={modalStyles.overlayProps}
-      styles={{
-        header: modalStyles.header,
-        content: modalStyles.content, 
-        close: modalStyles.close,
-        body: modalStyles.body
-      }}
+    <SafeModal
+      data={spellbook}
+      opened={opened}
+      onClose={handleClose}
+      title={() => <Text fw={700} c={isDark ? 'gray.1' : 'dark.8'}>Edit Spellbook</Text>}
     >
-      <form onSubmit={form.onSubmit(handleSubmit)}>
-        <TextInput
-          label={<Text c={isDark ? 'gray.2' : 'dark.8'}>Spellbook Name</Text>}
-          placeholder="My Wizard's Spellbook"
-          {...form.getInputProps('name')}
-          mb="md"
-          styles={{
-            input: {
-              backgroundColor: isDark ? 'var(--mantine-color-dark-5)' : 'white',
-              borderColor: isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-            }
-          }}
-        />
-        
-        <TextInput
-          label={<Text c={isDark ? 'gray.2' : 'dark.8'}>Character Name</Text>}
-          placeholder="Gandalf the Grey"
-          {...form.getInputProps('character')}
-          mb="md"
-          styles={{
-            input: {
-              backgroundColor: isDark ? 'var(--mantine-color-dark-5)' : 'white',
-              borderColor: isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-            }
-          }}
-        />
-        
-        <Textarea
-          label={<Text c={isDark ? 'gray.2' : 'dark.8'}>Description (Optional)</Text>}
-          placeholder="A brief description of this spellbook..."
-          {...form.getInputProps('description')}
-          mb="md"
-          autosize
-          minRows={3}
-          maxRows={5}
-          styles={{
-            input: {
-              backgroundColor: isDark ? 'var(--mantine-color-dark-5)' : 'white',
-              borderColor: isDark ? 'var(--mantine-color-dark-4)' : 'var(--mantine-color-gray-4)',
-            }
-          }}
-        />
-        
-        <Group justify="flex-end" mt="md">
-          <Button variant="outline" onClick={handleClose} color={isDark ? 'gray.4' : 'gray.6'}>
-            Cancel
-          </Button>
-          <Button type="submit" color={isDark ? 'blue.4' : 'blue.6'}>
-            Save Changes
-          </Button>
-        </Group>
-      </form>
-    </Modal>
+      {renderModalContent}
+    </SafeModal>
   );
 }

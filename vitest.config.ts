@@ -100,6 +100,7 @@ export default defineConfig({
         '**/codeql-database/**',
         '**/vitest.config.ts',
         '**/vite.config.ts',
+        'src/main.tsx',
       ],
       reportsDirectory: './coverage',
       all: true  // Include non-tested files in report
