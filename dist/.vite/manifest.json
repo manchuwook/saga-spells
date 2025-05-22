@@ -1,31 +1,32 @@
 {
-  "_EditSpellbookModal-DPgtWIw5.js": {
-    "file": "assets/EditSpellbookModal-DPgtWIw5.js",
+  "_EditSpellbookModal-BocQ-0eW.js": {
+    "file": "assets/EditSpellbookModal-BocQ-0eW.js",
     "name": "EditSpellbookModal",
     "imports": [
-      "_mantine-core-DsMsSb2l.js",
-      "_useSpellbooks-CyB33_C_.js",
-      "_mantine-extras-C7JCdAhW.js"
+      "_mantine-core-BrUJvZP7.js",
+      "_useSpellbooks-Lj-ZNlV5.js",
+      "_react-vendor-euMfggM7.js",
+      "_mantine-extras-DBREntGp.js"
     ]
   },
-  "_SpellsFilter-BcWNnrrp.js": {
-    "file": "assets/SpellsFilter-BcWNnrrp.js",
+  "_SpellsFilter-ByTtFVnv.js": {
+    "file": "assets/SpellsFilter-ByTtFVnv.js",
     "name": "SpellsFilter",
     "imports": [
-      "_data-vendor-JK2JCimK.js",
-      "_mantine-core-DsMsSb2l.js",
+      "_data-vendor-CDbGmpEw.js",
+      "_mantine-core-BrUJvZP7.js",
       "index.html",
       "_icons-DD1o_37P.js",
-      "_useSpellbooks-CyB33_C_.js",
+      "_useSpellbooks-Lj-ZNlV5.js",
       "_react-vendor-euMfggM7.js"
     ]
   },
-  "_data-vendor-JK2JCimK.js": {
-    "file": "assets/data-vendor-JK2JCimK.js",
+  "_data-vendor-CDbGmpEw.js": {
+    "file": "assets/data-vendor-CDbGmpEw.js",
     "name": "data-vendor",
     "imports": [
       "_react-vendor-euMfggM7.js",
-      "_mantine-core-DsMsSb2l.js"
+      "_mantine-core-BrUJvZP7.js"
     ]
   },
   "_icons-DD1o_37P.js": {
@@ -35,19 +36,19 @@
       "_react-vendor-euMfggM7.js"
     ]
   },
-  "_mantine-core-DsMsSb2l.js": {
-    "file": "assets/mantine-core-DsMsSb2l.js",
+  "_mantine-core-BrUJvZP7.js": {
+    "file": "assets/mantine-core-BrUJvZP7.js",
     "name": "mantine-core",
     "imports": [
       "_react-vendor-euMfggM7.js"
     ]
   },
-  "_mantine-extras-C7JCdAhW.js": {
-    "file": "assets/mantine-extras-C7JCdAhW.js",
+  "_mantine-extras-DBREntGp.js": {
+    "file": "assets/mantine-extras-DBREntGp.js",
     "name": "mantine-extras",
     "imports": [
       "_react-vendor-euMfggM7.js",
-      "_mantine-core-DsMsSb2l.js"
+      "_mantine-core-BrUJvZP7.js"
     ]
   },
   "_pdf-vendor-DgBXY6CA.js": {
@@ -62,27 +63,27 @@
     "file": "assets/react-vendor-euMfggM7.js",
     "name": "react-vendor"
   },
-  "_useSpellbooks-CyB33_C_.js": {
-    "file": "assets/useSpellbooks-CyB33_C_.js",
+  "_useSpellbooks-Lj-ZNlV5.js": {
+    "file": "assets/useSpellbooks-Lj-ZNlV5.js",
     "name": "useSpellbooks",
     "imports": [
+      "_mantine-core-BrUJvZP7.js",
       "index.html",
-      "_react-vendor-euMfggM7.js",
-      "_mantine-core-DsMsSb2l.js"
+      "_react-vendor-euMfggM7.js"
     ]
   },
   "index.html": {
-    "file": "assets/index-COmKSG9c.js",
+    "file": "assets/index-DAlunYEv.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
     "imports": [
-      "_mantine-core-DsMsSb2l.js",
+      "_mantine-core-BrUJvZP7.js",
       "_react-vendor-euMfggM7.js",
-      "_data-vendor-JK2JCimK.js",
+      "_data-vendor-CDbGmpEw.js",
       "_pdf-vendor-DgBXY6CA.js",
       "_icons-DD1o_37P.js",
-      "_mantine-extras-C7JCdAhW.js"
+      "_mantine-extras-DBREntGp.js"
     ],
     "dynamicImports": [
       "src/pages/SpellsPage.tsx",
@@ -123,55 +124,55 @@
     ]
   },
   "src/pages/SpellbookDetailPage.tsx": {
-    "file": "assets/SpellbookDetailPage-Byx9Zrsq.js",
+    "file": "assets/SpellbookDetailPage-Dji3gjzH.js",
     "name": "SpellbookDetailPage",
     "src": "src/pages/SpellbookDetailPage.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_mantine-core-DsMsSb2l.js",
+      "_mantine-core-BrUJvZP7.js",
       "_react-vendor-euMfggM7.js",
-      "_useSpellbooks-CyB33_C_.js",
-      "_SpellsFilter-BcWNnrrp.js",
-      "_EditSpellbookModal-DPgtWIw5.js",
+      "_useSpellbooks-Lj-ZNlV5.js",
+      "_SpellsFilter-ByTtFVnv.js",
+      "_EditSpellbookModal-BocQ-0eW.js",
       "src/lib/pdfExport.enhanced.ts",
       "_icons-DD1o_37P.js",
-      "_mantine-extras-C7JCdAhW.js",
+      "_mantine-extras-DBREntGp.js",
       "index.html",
-      "_data-vendor-JK2JCimK.js",
+      "_data-vendor-CDbGmpEw.js",
       "_pdf-vendor-DgBXY6CA.js"
     ]
   },
   "src/pages/SpellbooksPage.tsx": {
-    "file": "assets/SpellbooksPage-aCYRvFYi.js",
+    "file": "assets/SpellbooksPage-C5kuP0Zm.js",
     "name": "SpellbooksPage",
     "src": "src/pages/SpellbooksPage.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_mantine-core-DsMsSb2l.js",
+      "_mantine-core-BrUJvZP7.js",
       "_react-vendor-euMfggM7.js",
-      "_useSpellbooks-CyB33_C_.js",
-      "_mantine-extras-C7JCdAhW.js",
-      "_EditSpellbookModal-DPgtWIw5.js",
+      "_useSpellbooks-Lj-ZNlV5.js",
+      "_EditSpellbookModal-BocQ-0eW.js",
+      "_mantine-extras-DBREntGp.js",
       "_icons-DD1o_37P.js",
       "index.html",
-      "_data-vendor-JK2JCimK.js",
+      "_data-vendor-CDbGmpEw.js",
       "_pdf-vendor-DgBXY6CA.js"
     ]
   },
   "src/pages/SpellsPage.tsx": {
-    "file": "assets/SpellsPage-DwkVEeKU.js",
+    "file": "assets/SpellsPage-BbhjtOWM.js",
     "name": "SpellsPage",
     "src": "src/pages/SpellsPage.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_mantine-core-DsMsSb2l.js",
+      "_mantine-core-BrUJvZP7.js",
       "_react-vendor-euMfggM7.js",
-      "_SpellsFilter-BcWNnrrp.js",
-      "_useSpellbooks-CyB33_C_.js",
-      "_mantine-extras-C7JCdAhW.js",
+      "_SpellsFilter-ByTtFVnv.js",
+      "_useSpellbooks-Lj-ZNlV5.js",
+      "_mantine-extras-DBREntGp.js",
       "src/lib/pdfExport.enhanced.ts",
       "_icons-DD1o_37P.js",
-      "_data-vendor-JK2JCimK.js",
+      "_data-vendor-CDbGmpEw.js",
       "index.html",
       "_pdf-vendor-DgBXY6CA.js"
     ]
