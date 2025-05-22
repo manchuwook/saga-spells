@@ -93,12 +93,17 @@ export function AddToSpellbookModal({ spell, opened, onClose }: AddToSpellbookMo
     );
   };
 
+  // Define title component outside the render function
+  const ModalTitle = () => (
+    <Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">Add to Spellbook</Text>
+  );
+
   return (
     <SafeModal
       data={spell}
       opened={opened}
       onClose={handleClose}
-      title={() => <Text c={isDark ? 'white' : 'dark.9'} fw={700} size="xl">Add to Spellbook</Text>}
+      title={ModalTitle}
       size="md"
       styles={{
         body: {
