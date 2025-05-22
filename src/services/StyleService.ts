@@ -162,6 +162,8 @@ export class StyleService {
                     light: safeShade,
                     dark: safeShade
                 },
+                // Enable autoContrast for better text visibility on colored backgrounds
+                autoContrast: true,
                 radius: {
                     xs: radiusXs,
                     sm: radiusSm,
@@ -220,14 +222,23 @@ export class StyleService {
                         }),
                     },                    // Tabs styling
                     Tabs: {
-                        styles: (theme: ThemeWithColorScheme) => ({
+                        defaultProps: {
+                            autoContrast: true
+                        },
+                        styles: () => ({
                             tab: {
-                                color: theme.colorScheme === 'dark' ? 'var(--mantine-color-gray-4)' : 'var(--mantine-color-dark-6)',
+                                backgroundColor: this.isDark ? 'var(--mantine-color-dark-7)' : 'var(--mantine-color-white)',
                                 '&[data-active="true"]': {
-                                    color: theme.colorScheme === 'dark'
-                                        ? `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-4)`
-                                        : `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-6)`,
+                                    backgroundColor: this.isDark 
+                                        ? `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-9)`
+                                        : `var(--mantine-color-${this.customTheme?.accentColor?.split('.')[0] || 'blue'}-2)`,
                                 },
+                                '&:hover': {
+                                    backgroundColor: this.isDark ? 'var(--mantine-color-dark-6)' : 'var(--mantine-color-gray-1)',
+                                },
+                            },
+                            tabsList: {
+                                borderBottomColor: this.isDark ? 'var(--mantine-color-dark-3)' : 'var(--mantine-color-gray-3)',
                             },
                         }),
                     },
@@ -463,8 +474,7 @@ export class StyleService {
             size: 'sm',
         };
     }
-    
-    /**
+      /**
      * Get tab styles with consistent theming
      */
     public getTabsStyles() {
@@ -474,7 +484,10 @@ export class StyleService {
         if (themeTabsStyles) {
             // If theme has Tabs styles defined, use those
             try {
-                return themeTabsStyles(this.mantineTheme as unknown as ThemeWithColorScheme);
+                return {
+                    ...themeTabsStyles(this.mantineTheme as unknown as ThemeWithColorScheme),
+                    autoContrast: true
+                };
             } catch (error) {
                 console.warn('Error applying Tabs styles:', error);
                 // Fall through to default styles
@@ -504,6 +517,7 @@ export class StyleService {
             panel: {
                 color: this.isDark ? 'var(--mantine-color-white)' : 'var(--mantine-color-dark-8)',
             },
+            autoContrast: true,
         };
     }
 }

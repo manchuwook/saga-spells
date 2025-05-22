@@ -47,9 +47,7 @@ describe('StyleService - Tabs Styles Tests', () => {
         // Spy on console methods to prevent actual console logs during tests
         vi.spyOn(console, 'warn').mockImplementation(() => {});
         vi.spyOn(console, 'error').mockImplementation(() => {});
-    });
-
-    it('getTabsStyles returns expected styles with theme components', () => {
+    });    it('getTabsStyles returns expected styles with theme components', () => {
         // Initialize with a theme that has Tab components
         const themeWithTabsComponents = {
             ...mockTheme,
@@ -75,6 +73,7 @@ describe('StyleService - Tabs Styles Tests', () => {
         // This should now use the custom theme
         const tabStyles = styleService.getTabsStyles();
         expect(tabStyles).toBeDefined();
+        expect(tabStyles.autoContrast).toBe(true);
     });
       it('getTabsStyles handles theme components that throw errors', () => {
         // Initialize with a theme that has problematic Tab components

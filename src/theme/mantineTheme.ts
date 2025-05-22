@@ -14,6 +14,9 @@ export const baseTheme = createTheme({
   // Color scheme settings
   primaryColor: 'brown',
   
+  // Enable autoContrast for better text visibility on colored backgrounds
+  autoContrast: true,
+  
   // Colors palette - these will be available throughout the app
   colors: {
     // Blue shades

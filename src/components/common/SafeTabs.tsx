@@ -1,4 +1,4 @@
-import { Tabs, TabsProps, useMantineColorScheme } from '@mantine/core';
+import { Tabs } from '@mantine/core';
 import { ReactNode } from 'react';
 import { useStyles } from '../../hooks/useStyles';
 
@@ -20,7 +20,7 @@ interface SafeTabsProps {
   /**
    * Array of tab items to render
    */
-  tabs: TabItem[];
+  tabs: readonly TabItem[];
   
   /**
    * The currently active tab's value
@@ -30,7 +30,7 @@ interface SafeTabsProps {
   /**
    * Function to handle tab changes
    */
-  onTabChange: (value: string) => void;
+  onTabChange: (value: string | null) => void;
 }
 
 /**
@@ -42,12 +42,12 @@ export function SafeTabs({ tabs, activeTab, onTabChange }: SafeTabsProps) {
   const tabStyles = styleService.getTabsStyles();
   
   return (
-    <>
-      <Tabs
+    <>      <Tabs
         value={activeTab}
         onChange={onTabChange}
         styles={tabStyles}
         variant="outline"
+        autoContrast
       >
         <Tabs.List>
           {tabs.map((tab) => (
