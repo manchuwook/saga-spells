@@ -5,20 +5,28 @@ import { z } from 'zod';
  */
 export const SpellSchema = z.object({
   spellName: z.string(),
-  complexity: z.string().or(z.number()),
-  flare: z.string().or(z.number()),
+  complexity: z.string().or(z.number()).or(z.null()).transform(val => {
+    if (val === null) return 0;
+    if (typeof val === 'string') return parseInt(val, 10) || 0;
+    return val;
+  }),
+  flare: z.string().or(z.number()).or(z.null()).transform(val => {
+    if (val === null) return 0;
+    if (typeof val === 'string') return parseInt(val, 10) || 0;
+    return val;
+  }),
   range: z.string(),
   target: z.string(),
   action: z.string(),
   duration: z.string(),
-  keywords: z.string(),
+  keywords: z.string().or(z.null()),
   check: z.string(),
   spellClass: z.string(),
   school: z.string(),
   skill: z.string(),
   focus: z.string(),
   spellType: z.string(),
-  description: z.string(),
+  description: z.string().or(z.null()),
   altDescription: z.string().or(z.null())
 });
 
