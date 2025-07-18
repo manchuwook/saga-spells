@@ -6,3 +6,5 @@ wrangler.toml
 dist
 .vscode/chrome-debug-profile/
 coverage
+*storybook.log
+storybook-static

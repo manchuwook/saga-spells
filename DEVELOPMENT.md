@@ -13,23 +13,50 @@ This document provides guidelines and instructions for developing and contributi
 ### Getting Started
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/yourusername/saga-spells.git
    cd saga-spells
    ```
 
 2. **Install dependencies**:
+
    ```bash
    pnpm install
    ```
 
 3. **Start the development server**:
+
    ```bash
    pnpm dev
    ```
 
 4. **Access the application**:
    Open your browser and navigate to http://localhost:5173
+
+5. **Start Storybook (for component development)**:
+   ```bash
+   pnpm storybook
+   ```
+   Access Storybook at http://localhost:6006
+
+## Development Tools
+
+### Storybook
+
+We use Storybook for isolated component development and documentation:
+
+- **Development**: `pnpm storybook`
+- **Build**: `pnpm build-storybook`
+- **Component Testing**: `pnpm storybook:test`
+
+Stories are located in `src/components/*.stories.tsx` files.
+
+### Code Quality
+
+- **Linting**: `pnpm lint` (ESLint with TypeScript rules)
+- **Formatting**: `pnpm format` (Prettier)
+- **Type Checking**: `pnpm typecheck`
 
 ## Project Structure
 
@@ -72,6 +99,7 @@ saga-spells/
 ### Adding New Features
 
 1. Create a new branch for your feature:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -124,8 +152,8 @@ Example:
 
 ```tsx
 // src/components/NewComponent.tsx
-import { useState } from 'react';
-import { Button, Text } from '@mantine/core';
+import { useState } from "react";
+import { Button, Text } from "@mantine/core";
 
 interface NewComponentProps {
   label: string;
@@ -134,18 +162,16 @@ interface NewComponentProps {
 
 export function NewComponent({ label, onClick }: NewComponentProps) {
   const [clicked, setClicked] = useState(false);
-  
+
   const handleClick = () => {
     setClicked(true);
     onClick();
   };
-  
+
   return (
     <div>
       <Text>{label}</Text>
-      <Button onClick={handleClick}>
-        {clicked ? 'Clicked!' : 'Click Me'}
-      </Button>
+      <Button onClick={handleClick}>{clicked ? "Clicked!" : "Click Me"}</Button>
     </div>
   );
 }
@@ -179,7 +205,7 @@ The optimized build process includes:
 - **Code Splitting**: Automatically splits code into smaller chunks that are loaded on demand
 - **Tree Shaking**: Eliminates unused code from the final bundle
 - **Lazy Loading**: Components are loaded only when needed using React.lazy()
-- **Asset Optimization**: 
+- **Asset Optimization**:
   - Images are compressed and optimized
   - CSS is minified and optimized with CSSNano
   - JavaScript is minified with Terser
@@ -224,6 +250,7 @@ Spellbooks are stored in the browser's localStorage. Changes to the storage stru
 4. Submit a pull request with a clear description of the changes
 
 Please ensure your code:
+
 - Has been tested
 - Follows the project's coding style
 - Includes appropriate documentation
@@ -232,6 +259,7 @@ Please ensure your code:
 ## Getting Help
 
 If you encounter issues or have questions, please:
+
 1. Check existing documentation
 2. Search for related issues
 3. Create a new issue with clear details about your problem

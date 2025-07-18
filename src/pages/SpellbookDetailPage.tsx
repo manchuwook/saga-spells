@@ -1,31 +1,45 @@
 // filepath: x:\dev\saga-spells\src\pages\SpellbookDetailPage.tsx
-import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import {
-  Container,
-  Title,
-  Text,
-  Group,
+  ActionIcon,
   Button,
-  SimpleGrid,
   Card,
+  Container,
+  Group,
+  Paper,
+  SimpleGrid,
   Stack,
-  Paper
+  Text,
+  Title,
+  Tooltip,
 } from '@mantine/core';
-import { SafeTabs, TabItem } from '../components/common/SafeTabs';
 import { useDisclosure } from '@mantine/hooks';
-import { IconArrowLeft, IconEdit, IconPlus, IconSearch, IconBooks } from '@tabler/icons-react';
-import { useSpellbooks } from '../hooks/useSpellbooks';
-import { SpellCard } from '../components/SpellCard';
-import { SpellDetailsModal } from '../components/SpellDetailsModal';
-import { EditSpellbookModal } from '../components/EditSpellbookModal';
-import { SpellbookExportButton } from '../components/SpellbookExportButton';
-import { Spell } from '../models/spells.zod';
-import { useSpells } from '../hooks/useSpells';
-import { SpellsFilter } from '../components/SpellsFilter';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
+import {
+  IconArrowLeft,
+  IconBooks,
+  IconEdit,
+  IconLayoutGrid,
+  IconList,
+  IconPlus,
+  IconSearch,
+} from '@tabler/icons-react';
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { SafeTabs } from '../components/common/SafeTabs';
+import { EditSpellbookModal } from '../components/EditSpellbookModal';
+import { GroupedSpellList } from '../components/GroupedSpellList';
+import { SpellbookExportButton } from '../components/SpellbookExportButton';
+import { SpellCard } from '../components/SpellCard';
+import { SpellCardWide } from '../components/SpellCardWide';
+import { SpellDetailsModal } from '../components/SpellDetailsModal';
+import { GroupingOption, SpellGrouping } from '../components/SpellGrouping';
+import { SpellsFilter } from '../components/SpellsFilter';
+import { useSpellbooks } from '../hooks/useSpellbooks';
+import { useSpells } from '../hooks/useSpells';
 import { useStyles } from '../hooks/useStyles';
+import { groupSpells } from '../lib/spellGrouping';
+import { Spell } from '../models/spells.zod';
 
 export default function SpellbookDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -37,21 +51,30 @@ export default function SpellbookDetailPage() {
   const [activeTab, setActiveTab] = useState('spells');
   const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
   const [filteredSpells, setFilteredSpells] = useState<Spell[]>([]);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [groupingOption, setGroupingOption] = useState<GroupingOption>('none');
 
-  const [detailsModalOpened, { open: openDetailsModal, close: closeDetailsModal }] = useDisclosure(false);
+  const [detailsModalOpened, { open: openDetailsModal, close: closeDetailsModal }] =
+    useDisclosure(false);
   const [editModalOpened, { open: openEditModal, close: closeEditModal }] = useDisclosure(false);
 
   if (!spellbook) {
     return (
-      <Container size="md" py="xl">        <Paper p="xl" withBorder radius="md" bg={isDark ? 'dark.6' : 'white'}>
-        <Title order={2} ta="center" mb="md" c={isDark ? 'white' : 'dark.8'}>Spellbook Not Found</Title>
-        <Text ta="center" mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>The spellbook you're looking for doesn't exist or has been deleted.</Text>
-        <Group justify="center">
-          <Button onClick={() => navigate('/spellbooks')} color={isDark ? 'blue.4' : 'blue.6'}>
-            Back to Spellbooks
-          </Button>
-        </Group>
-      </Paper>
+      <Container size="md" py="xl">
+        {' '}
+        <Paper p="xl" withBorder radius="md" bg={isDark ? 'dark.6' : 'white'}>
+          <Title order={2} ta="center" mb="md" c={isDark ? 'white' : 'dark.8'}>
+            Spellbook Not Found
+          </Title>
+          <Text ta="center" mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>
+            The spellbook you're looking for doesn't exist or has been deleted.
+          </Text>
+          <Group justify="center">
+            <Button onClick={() => navigate('/spellbooks')} color={isDark ? 'blue.4' : 'blue.6'}>
+              Back to Spellbooks
+            </Button>
+          </Group>
+        </Paper>
       </Container>
     );
   }
@@ -59,12 +82,17 @@ export default function SpellbookDetailPage() {
   const handleViewDetails = (spell: Spell) => {
     setSelectedSpell(spell);
     openDetailsModal();
-  }; const handleRemoveSpell = (spellName: string) => {
+  };
+  const handleRemoveSpell = (spellName: string) => {
     // Get modal styles from style service
     const modalStyles = styleService.getModalStyles();
 
     modals.openConfirmModal({
-      title: <Text c={isDark ? 'white' : 'dark.9'} fw={700}>Remove Spell</Text>,
+      title: (
+        <Text c={isDark ? 'white' : 'dark.9'} fw={700}>
+          Remove Spell
+        </Text>
+      ),
       children: (
         <Text size="sm" c={isDark ? 'gray.2' : 'dark.7'}>
           Are you sure you want to remove "{spellName}" from this spellbook?
@@ -78,7 +106,7 @@ export default function SpellbookDetailPage() {
         header: modalStyles.header,
         content: modalStyles.content,
         body: modalStyles.body,
-        close: modalStyles.close
+        close: modalStyles.close,
       },
       onConfirm: () => {
         if (id) {
@@ -91,7 +119,8 @@ export default function SpellbookDetailPage() {
         }
       },
     });
-  }; const handleAddSpell = (spell: Spell) => {
+  };
+  const handleAddSpell = (spell: Spell) => {
     if (id) {
       addSpellToSpellbook(id, spell);
 
@@ -111,9 +140,10 @@ export default function SpellbookDetailPage() {
     }
   };
   // Filter out spells that are already in the spellbook and sort alphabetically
-  const availableSpells = allSpells?.filter(
-    spell => !spellbook.spells.some(s => s.spellName === spell.spellName)
-  )?.sort((a, b) => a.spellName.localeCompare(b.spellName)) || [];
+  const availableSpells =
+    allSpells
+      ?.filter((spell) => !spellbook.spells.some((s) => s.spellName === spell.spellName))
+      ?.sort((a, b) => a.spellName.localeCompare(b.spellName)) || [];
 
   return (
     <Container size="xl" py="xl">
@@ -126,12 +156,37 @@ export default function SpellbookDetailPage() {
         >
           Back to Spellbooks
         </Button>
-      </Group>      <Group justify="space-between" mb="xl">
+      </Group>{' '}
+      <Group justify="space-between" mb="xl">
         <Stack gap={0}>
-          <Title order={1} c={isDark ? 'gray.1' : 'dark.8'}>{spellbook.name}</Title>
-          <Text size="lg" c={isDark ? 'gray.3' : 'dimmed'} fw={isDark ? 500 : 400}>Character: {spellbook.character}</Text>
+          <Title order={1} c={isDark ? 'gray.1' : 'dark.8'}>
+            {spellbook.name}
+          </Title>
+          <Text size="lg" c={isDark ? 'gray.3' : 'dimmed'} fw={isDark ? 500 : 400}>
+            Character: {spellbook.character}
+          </Text>
         </Stack>
         <Group>
+          <Group gap="xs">
+            <Tooltip label="Grid View">
+              <ActionIcon
+                variant={viewMode === 'grid' ? 'filled' : 'subtle'}
+                color={isDark ? 'blue.4' : 'blue.6'}
+                onClick={() => setViewMode('grid')}
+              >
+                <IconLayoutGrid size={16} />
+              </ActionIcon>
+            </Tooltip>
+            <Tooltip label="Detailed List View">
+              <ActionIcon
+                variant={viewMode === 'list' ? 'filled' : 'subtle'}
+                color={isDark ? 'blue.4' : 'blue.6'}
+                onClick={() => setViewMode('list')}
+              >
+                <IconList size={16} />
+              </ActionIcon>
+            </Tooltip>
+          </Group>
           <Button
             variant="outline"
             leftSection={<IconEdit size={16} />}
@@ -142,41 +197,50 @@ export default function SpellbookDetailPage() {
           </Button>
           <SpellbookExportButton spellbook={spellbook} label="Export Spellbook" />
         </Group>
-      </Group>      {spellbook.description && (
-        <Text mb="xl" c={isDark ? 'white' : 'dark.7'} fw={isDark ? 500 : 400}>{spellbook.description}</Text>
-      )}      <SafeTabs
+      </Group>
+      {spellbook.description && (
+        <Text mb="xl" c={isDark ? 'white' : 'dark.7'} fw={isDark ? 500 : 400}>
+          {spellbook.description}
+        </Text>
+      )}{' '}
+      <SafeTabs
         activeTab={activeTab}
-        onTabChange={setActiveTab}
+        onTabChange={(value) => setActiveTab(value ?? 'spells')}
         tabs={[
           {
             value: 'spells',
             label: `Spellbook Contents (${spellbook.spells.length})`,
             leftSection: <IconSearch size={16} />,
-            content: spellbook.spells.length === 0 ? (
-              <Card withBorder p="xl" ta="center" bg={isDark ? 'dark.6' : 'white'}>
-                <Text size="lg" fw={500} mb="md" c={isDark ? 'gray.1' : 'dark.8'}>
-                  This spellbook is empty
-                </Text>
-                <Text mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>
-                  Go to the "Add Spells" tab to start adding spells to this spellbook.
-                </Text>
-                <Button onClick={() => setActiveTab('add-spells')} color={isDark ? 'blue.4' : 'blue.6'}>Add Spells</Button>
-              </Card>
-            ) : (
-              <SimpleGrid cols={{ base: 1, xs: 2, md: 3, lg: 4 }} spacing="md">
-                {[...spellbook.spells]
-                  .sort((a, b) => a.spellName.localeCompare(b.spellName))
-                  .map((spell) => (
-                    <SpellCard
-                      key={spell.spellName}
-                      spell={spell}
-                      onViewDetails={handleViewDetails}
-                      onRemoveFromSpellbook={handleRemoveSpell}
-                      showRemoveButton
-                    />
-                ))}
-              </SimpleGrid>
-            )
+            content:
+              spellbook.spells.length === 0 ? (
+                <Card withBorder p="xl" ta="center" bg={isDark ? 'dark.6' : 'white'}>
+                  <Text size="lg" fw={500} mb="md" c={isDark ? 'gray.1' : 'dark.8'}>
+                    This spellbook is empty
+                  </Text>
+                  <Text mb="xl" c={isDark ? 'white' : 'dark.6'} fw={isDark ? 500 : 400}>
+                    Go to the "Add Spells" tab to start adding spells to this spellbook.
+                  </Text>{' '}
+                  <Button
+                    onClick={() => setActiveTab('add-spells')}
+                    color={isDark ? 'blue.4' : 'blue.6'}
+                  >
+                    Add Spells
+                  </Button>
+                </Card>
+              ) : (
+                <Stack gap="lg">
+                  <Group justify="flex-end">
+                    <SpellGrouping value={groupingOption} onChange={setGroupingOption} />
+                  </Group>
+                  <GroupedSpellList
+                    groups={groupSpells(spellbook.spells, groupingOption)}
+                    viewMode={viewMode}
+                    onViewDetails={handleViewDetails}
+                    onRemoveFromSpellbook={handleRemoveSpell}
+                    showRemoveButton
+                  />
+                </Stack>
+              ),
           },
           {
             value: 'add-spells',
@@ -184,42 +248,49 @@ export default function SpellbookDetailPage() {
             leftSection: <IconPlus size={16} />,
             content: (
               <Stack gap="lg">
-                <SpellsFilter
-                  spells={availableSpells}
-                  onFilterChange={setFilteredSpells}
-                />
+                <SpellsFilter spells={availableSpells} onFilterChange={setFilteredSpells} />{' '}
                 <Text c={isDark ? 'white' : 'dark.7'} fw={isDark ? 500 : 400}>
-                  {filteredSpells.length} available {filteredSpells.length === 1 ? 'spell' : 'spells'}
+                  {filteredSpells.length} available{' '}
+                  {filteredSpells.length === 1 ? 'spell' : 'spells'}
                 </Text>
-                <SimpleGrid cols={{ base: 1, xs: 2, md: 3, lg: 4 }} spacing="md">
-                  {[...filteredSpells]
-                    .sort((a, b) => a.spellName.localeCompare(b.spellName))
-                    .map((spell) => (
-                      <SpellCard
-                        key={spell.spellName}
-                        spell={spell}
-                        onViewDetails={handleViewDetails}
-                        onAddToSpellbook={handleAddSpell}
-                      />
-                    ))}
-                </SimpleGrid>
+                {viewMode === 'grid' ? (
+                  <SimpleGrid cols={{ base: 1, xs: 2, md: 3, lg: 4 }} spacing="md">
+                    {[...filteredSpells]
+                      .sort((a, b) => a.spellName.localeCompare(b.spellName))
+                      .map((spell) => (
+                        <SpellCard
+                          key={spell.spellName}
+                          spell={spell}
+                          onViewDetails={handleViewDetails}
+                          onAddToSpellbook={handleAddSpell}
+                        />
+                      ))}
+                  </SimpleGrid>
+                ) : (
+                  <Stack gap="md">
+                    {[...filteredSpells]
+                      .sort((a, b) => a.spellName.localeCompare(b.spellName))
+                      .map((spell) => (
+                        <SpellCardWide
+                          key={spell.spellName}
+                          spell={spell}
+                          onViewDetails={handleViewDetails}
+                          onAddToSpellbook={handleAddSpell}
+                        />
+                      ))}
+                  </Stack>
+                )}
               </Stack>
-            )
-          }
+            ),
+          },
         ]}
       />
-
       <SpellDetailsModal
         spell={selectedSpell}
         opened={detailsModalOpened}
         onClose={closeDetailsModal}
       />
-
-      <EditSpellbookModal
-        spellbook={spellbook}
-        opened={editModalOpened}
-        onClose={closeEditModal}
-      />
+      <EditSpellbookModal spellbook={spellbook} opened={editModalOpened} onClose={closeEditModal} />
     </Container>
   );
 }

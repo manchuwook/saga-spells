@@ -3,7 +3,8 @@
     "sonarlint.connectedMode.project": {
         "connectionId": "http-localhost-9000",
         "projectKey": "saga-spells"
-    },    "sonarlint.pathToCompileCommands": "${workspaceFolder}",
+    },
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}",
     "sonarlint.workDir": "${workspaceFolder}/.sonarlint/work",
     "sonarlint.disableTelemetry": true,
     "sonarlint.ls.javaHome": null,
@@ -12,6 +13,27 @@
         "sonar.exclusions": "**/node_modules/**,**/dist/**,**/build/**,**/coverage/**,**/*.test.*,**/*.spec.*",
         "sonar.typescript.exclusions": "**/node_modules/**,**/dist/**,**/build/**,**/coverage/**",
         "sonar.javascript.exclusions": "**/node_modules/**,**/dist/**,**/build/**,**/coverage/**"
+    },
+    "typescript.preferences.useAliasesForRenames": false,
+    "typescript.suggest.autoImports": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "emmet.includeLanguages": {
+        "typescript": "typescriptreact",
+        "javascript": "javascriptreact"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "cSpell.words": [
         "Animant",
